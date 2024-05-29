@@ -1,0 +1,46 @@
+---
+import { type NavbarLink } from "../../types";
+import Button from "../Button/Button.astro";
+
+import Container from "../Container/Container.astro";
+import { Icon } from "astro-icon/components";
+
+const links: NavbarLink[] = [
+    {
+        label: "About",
+        href: "",
+    },
+    {
+        label: "Services",
+        href: "#",
+    },
+    {
+        label: "Pricing",
+        href: "#",
+    },
+    {
+        label: "Blog",
+        href: "#",
+    },
+];
+---
+
+<nav class="navbar">
+    <Container>
+        <a class="navbar_brand" href="/" aria-label="Home">
+            <Icon name="transparent-logo" />
+        </a>
+        <div class="navbar_list">
+            {
+                links.map((link) => (
+                    <a href={link.href} class="navbar_link">
+                        {link.label}
+                    </a>
+                ))
+            }
+        </div>
+        <div class="navbar_actions">
+            <Button type="secondary" link="#book-a-call">Book a Call</Button>
+        </div>
+    </Container>
+</nav>

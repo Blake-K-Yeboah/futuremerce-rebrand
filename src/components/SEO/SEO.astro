@@ -1,0 +1,61 @@
+---
+import { type MetaInfo } from '../../types';
+
+interface Props {
+    metaInfo: MetaInfo;
+    title: string;
+}
+const { metaInfo, title } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!-- Global Metadata -->
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- Canonical URL -->
+<link rel="canonical" href={canonicalURL} />
+
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={metaInfo.description} />
+<meta property="og:image" content="/Overview.png" />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta name="twitter:creator" content="@futuremerce" />
+<meta property="twitter:url" content={canonicalURL} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={metaInfo.description} />
+<meta property="twitter:image" content="/Overview.png" />
+
+<!-- Indexing  -->
+{metaInfo.shouldIndex ? <meta name="robots" content="index" /> : <meta name="robots" content="noindex" />}
+
+
+<!-- Google Tag Manager (UNCOMMENT WHEN PUBLISHING)
+<script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MQ8LNPQ2');</script>
+<!-- End Google Tag Manager -->
+
+<!-- Primary Meta Tags -->
+<title>{title}</title>
+<meta name="title" content={title} />
+<meta name="description" content={metaInfo.description} />
+<meta name="generator" content={Astro.generator} />
+<meta name="keywords" content={metaInfo.keywords} />
+<meta name="author" content={"Futuremerce"} />
+<link rel="sitemap" href="/sitemap-index.xml" />
+
+<!-- Google Font -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+

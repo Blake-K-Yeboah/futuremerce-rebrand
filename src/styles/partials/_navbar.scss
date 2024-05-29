@@ -1,0 +1,55 @@
+.navbar {
+    width: 100vw;
+    height: 110px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: transparent;
+    transition: background .25s ease-in-out, height .25s ease-in-out;
+    border-bottom: 1px solid #1B1B1B;
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+    }
+
+    &_brand {
+        width: fit-content;
+        cursor: pointer;
+
+        > svg {
+            width: 200px;
+            height: 37px;
+        }
+    }
+
+    &_actions {
+        min-width: 200px;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    &_list {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 32px;
+    }
+
+    &_link {
+        display: flex;
+        align-items: center;
+        gap: 3px;
+        font-size: 16px;
+        color: #E2E2E2;
+        font-weight: 400;
+        text-decoration: none;
+        transition: .25s ease;
+
+        &:hover {
+            color: var(--primary);
+        }
+    }
+}

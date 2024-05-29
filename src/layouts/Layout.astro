@@ -1,0 +1,26 @@
+---
+import "../styles/globals.scss";
+import SEO from "../components/SEO/SEO.astro";
+import { type LayoutProps } from "../types";
+import Navbar from "../components/Navbar/Navbar.astro";
+
+const { title, metaInfo } = Astro.props as LayoutProps;
+
+let itemType = "http://schema.org/WebPage";
+
+if (metaInfo && metaInfo.itemType) itemType = metaInfo.itemType;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<SEO title={title} metaInfo={metaInfo} />
+
+		<!-- Glide CSS -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css">
+	</head>
+	<body itemscope itemtype={itemType}> 
+		<Navbar />
+		<slot transition:animate="fade"/>
+	</body>
+</html>

@@ -1,0 +1,32 @@
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 99px;
+    width: fit-content;
+    height: 48px;
+    padding: 8px 24px;
+    font-size: 16px;
+    font-weight: 400;
+    text-decoration: none;
+    gap: 8px;
+    transition: .25s ease-in-out;
+
+    svg path {
+        transition: .25s ease-in-out;
+    }
+
+    &:hover {
+        background: var(--primary);
+        color: #fff;
+
+        svg path {
+            fill: #fff;
+        }
+    }
+
+    &-secondary {
+        color: var(--primary);
+        background: #8B81FF25;
+    }
+}
