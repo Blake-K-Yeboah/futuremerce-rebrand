@@ -14,7 +14,6 @@ body {
     font-family: "Red Hat Display", sans-serif;
     background: #100F17;
     position: relative;
-    padding-top: 110px;
     overflow-x: hidden;
 }
 
@@ -50,3 +49,4 @@ body:after {
 // Partials
 @import 'partials/navbar';
 @import 'partials/button';
+@import 'partials/homepage-hero';
