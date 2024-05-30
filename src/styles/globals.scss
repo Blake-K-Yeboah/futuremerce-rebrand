@@ -17,7 +17,8 @@ body {
     overflow-x: hidden;
 }
 
-body:before, body:after {
+body:before,
+body:after {
     content: '';
     width: 367px;
     height: 431px;
@@ -50,3 +51,4 @@ body:after {
 @import 'partials/navbar';
 @import 'partials/button';
 @import 'partials/homepage-hero';
+@import 'partials/stand-out';

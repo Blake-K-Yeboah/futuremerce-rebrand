@@ -1,0 +1,25 @@
+.stand-out {
+    padding: 24px;
+    margin: 100px auto;
+
+    &_title {
+        color: #fff;
+        font-size: 40px;
+        font-weight: 500;
+        line-height: 48px;
+        text-align: center;
+    }
+
+    &_grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        margin: 89px auto 0;
+        gap: 40px;
+        width: 100%;
+        max-width: 1097px;
+
+        &-item {
+            width: 100%;
+        }
+    }
+}
