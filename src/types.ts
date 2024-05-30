@@ -28,3 +28,9 @@ export interface ButtonProps {
     type: 'primary' | 'secondary';
     link?: 'string';
 }
+
+export interface CVP {
+    icon: ImageMetadata;
+    title: string;
+    text: string;
+}

@@ -1,0 +1,47 @@
+---
+import { Image } from "astro:assets";
+import { type CVP } from "../../types";
+
+import qualityAssurance from "../../icons/quality-assurance.svg";
+import tailoredSolutions from "../../icons/tailored-solutions.svg";
+import clearComms from "../../icons/clear-communication.svg";
+import budgetFriendly from "../../icons/budget-friendly.svg";
+
+const boxes: CVP[] = [
+    {
+        icon: qualityAssurance,
+        title: "Quality Assurance",
+        text: `Every project we build undergoes comprehensive testing to ensure a bug free experience for your customers.`,
+    },
+    {
+        icon: tailoredSolutions,
+        title: "Tailored Solutions",
+        text: `We don't do cookie-cutter solutions. We craft a custom, tailored Shopify experience that reflects your brand identity.`,
+    },
+    {
+        icon: clearComms,
+        title: "Clear  Communication",
+        text: `We believe in clear and transparent communication, keeping you updated throughout the process`,
+    },
+    {
+        icon: budgetFriendly,
+        title: "Budget Friendly",
+        text: `Enterprise-level results, without the enterprise-level price tag. We offer flexible pricing plans to fit your budget.`,
+    },
+];
+---
+
+<section class="stand-out">
+    <h2 class="stand-out_title">How we <span>stand out</span></h2>
+    <div class="stand-out_grid">
+        {
+            boxes.map((box) => (
+                <div class="stand-out_grid-item">
+                    <Image src={box.icon} alt="" />
+                    <h6 class="stand-out_grid-item-title">{box.title}</h6>
+                    <p class="stand-out_grid-item-text">{box.text}</p>
+                </div>
+            ))
+        }
+    </div>
+</section>
