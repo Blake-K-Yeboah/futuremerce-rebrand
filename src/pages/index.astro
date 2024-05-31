@@ -1,10 +1,16 @@
 ---
 import type { MetaInfo } from "../types";
+import { getCollection } from "astro:content";
 
 // Components
 import Layout from "../layouts/Layout.astro";
 import HomepageHero from "../components/HomepageHero/HomepageHero.astro";
 import StandOut from "../components/StandOut/StandOut.astro";
+import Title from "../components/Title/Title.astro";
+import BoxGrid from "../components/BoxGrid/BoxGrid.astro";
+
+// Images
+import ServicesHomepageIcon from "../icons/services-homepage.svg";
 
 // Meta Info
 const metaInfo: MetaInfo = {
@@ -18,9 +24,24 @@ const metaInfo: MetaInfo = {
 <meta itemprop="image" content="/overview.png">
 `,
 };
+
+// Services
+const allServices = await getCollection("services");
 ---
 
 <Layout title="Futuremerce - Shopify development agency" metaInfo={metaInfo}>
     <HomepageHero />
     <StandOut />
+    <Title
+        title="How We Can Help"
+        subtitle="services"
+        icon={ServicesHomepageIcon}
+    />
+    <BoxGrid items={allServices} />
 </Layout>
+
+<style lang="scss" is:inline>
+    .box-grid {
+        margin-bottom: 180px;
+    }
+</style>
