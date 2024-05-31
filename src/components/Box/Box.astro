@@ -1,0 +1,43 @@
+---
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+
+import type { Box } from "../../types";
+
+import boxCTAArrow from "../../icons/box-cta-arrow.svg";
+
+interface Props {
+    box: CollectionEntry<"services"> | Box;
+}
+
+const { box } = Astro.props as Props;
+
+let data = box.data ? box.data : box;
+
+if (box.collection == "services") {
+    data.cta = {
+        label: "Learn more",
+        link: `/services/${box.id}`,
+    };
+}
+---
+
+<div class="box">
+    {
+        data.image && (
+            <div class="box_icon">
+                <Image src={import("/src/icons/" + data.image)} alt="" />
+            </div>
+        )
+    }
+    <h4 class="box_title">{data.title}</h4>
+    <p class="box_description">{data.description}</p>
+    {
+        data.cta && (
+            <a href={data.cta.link} class="box_cta" title="{box.cta.label}">
+                {data.cta.label}
+                <Image src={boxCTAArrow} alt="" />
+            </a>
+        )
+    }
+</div>
