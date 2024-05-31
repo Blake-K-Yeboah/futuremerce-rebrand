@@ -1,0 +1,19 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+import Box from "../Box/Box.astro";
+
+interface Props {
+    items: CollectionEntry<"services">[] | Box[];
+}
+
+const { items } = Astro.props as Props;
+
+if (items[0].hasOwnProperty("data")) {
+    items.sort((a, b) => (a.data.order > b.data.order ? 1 : -1));
+}
+---
+
+<section class="box-grid">
+    {items.map((item: any) => <Box box={item} />)}
+</section>
