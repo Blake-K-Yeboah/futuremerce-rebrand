@@ -34,3 +34,21 @@ export interface CVP {
     title: string;
     text: string;
 }
+
+export interface TitleProps {
+    title: string;
+    subtitle: string;
+    icon?: ImageMetadata;
+}
+
+export interface Box {
+    image?: ImageMetadata;
+    title: string;
+    text: string;
+    cta?: interfaceBoxCTA;
+}
+
+export interface interfaceBoxCTA {
+    label: string;
+    link: string;
+}
