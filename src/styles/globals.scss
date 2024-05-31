@@ -47,8 +47,12 @@ body:after {
 }
 
 
-// Partials
+// General
 @import 'partials/navbar';
 @import 'partials/button';
+@import 'partials/title';
+@import 'partials/box';
+
+// Homepage
 @import 'partials/homepage-hero';
 @import 'partials/stand-out';
