@@ -1,0 +1,29 @@
+---
+import { Image } from "astro:assets";
+import aboutImage from "../../images/about-image.png";
+import Button from "../Button/Button.astro";
+---
+
+<section class="about">
+    <Image
+        src={aboutImage}
+        alt="Futuremerce Logo"
+        loading="lazy"
+        class="about_image"
+    />
+    <div class="about_content">
+        <p class="white">
+            We are a Shopify development agency helping brands build their
+            online presence by delivering a phenomenal experience to their
+            users. We don’t just build stores, we build powerful experiences to
+            that match your brand and target audience.
+        </p>
+        <p>
+            We’re based in in Brisbane, Australia and work with clients
+            nationwide to bring their vision to life. We’re a small, experienced
+            team that work closely with you to understand your unique needs and
+            deliver a high quality, high-performing store.
+        </p>
+        <Button type="primary" link="/about-us">Learn more</Button>
+    </div>
+</section>

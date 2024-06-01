@@ -10,5 +10,9 @@ const { title, subtitle, icon } = Astro.props as TitleProps;
         <h6 class="title-group_subtitle">// {subtitle}</h6>
         <h2 class="title-group_title">{title}</h2>
     </div>
-    {icon && <Image src={icon} alt="" class="title-group_icon" />}
+    {
+        icon && (
+            <Image src={icon} alt="" class="title-group_icon" loading="lazy" />
+        )
+    }
 </div>

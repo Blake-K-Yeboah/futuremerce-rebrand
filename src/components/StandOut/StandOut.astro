@@ -37,7 +37,7 @@ const boxes: CVP[] = [
         {
             boxes.map((box) => (
                 <div class="stand-out_grid-item">
-                    <Image src={box.icon} alt="" />
+                    <Image src={box.icon} alt="" loading="lazy" />
                     <h6 class="stand-out_grid-item-title">{box.title}</h6>
                     <p class="stand-out_grid-item-text">{box.text}</p>
                 </div>

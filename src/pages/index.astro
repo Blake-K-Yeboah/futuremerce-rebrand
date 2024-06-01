@@ -8,9 +8,11 @@ import HomepageHero from "../components/HomepageHero/HomepageHero.astro";
 import StandOut from "../components/StandOut/StandOut.astro";
 import Title from "../components/Title/Title.astro";
 import BoxGrid from "../components/BoxGrid/BoxGrid.astro";
+import HomepageAbout from "../components/HomepageAbout/HomepageAbout.astro";
 
 // Images
 import ServicesHomepageIcon from "../icons/services-homepage.svg";
+import AboutIcon from "../icons/about-homepage.svg";
 
 // Meta Info
 const metaInfo: MetaInfo = {
@@ -32,12 +34,16 @@ const allServices = await getCollection("services");
 <Layout title="Futuremerce - Shopify development agency" metaInfo={metaInfo}>
     <HomepageHero />
     <StandOut />
+
     <Title
         title="How We Can Help"
         subtitle="services"
         icon={ServicesHomepageIcon}
     />
     <BoxGrid items={allServices} />
+
+    <Title title="We’re Futuremerce" subtitle="about" icon={AboutIcon} />
+    <HomepageAbout />
 </Layout>
 
 <style lang="scss" is:inline>

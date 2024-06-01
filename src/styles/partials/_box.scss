@@ -43,8 +43,9 @@
             border-radius: 50%;
 
             img {
-                min-height: fit-content;
-                min-width: fit-content;
+                height: fit-content;
+                width: fit-content;
+                min-height: 32px;
             }
         }
 

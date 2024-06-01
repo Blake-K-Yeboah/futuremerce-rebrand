@@ -12,9 +12,9 @@ interface Props {
 
 const { box } = Astro.props as Props;
 
-let data = box.data ? box.data : box;
+let data = "data" in box ? box.data : box;
 
-if (box.collection == "services") {
+if ("collection" in box && box.collection == "services") {
     data.cta = {
         label: "Learn more",
         link: `/services/${box.id}`,
@@ -26,7 +26,11 @@ if (box.collection == "services") {
     {
         data.image && (
             <div class="box_icon">
-                <Image src={import("/src/icons/" + data.image)} alt="" />
+                <Image
+                    src={import(/* @vite-ignore */ "/src/icons/" + data.image)}
+                    alt=""
+                    loading="eager"
+                />
             </div>
         )
     }
@@ -36,7 +40,7 @@ if (box.collection == "services") {
         data.cta && (
             <a href={data.cta.link} class="box_cta" title="{box.cta.label}">
                 {data.cta.label}
-                <Image src={boxCTAArrow} alt="" />
+                <Image src={boxCTAArrow} alt="" loading="eager" />
             </a>
         )
     }
