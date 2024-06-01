@@ -46,13 +46,35 @@ body:after {
     margin: 0 auto;
 }
 
+// Global Mixins
+@mixin subtitle {
+    color: #787878;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+}
 
-// General
+@mixin title {
+    color: #fff;
+    font-size: 40px;
+    font-weight: 500;
+    line-height: 48px;
+    text-align: center;
+    text-transform: capitalize;
+    margin-top: 34px;
+}
+
+
+// General Components
 @import 'partials/navbar';
 @import 'partials/button';
 @import 'partials/title';
 @import 'partials/box';
+@import 'partials/text-image-group';
+@import 'partials/faqs';
 
-// Homepage
+// Homepage Components
 @import 'partials/homepage-hero';
 @import 'partials/stand-out';
+@import 'partials/homepage-about';

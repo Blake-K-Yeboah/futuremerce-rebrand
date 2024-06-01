@@ -14,6 +14,17 @@ const serviceCollection = defineCollection({
   }),
 });
 
+const faqCollection = defineCollection({
+  type: 'data',
+  schema: z.object({
+    question: z.string(),
+    answer: z.string(),
+    type: z.string(),
+    homepage: z.boolean().optional(),
+  }),
+})
+
 export const collections = {
   'services': serviceCollection,
+  'faqs': faqCollection,
 };

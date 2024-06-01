@@ -1,0 +1,14 @@
+---
+import { Image } from "astro:assets";
+import type { TextImageGroupProps } from "../../types";
+
+const { title, text, image } = Astro.props as TextImageGroupProps;
+---
+
+<section class="text-image-group">
+    <div>
+        <h3 class="text-image-group_title">{title}</h3>
+        <p class="text-image-group_text">{text}</p>
+    </div>
+    <Image src={image} alt="" loading="lazy" class="text-image-group_image" />
+</section>

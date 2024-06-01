@@ -27,7 +27,13 @@ if ("collection" in box && box.collection == "services") {
         data.image && (
             <div class="box_icon">
                 <Image
-                    src={import(/* @vite-ignore */ "/src/icons/" + data.image)}
+                    src={
+                        typeof data.image != "string"
+                            ? data.image
+                            : import(
+                                  /* @vite-ignore */ "/src/icons/" + data.image
+                              )
+                    }
                     alt=""
                     loading="eager"
                 />

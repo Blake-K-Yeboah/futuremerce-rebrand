@@ -1,5 +1,5 @@
 ---
-import type { MetaInfo } from "../types";
+import type { Box, MetaInfo } from "../types";
 import { getCollection } from "astro:content";
 
 // Components
@@ -9,10 +9,19 @@ import StandOut from "../components/StandOut/StandOut.astro";
 import Title from "../components/Title/Title.astro";
 import BoxGrid from "../components/BoxGrid/BoxGrid.astro";
 import HomepageAbout from "../components/HomepageAbout/HomepageAbout.astro";
+import TextImageGroup from "../components/TextImageGroup/TextImageGroup.astro";
 
 // Images
 import ServicesHomepageIcon from "../icons/services-homepage.svg";
 import AboutIcon from "../icons/about-homepage.svg";
+import TextGroup1Image from "../images/homepage-1.png";
+import TextGroup2Image from "../images/homepage-2.png";
+import TextGroup3Image from "../images/homepage-3.png";
+import PricingIcon from "../icons/homepage-pricing.svg";
+import pricingBox1 from "../icons/fixed-price.svg";
+import pricingBox2 from "../icons/subscription-pricing.svg";
+import pricingBox3 from "../icons/packages.svg";
+import FAQs from "../components/FAQs/FAQs.astro";
 
 // Meta Info
 const metaInfo: MetaInfo = {
@@ -27,8 +36,44 @@ const metaInfo: MetaInfo = {
 `,
 };
 
-// Services
+// Content
 const allServices = await getCollection("services");
+const faqs = await getCollection("faqs", ({ data }) => {
+    return data.homepage === true;
+});
+
+const pricingBoxes: Box[] = [
+    {
+        image: pricingBox1,
+        title: "Fixed Price Projects",
+        description:
+            "Get a fixed-price quote, taking into account  your specific circumstances. Perfect for clients who want a clear understanding of the cost before getting started.",
+        cta: {
+            label: "Get a free quote",
+            link: "/get-started",
+        },
+    },
+    {
+        image: pricingBox2,
+        title: "Subscription Pricing",
+        description:
+            "Have all of your development needs taken care of with a Futuremerce development subscription. Perfect for agencies and clients with ongoing development needs.",
+        cta: {
+            label: "See development plans",
+            link: "/development-plans",
+        },
+    },
+    {
+        image: pricingBox3,
+        title: "Other Packages",
+        description:
+            "We also have other packages including ongoing maintenance, performance optimisation, and bug fixes to help streamline your needs.",
+        cta: {
+            label: "Browse other packages",
+            link: "/pricing",
+        },
+    },
+];
 ---
 
 <Layout title="Futuremerce - Shopify development agency" metaInfo={metaInfo}>
@@ -44,10 +89,35 @@ const allServices = await getCollection("services");
 
     <Title title="We’re Futuremerce" subtitle="about" icon={AboutIcon} />
     <HomepageAbout />
+
+    <TextImageGroup
+        title="You run your business. We'll handle the tech."
+        text="Running a successful online store takes constant work. Between managing inventory, fulfilling orders, and marketing your brand, there’s a lot to do. Take some work off your shoulders with our development and design services, so you can focus on running your store."
+        image={TextGroup1Image}
+    />
+    <TextImageGroup
+        title="Responsive and optimized for every screen size."
+        text="Approximately 60% of all eCommerce sales happen through a mobile device. This is why, at Futuremerce, we optimize our solutions to all device sizes to deliver the best possible experience for your store visitors."
+        image={TextGroup2Image}
+    />
+    <TextImageGroup
+        title="Easy and intuitive custom Shopify themes"
+        text="We build Shopify stores that are as easy to manage as they are beautiful. With our user-friendly designs and the power of Shopify's editor, you'll always be in control of your content. Shopify's intuitive drag-and-drop editor empowers you to effortlessly update your content, without the need for a developer."
+        image={TextGroup3Image}
+    />
+
+    <Title title="Let’s Talk Numbers" subtitle="pricing" icon={PricingIcon} />
+    <BoxGrid items={pricingBoxes} />
+
+    <FAQs faqs={faqs} />
 </Layout>
 
 <style lang="scss" is:inline>
     .box-grid {
         margin-bottom: 180px;
+    }
+
+    body > section:nth-child(10) {
+        margin-bottom: 150px;
     }
 </style>

@@ -18,7 +18,7 @@
         height: 67%;
         width: 33%;
         background: var(--primary);
-        filter: blur(200px);
+        filter: blur(50px);
         opacity: .12;
     }
 
@@ -61,6 +61,7 @@
             font-size: 16px;
             color: #828282;
             line-height: 24px;
+            max-width: 320px;
         }
 
         &_cta {

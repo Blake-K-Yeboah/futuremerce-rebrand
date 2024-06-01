@@ -1,13 +1,14 @@
 .navbar {
     width: 100vw;
     height: 110px;
+    padding: 0 24px;
     position: fixed;
     z-index: 99;
     top: 0;
     left: 0;
     background: transparent;
     transition: background .25s ease-in-out, height .25s ease-in-out;
-    border-bottom: 1px solid #1B1B1B;
+    // border-bottom: 1px solid #1B1B1B;
 
     &.scrolled {
         background: #100F17;

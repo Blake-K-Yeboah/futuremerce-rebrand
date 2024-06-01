@@ -5,12 +5,14 @@ import Button from "../Button/Button.astro";
 ---
 
 <section class="about">
-    <Image
-        src={aboutImage}
-        alt="Futuremerce Logo"
-        loading="lazy"
-        class="about_image"
-    />
+    <div class="about_image-container">
+        <Image
+            src={aboutImage}
+            alt="Futuremerce Logo"
+            loading="lazy"
+            class="about_image"
+        />
+    </div>
     <div class="about_content">
         <p class="white">
             We are a Shopify development agency helping brands build their

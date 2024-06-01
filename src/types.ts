@@ -52,3 +52,9 @@ export interface interfaceBoxCTA {
     label: string;
     link: string;
 }
+
+export interface TextImageGroupProps {
+    title: string;
+    text: string;
+    image: ImageMetadata;
+}

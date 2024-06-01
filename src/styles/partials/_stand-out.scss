@@ -3,12 +3,7 @@
     margin: 100px auto 144px;
 
     &_title {
-        color: #fff;
-        font-size: 40px;
-        font-weight: 500;
-        line-height: 48px;
-        text-align: center;
-        text-transform: capitalize;
+        @include title();
 
         >span {
             background: linear-gradient(90deg, #BCB7FF 0%, #703AB4 100%);

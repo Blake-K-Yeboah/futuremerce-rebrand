@@ -1,0 +1,24 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Button from "../Button/Button.astro";
+import FAQ from "../FAQ/FAQ.astro";
+
+interface Props {
+    faqs: CollectionEntry<"faqs">[];
+}
+
+const { faqs } = Astro.props as Props;
+---
+
+<section class="faqs">
+    <div class="faqs_inner">
+        <div class="faqs_content">
+            <h6 class="faqs_subtitle">// FREQUENTLY ASKED QUESTIONS</h6>
+            <h4 class="faqs_title">Have a Question?</h4>
+            <Button type="secondary" link="/faqs">View All FAQs</Button>
+        </div>
+        <div class="faqs_accordions">
+            {faqs.map((faq) => <FAQ faq={faq} />)}
+        </div>
+    </div>
+</section>
