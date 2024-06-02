@@ -44,6 +44,7 @@
         align-items: center;
         justify-content: center;
         gap: 32px;
+        position: relative;
     }
 
     &_link {
@@ -58,6 +59,52 @@
 
         &:hover {
             color: var(--primary);
+        }
+    }
+
+    &_dropdown {
+        padding: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: #13131E;
+        border-radius: 16px;
+        position: absolute;
+        top: calc(100% + 24px);
+        left: 50%;
+        transform: translateX(-50%);
+        width: max-content;
+        z-index: 5;
+        display: flex;
+        gap: 8px;
+        display: none;
+
+        &.active {
+            display: flex;
+        }
+
+        &-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            padding: 8px 14px;
+            transition: .25s ease-in-out;
+
+            &:hover {
+                background: rgba(255, 255, 255, 0.05);
+                border-radius: 8px;
+            }
+
+            >p {
+                font-size: 14px;
+                color: #707070;
+
+                >span {
+                    display: block;
+                    font-size: 16px;
+                    color: #fff;
+                    margin-bottom: 2px;
+                }
+            }
         }
     }
 }

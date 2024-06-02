@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import { type NavbarLink } from "../../types";
 import Button from "../Button/Button.astro";
 
@@ -8,11 +9,31 @@ import { Icon } from "astro-icon/components";
 const links: NavbarLink[] = [
     {
         label: "About",
-        href: "",
+        href: "#about-dropdown",
+        sublinks: [
+            {
+                label: "About Us",
+                text: "Get to know us better",
+                icon: "about-us-icon.svg",
+                href: "/about-us",
+            },
+            {
+                label: "FAQs",
+                text: "Answers to your questions",
+                icon: "faqs-icon.svg",
+                href: "/faq",
+            },
+            {
+                label: "Contact",
+                text: "Get in touch with us",
+                icon: "contact-icon.svg",
+                href: "/contact",
+            },
+        ],
     },
     {
         label: "Services",
-        href: "#",
+        href: "#services-dropdown",
     },
     {
         label: "Pricing",
@@ -33,9 +54,57 @@ const links: NavbarLink[] = [
         <div class="navbar_list">
             {
                 links.map((link) => (
-                    <a href={link.href} class="navbar_link">
-                        {link.label}
-                    </a>
+                    <>
+                        <a href={link.href} class="navbar_link">
+                            {link.label}{" "}
+                            {link.hasOwnProperty("sublinks") ? (
+                                <svg
+                                    width="13"
+                                    height="12"
+                                    viewBox="0 0 13 12"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        d="M6.78418 8.25L3.03418 4.5L3.55918 3.975L6.78418 7.2L10.0092 3.975L10.5342 4.5L6.78418 8.25Z"
+                                        fill="white"
+                                        fill-opacity="0.5"
+                                    />
+                                </svg>
+                            ) : (
+                                ""
+                            )}
+                        </a>
+                        {link.hasOwnProperty("sublinks") ? (
+                            <div
+                                class="navbar_dropdown"
+                                data-dropdown={link.href}
+                            >
+                                {link.sublinks!.map((sublink) => (
+                                    <a
+                                        href={sublink.href}
+                                        class="navbar_dropdown-link"
+                                    >
+                                        <Image
+                                            src={
+                                                import(
+                                                    /* @vite-ignore */ "/src/icons/" +
+                                                        sublink.icon
+                                                )
+                                            }
+                                            alt=""
+                                        />
+                                        <p>
+                                            <span>{sublink.label}</span>
+                                            {sublink.text}
+                                        </p>
+                                    </a>
+                                ))}
+                            </div>
+                        ) : (
+                            ""
+                        )}
+                    </>
                 ))
             }
         </div>
@@ -60,5 +129,24 @@ const links: NavbarLink[] = [
         window.addEventListener("scroll", handleScroll);
 
         handleScroll();
+
+        const handleDropdown = (e: any) => {
+            const href =
+                e.target!.href || e.target!.closest(".navbar_link").href;
+
+            const dropdown = document.querySelector(
+                `.navbar_dropdown[data-dropdown="${"#" + href.split("#")[1]}"]`,
+            );
+
+            dropdown?.classList.toggle("active");
+        };
+
+        const links = document.querySelectorAll(".navbar_link");
+
+        links.forEach((linkEl) => {
+            if (linkEl.querySelector("svg") != null) {
+                linkEl.addEventListener("click", handleDropdown);
+            }
+        });
     });
 </script>
