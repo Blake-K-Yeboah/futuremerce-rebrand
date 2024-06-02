@@ -1,8 +1,10 @@
 ---
 import "../styles/globals.scss";
-import SEO from "../components/SEO/SEO.astro";
 import { type LayoutProps } from "../types";
+
+import SEO from "../components/SEO/SEO.astro";
 import Navbar from "../components/Navbar/Navbar.astro";
+import Footer from "../components/Footer/Footer.astro";
 
 const { title, metaInfo } = Astro.props as LayoutProps;
 
@@ -17,10 +19,14 @@ if (metaInfo && metaInfo.itemType) itemType = metaInfo.itemType;
 		<SEO title={title} metaInfo={metaInfo} />
 
 		<!-- Glide CSS -->
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css">
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css"
+		/>
 	</head>
-	<body itemscope itemtype={itemType}> 
+	<body itemscope itemtype={itemType}>
 		<Navbar />
-		<slot transition:animate="fade"/>
+		<slot transition:animate="fade" />
+		<Footer />
 	</body>
 </html>

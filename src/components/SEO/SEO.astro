@@ -1,5 +1,5 @@
 ---
-import { type MetaInfo } from '../../types';
+import { type MetaInfo } from "../../types";
 
 interface Props {
     metaInfo: MetaInfo;
@@ -15,9 +15,11 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+<!-- Favicon -->
+<link rel="icon" type="image/x-icon" href="/favicon.ico?" />
+
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
-
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
@@ -35,8 +37,13 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 <meta property="twitter:image" content="/Overview.png" />
 
 <!-- Indexing  -->
-{metaInfo.shouldIndex ? <meta name="robots" content="index" /> : <meta name="robots" content="noindex" />}
-
+{
+    metaInfo.shouldIndex ? (
+        <meta name="robots" content="index" />
+    ) : (
+        <meta name="robots" content="noindex" />
+    )
+}
 
 <!-- Google Tag Manager (UNCOMMENT WHEN PUBLISHING)
 <script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -58,4 +65,3 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- Google Font -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-

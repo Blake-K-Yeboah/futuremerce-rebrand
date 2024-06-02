@@ -1,0 +1,193 @@
+---
+import { getCollection } from "astro:content";
+import Button from "../Button/Button.astro";
+import { Icon } from "astro-icon/components";
+
+let links = [
+    {
+        label: "Services",
+        sublinks: [],
+    },
+    {
+        label: "Company",
+        sublinks: [
+            {
+                label: "About Us",
+                link: "/about-us",
+            },
+            {
+                label: "Pricing",
+                link: "/pricing",
+            },
+            {
+                label: "FAQ",
+                link: "/faq",
+            },
+            {
+                label: "Blog",
+                link: "/blog",
+            },
+        ],
+    },
+    {
+        label: "Get in touch",
+        sublinks: [
+            {
+                label: "Contact",
+                link: "/contact",
+            },
+            {
+                label: "Free proposal",
+                link: "/get-started",
+            },
+        ],
+    },
+];
+
+const services = await getCollection("services");
+
+links[0].sublinks = services.map((service) => ({
+    link: `/services/${service.id}`,
+    label: service.data.title,
+}));
+---
+
+<footer class="footer">
+    <section class="footer_get-started">
+        <div>
+            <svg
+                width="71"
+                height="71"
+                viewBox="0 0 71 71"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                ><path
+                    d="M37.7188 66.5626C37.4377 66.5633 37.1591 66.5106 36.8978 66.4073C36.5343 66.2624 36.2156 66.024 35.974 65.7161C35.7324 65.4083 35.5765 65.042 35.5222 64.6545L33.3034 49.1233L37.7409 48.502L39.405 60.1948L46.5938 54.4039V37.7189C46.5921 37.4269 46.648 37.1374 46.7584 36.8671C46.8689 36.5968 47.0316 36.3509 47.2372 36.1436L56.2675 27.1133C58.1282 25.2652 59.604 23.0664 60.6094 20.6442C61.6149 18.2221 62.13 15.6246 62.125 13.002V8.87514H57.9981C55.3756 8.87015 52.7781 9.38528 50.3559 10.3907C47.9337 11.3961 45.735 12.8719 43.8869 14.7326L34.8566 23.763C34.6492 23.9686 34.4034 24.1313 34.133 24.2417C33.8627 24.3521 33.5733 24.4081 33.2812 24.4064H16.5962L10.8053 31.6395L22.4981 33.3036L21.8769 37.7411L6.34562 35.5223C5.9581 35.468 5.59185 35.3121 5.28402 35.0705C4.97618 34.8289 4.73772 34.5102 4.59281 34.1467C4.44611 33.7807 4.39961 33.3821 4.45811 32.9922C4.51661 32.6022 4.67798 32.2348 4.92562 31.9279L13.8006 20.8342C14.005 20.5686 14.2669 20.3528 14.5666 20.203C14.8664 20.0531 15.1962 19.9731 15.5312 19.9689H32.3716L40.7363 11.582C42.9975 9.30803 45.6877 7.50558 48.6509 6.27918C51.6141 5.05278 54.7912 4.42683 57.9981 4.43764H62.125C63.3019 4.43764 64.4306 4.90516 65.2628 5.73735C66.095 6.56954 66.5625 7.69824 66.5625 8.87514V13.002C66.5733 16.2089 65.9474 19.3861 64.721 22.3492C63.4946 25.3124 61.6921 28.0026 59.4181 30.2639L51.0312 38.6286V55.4689C51.0297 55.8022 50.9531 56.1308 50.8072 56.4304C50.6612 56.73 50.4496 56.9929 50.1881 57.1995L39.0944 66.0745C38.704 66.3877 38.2192 66.5597 37.7188 66.5626Z"
+                    fill="url(#paint0_linear_40_41)"></path><defs
+                    ><linearGradient
+                        id="paint0_linear_40_41"
+                        x1="15.1203"
+                        y1="3.94456"
+                        x2="65.0832"
+                        y2="67.7131"
+                        gradientUnits="userSpaceOnUse"
+                        ><stop stop-color="#8B81FF"></stop><stop
+                            offset="1"
+                            stop-color="#703AB4"></stop></linearGradient
+                    ></defs
+                ></svg
+            >
+            <div>
+                <h5 class="footer_get-started-title">Get Started Now</h5>
+                <p class="footer_get-started-text">
+                    Get a free, no obligation proposal in 1 business day or
+                    less.
+                </p>
+            </div>
+        </div>
+        <Button type="primary" link="/get-started">Let's Go</Button>
+    </section>
+    <section class="footer_wrapper">
+        <div class="footer_inner">
+            <div class="footer_grid">
+                <div class="footer_content">
+                    <Icon name="transparent-logo" />
+                    <p class="footer_description">
+                        Futuremerce is your friendly development partner,
+                        building high quality, high performing shopify stores
+                        embracing your vision.
+                    </p>
+                    <!-- TODO EMAIL FORM  -->
+                </div>
+                <div class="footer_links">
+                    {
+                        links.map((linkGroup) => {
+                            return (
+                                <div class="footer_links-group">
+                                    <h6 class="footer_links-group-title">
+                                        {linkGroup.label}
+                                    </h6>
+                                    {linkGroup.sublinks.map((link) => (
+                                        <a
+                                            href={link.link}
+                                            class="footer_links-group-link"
+                                        >
+                                            {link.label}
+                                        </a>
+                                    ))}
+                                </div>
+                            );
+                        })
+                    }
+                </div>
+            </div>
+            <div class="footer_socials">
+                <a
+                    href="https://www.facebook.com/profile.php?id=61556779035438"
+                    target="_blank"
+                    class="footer_social"
+                    aria-label="Facebook"
+                >
+                    <svg
+                        width="25"
+                        height="25"
+                        viewBox="0 0 25 25"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                            d="M9.58125 22.3957H13.7479V14.0519H17.5021L17.9146 9.90609H13.7479V7.81234C13.7479 7.53607 13.8577 7.27112 14.053 7.07577C14.2484 6.88042 14.5133 6.77067 14.7896 6.77067H17.9146V2.604H14.7896C13.4082 2.604 12.0835 3.15274 11.1067 4.12949C10.13 5.10624 9.58125 6.431 9.58125 7.81234V9.90609H7.49792L7.08542 14.0519H9.58125V22.3957Z"
+                            fill="white"
+                            fill-opacity="0.65"></path>
+                    </svg>
+                </a>
+                <a
+                    href="https://www.linkedin.com/company/futuremerce/"
+                    target="_blank"
+                    class="footer_social"
+                    aria-label="LinkedIn"
+                >
+                    <svg
+                        width="25"
+                        height="25"
+                        viewBox="0 0 25 25"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                            d="M7.22917 5.2084C7.22889 5.76093 7.00913 6.29073 6.61824 6.68123C6.22734 7.07174 5.69733 7.29097 5.14479 7.29069C4.59226 7.29041 4.06246 7.07066 3.67196 6.67976C3.28145 6.28886 3.06222 5.75885 3.0625 5.20632C3.06278 4.65378 3.28253 4.12399 3.67343 3.73348C4.06433 3.34298 4.59434 3.12375 5.14688 3.12402C5.69941 3.1243 6.2292 3.34406 6.61971 3.73495C7.01021 4.12585 7.22944 4.65586 7.22917 5.2084ZM7.29167 8.8334H3.125V21.8751H7.29167V8.8334ZM13.875 8.8334H9.72917V21.8751H13.8333V15.0313C13.8333 11.2188 18.8021 10.8646 18.8021 15.0313V21.8751H22.9167V13.6146C22.9167 7.18756 15.5625 7.42715 13.8333 10.5834L13.875 8.8334Z"
+                            fill="white"
+                            fill-opacity="0.65"></path>
+                    </svg>
+                </a>
+                <a
+                    href="https://x.com/futuremerce"
+                    target="_blank"
+                    class="footer_social"
+                    aria-label="Twitter"
+                >
+                    <svg
+                        width="25"
+                        height="25"
+                        viewBox="0 0 25 25"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                            d="M19.6885 1.20117H23.5219L15.1469 10.7741L25 23.798H17.2854L11.2437 15.898L4.32917 23.798H0.49375L9.45208 13.5585L0 1.20221H7.91042L13.3719 8.42305L19.6885 1.20117ZM18.3438 21.5043H20.4677L6.75625 3.37513H4.47708L18.3438 21.5043Z"
+                            fill="white"
+                            fill-opacity="0.65"></path>
+                    </svg>
+                </a>
+            </div>
+            <div class="footer_bottom">
+                <p>
+                    &copy; 2024 Futuremerce. All rights reserved. <a
+                        href="/terms-and-conditions">Terms</a
+                    >
+                </p>
+                <p>ABN: 22 150 751 524</p>
+            </div>
+        </div>
+    </section>
+</footer>
