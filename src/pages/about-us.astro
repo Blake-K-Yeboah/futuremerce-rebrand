@@ -1,0 +1,30 @@
+---
+import type { MetaInfo } from "../types";
+
+// Components
+import Layout from "../layouts/Layout.astro";
+
+// Images
+
+
+// Meta Info
+const metaInfo: MetaInfo = {
+    description:
+        "Futuremerce is your Australian development partner, building high quality, high performing shopify stores embracing your vision.",
+    keywords: "shopify, development, agency",
+    shouldIndex: true,
+    schemaMetaInfo: `
+<meta itemprop="name" content="Futuremerce - About us">
+<meta itemprop="description" content="Futuremerce is your Australian development partner, building high quality, high performing shopify stores embracing your vision.">
+<meta itemprop="image" content="/overview.png">
+`,
+};
+---
+
+<Layout title="Futuremerce - About Us" metaInfo={metaInfo}>
+    <h1 class="page-title">Hey, we're <span>Futuremerce</span></h1>
+</Layout>
+
+<style lang="scss" is:inline>
+
+</style>
