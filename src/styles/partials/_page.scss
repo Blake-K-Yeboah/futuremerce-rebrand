@@ -1,0 +1,24 @@
+.page {
+    &-title {
+
+        background: linear-gradient(90deg,
+                #ffffff 0%,
+                rgba(255, 255, 255, 0.81) 100%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        width: 748px;
+        font-size: 64px;
+        line-height: 72px;
+        font-weight: 600;
+        margin: 67px auto 0;
+        text-align: center;
+
+        >span {
+            background: linear-gradient(90deg, #bcb7ff 0%, #703ab4 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+    }
+}

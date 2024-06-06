@@ -1,0 +1,76 @@
+---
+import type { NavbarLink } from "../../types";
+
+const breadcrumbs: NavbarLink[] = [
+    {
+        label: "Home",
+        href: "/",
+    },
+];
+
+if (Astro.url.pathname.split("/").length > 3) {
+    switch (Astro.url.pathname.split("/")[3]) {
+        case "pricing":
+            breadcrumbs.push({
+                label: "Pricing",
+                href: "/pricing",
+            });
+            break;
+        case "posts":
+            breadcrumbs.push({
+                label: "Blog",
+                href: "/blog",
+            });
+            break;
+        case "posts":
+            breadcrumbs.push({
+                label: "Blog",
+                href: "/blog",
+            });
+            break;
+        default:
+            console.info("No parent page");
+    }
+}
+
+breadcrumbs.push({
+    label: Astro.url.pathname.split("/")[1].replaceAll("-", " "),
+    href: "",
+});
+---
+
+<div class="breadcrumbs container">
+    {
+        breadcrumbs.map((link, index) => (
+            <>
+                {index != breadcrumbs.length - 1 ? (
+                    <>
+                        <a
+                            href={link.href}
+                            class="breadcrumbs_link"
+                            title={link.label}
+                        >
+                            {link.label}
+                        </a>
+                        <svg
+                            width="12"
+                            height="12"
+                            viewBox="0 0 12 12"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                                d="M4.3125 2.625L7.6875 6L4.3125 9.375"
+                                stroke="white"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
+                        </svg>
+                    </>
+                ) : (
+                    <span class="breadcrumbs_current">{link.label}</span>
+                )}
+            </>
+        ))
+    }
+</div>

@@ -1,0 +1,42 @@
+---
+import { Image } from "astro:assets";
+
+// Images
+import Australia from "../../images/Australia.png";
+import ShopifyPartner from "../../images/Shopify Partner.png";
+
+// Components
+import Container from "../Container/Container.astro";
+---
+
+<section class="about-grid">
+    <Container>
+        <div class="about-grid_col">
+            <svg
+                width="50"
+                height="50"
+                viewBox="0 0 50 50"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+            >
+                <path
+                    d="M26.5625 46.875C26.3646 46.8755 26.1684 46.8384 25.9843 46.7656C25.7284 46.6636 25.5039 46.4956 25.3338 46.2789C25.1636 46.0621 25.0539 45.8041 25.0156 45.5312L23.4531 34.5937L26.5781 34.1562L27.75 42.3906L32.8125 38.3125V26.5625C32.8113 26.3569 32.8507 26.153 32.9284 25.9626C33.0062 25.7723 33.1208 25.5991 33.2656 25.4531L39.625 19.0937C40.9353 17.7923 41.9746 16.2439 42.6827 14.5381C43.3907 12.8323 43.7535 11.0031 43.75 9.15625V6.25H40.8437C38.9968 6.24649 37.1676 6.60925 35.4619 7.3173C33.7561 8.02535 32.2077 9.06463 30.9062 10.375L24.5468 16.7344C24.4008 16.8792 24.2277 16.9938 24.0373 17.0715C23.8469 17.1493 23.6431 17.1887 23.4375 17.1875H11.6875L7.60934 22.2812L15.8437 23.4531L15.4062 26.5781L4.46871 25.0156C4.19581 24.9773 3.93789 24.8676 3.7211 24.6974C3.50432 24.5273 3.33639 24.3029 3.23434 24.0469C3.13103 23.7891 3.09828 23.5084 3.13948 23.2338C3.18067 22.9592 3.29432 22.7005 3.46871 22.4844L9.71871 14.6719C9.86265 14.4849 10.0471 14.3329 10.2582 14.2273C10.4692 14.1218 10.7015 14.0654 10.9375 14.0625H22.7968L28.6875 8.15625C30.2799 6.55485 32.1744 5.28552 34.2612 4.42186C36.3479 3.5582 38.5853 3.11739 40.8437 3.125H43.75C44.5788 3.125 45.3736 3.45424 45.9597 4.04029C46.5457 4.62634 46.875 5.4212 46.875 6.25V9.15625C46.8826 11.4146 46.4418 13.6521 45.5781 15.7388C44.7144 17.8255 43.4451 19.72 41.8437 21.3125L35.9375 27.2031V39.0625C35.9364 39.2972 35.8824 39.5286 35.7797 39.7396C35.6769 39.9506 35.5279 40.1357 35.3437 40.2812L27.5312 46.5312C27.2563 46.7518 26.9149 46.8729 26.5625 46.875Z"
+                    fill="white"
+                    fill-opacity="0.05"></path>
+            </svg>
+            <p class="about-grid_text">
+                We’re a small, experienced agency that work closely with you to
+                understand your unique needs and deliver a high quality,
+                high-performing product that reflects your brand.
+            </p>
+        </div>
+        <div class="about-grid_col">
+            <p class="about-grid_text">We are a proud</p>
+            <Image src={ShopifyPartner} alt="Shopify Partner" />
+        </div>
+        <div class="about-grid_col">
+            <p class="about-grid_text">Australia-based Team</p>
+            <Image src={Australia} alt="Australia" />
+        </div>
+    </Container>
+</section>

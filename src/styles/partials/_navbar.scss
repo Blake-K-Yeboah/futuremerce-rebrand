@@ -8,12 +8,13 @@
     left: 0;
     background: transparent;
     transition: background .25s ease-in-out, height .25s ease-in-out;
-    // border-bottom: 1px solid #1B1B1B;
+    border-bottom: 1px solid #1B1B1B;
 
     &.scrolled {
         background: #100F17;
         height: 80px;
         box-shadow: 0 0 20px rgba(255, 255, 255, 0.01);
+        border-bottom: none;
     }
 
     .container {
@@ -57,8 +58,18 @@
         text-decoration: none;
         transition: .25s ease;
 
+        svg {
+            transition: .25s ease;
+        }
+
         &:hover {
             color: var(--primary);
+        }
+
+        &.active {
+            svg {
+                transform: rotate(-180deg);
+            }
         }
     }
 

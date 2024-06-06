@@ -131,14 +131,17 @@ const links: NavbarLink[] = [
         handleScroll();
 
         const handleDropdown = (e: any) => {
-            const href =
-                e.target!.href || e.target!.closest(".navbar_link").href;
+            const linkEl = e.target!.href
+                ? e.target
+                : e.target.closest(".navbar_link");
+            const href = linkEl.href;
 
             const dropdown = document.querySelector(
                 `.navbar_dropdown[data-dropdown="${"#" + href.split("#")[1]}"]`,
             );
 
             dropdown?.classList.toggle("active");
+            linkEl.classList.toggle("active");
         };
 
         const links = document.querySelectorAll(".navbar_link");

@@ -74,8 +74,13 @@ body:after {
 @import 'partials/text-image-group';
 @import 'partials/faqs';
 @import 'partials/footer';
+@import 'partials/breadcrumbs';
+@import 'partials/page';
 
 // Homepage Components
 @import 'partials/homepage-hero';
 @import 'partials/stand-out';
 @import 'partials/homepage-about';
+
+// About Components
+@import "partials/about-grid";

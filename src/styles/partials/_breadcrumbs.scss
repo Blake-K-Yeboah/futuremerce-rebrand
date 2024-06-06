@@ -1,0 +1,27 @@
+.breadcrumbs {
+    margin-top: 168px;
+    display: flex;
+    align-items: center;
+    padding: 0 40px;
+    gap: 8px;
+
+    &_link {
+        font-size: 14px;
+        font-weight: 600;
+        color: #727070;
+        text-transform: uppercase;
+        text-decoration: none;
+        transition: .25s ease;
+
+        &:hover {
+            color: var(--primary);
+        }
+    }
+
+    &_current {
+        text-transform: uppercase;
+        font-weight: 300;
+        font-size: 14px;
+        color: #727070;
+    }
+}

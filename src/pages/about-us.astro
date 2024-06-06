@@ -1,11 +1,21 @@
 ---
-import type { MetaInfo } from "../types";
+import type { Box, MetaInfo } from "../types";
 
 // Components
 import Layout from "../layouts/Layout.astro";
+import Breadcrumbs from "../components/Breadcrumbs/Breadcrumbs.astro";
+import AboutGrid from "../components/AboutGrid/AboutGrid.astro";
+import Title from "../components/Title/Title.astro";
+import BoxGrid from "../components/BoxGrid/BoxGrid.astro";
+import Button from "../components/Button/Button.astro";
+import Container from "../components/Container/Container.astro";
 
 // Images
-
+import HowWeWorkIcon from "../icons/howwework.svg";
+import MeetTheCeoIcon from "../icons/meet-the-ceo.svg";
+import process1 from "../icons/process/step3.svg";
+import process2 from "../icons/process/step2.svg";
+import process3 from "../icons/process/step1.svg";
 
 // Meta Info
 const metaInfo: MetaInfo = {
@@ -19,12 +29,57 @@ const metaInfo: MetaInfo = {
 <meta itemprop="image" content="/overview.png">
 `,
 };
+
+// Content
+const processBoxes: Box[] = [
+    {
+        image: process1,
+        title: "Initial Consultation",
+        description:
+            "The initial consultation is a vital step where we jump on as call with you to understand your business better so we can bring your vision to life. We align ourselves with your goals so we can build the perfect store for your brand.",
+    },
+    {
+        image: process2,
+        title: "Building Your Store",
+        description:
+            "This is where the magic happens! We'll work closely with you to transform your vision into a thriving Shopify store. Throughout the process, we'll maintain open communication, keeping you informed every step of the way.",
+    },
+    {
+        image: process3,
+        title: "QA & Going Live",
+        description:
+            "Once the store is finished, we complete a thorough round of quality assurance to ensure a frictionless experience for your users. Once everything is good to go, we transfer the store ownership and push it live. ",
+    },
+];
 ---
 
 <Layout title="Futuremerce - About Us" metaInfo={metaInfo}>
-    <h1 class="page-title">Hey, we're <span>Futuremerce</span></h1>
+    <Breadcrumbs />
+
+    <h1 class="page-title">Hey, we're <br /> <span>Futuremerce</span></h1>
+    <AboutGrid />
+
+    <Title
+        title="Our Simple, Effective Process"
+        subtitle="HOW WE WORK"
+        icon={HowWeWorkIcon}
+    />
+    <BoxGrid items={processBoxes} />
+    <Container>
+        <Button link="/get-started" type="primary"
+            >Get your project started</Button
+        >
+    </Container>
+
+    <Title
+        title="Meet The CEO"
+        subtitle="WHO RUNS THE SHOW"
+        icon={MeetTheCeoIcon}
+    />
 </Layout>
 
 <style lang="scss" is:inline>
-
+    .box-grid + .container {
+        margin: 77px auto 176px;
+    }
 </style>
