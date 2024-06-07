@@ -1,0 +1,56 @@
+.about-ceo {
+    width: 100%;
+    max-width: 914px;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 90px auto 150px;
+    position: relative;
+
+
+    &::after {
+        content: '';
+        position: absolute;
+        z-index: 1;
+        top: -150px;
+        left: -150px;
+        height: 200px;
+        width: 200px;
+        background: var(--primary);
+        filter: blur(150px);
+        opacity: .12;
+    }
+
+
+    &_content {
+        width: 636px;
+        padding: 49px 0 0 58px;
+        position: relative;
+
+        >svg {
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 1;
+            transform: scale(.8);
+        }
+    }
+
+    &_text {
+        position: relative;
+        z-index: 2;
+        font-size: 26px;
+        line-height: 32px;
+        color: #fff;
+        margin-bottom: 24px;
+    }
+
+    &_name {
+        position: relative;
+        z-index: 2;
+        font-size: 18px;
+        line-height: 24px;
+        color: #9D9D9D;
+    }
+}
