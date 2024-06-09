@@ -3,12 +3,16 @@ import type { CollectionEntry } from "astro:content";
 
 interface Props {
     faq: CollectionEntry<"faqs">;
+    hidden?: boolean;
 }
 
-const { faq } = Astro.props as Props;
+const { faq, hidden } = Astro.props as Props;
 ---
 
-<div class="faqs_accordion">
+<div
+    class={`faqs_accordion ${hidden ? "hidden" : ""}`}
+    data-type={faq.data.type}
+>
     <div class="faqs_accordion-head">
         {faq.data.question}
         <svg

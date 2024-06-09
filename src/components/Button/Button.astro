@@ -4,7 +4,7 @@ import { type ButtonProps } from "../../types";
 const { type, link } = Astro.props as ButtonProps;
 ---
 
-<a class={`button button-${type}`} href={link ? link : "#"}>
+<a class={`button button-${type}`} href={link ? link : ""}>
     <slot />
     {
         type == "primary" ? (

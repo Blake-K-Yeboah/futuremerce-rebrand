@@ -15,6 +15,53 @@ body {
     background: #100F17;
     position: relative;
     overflow-x: hidden;
+
+    &::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: #13131E;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: var(--primary);
+        border-radius: 99px;
+    }
+}
+
+@keyframes leftCicleAnimation {
+    0% {
+        top: 50vh;
+        left: -263px;
+    }
+
+    50% {
+        top: 0;
+        left: -243px;
+    }
+
+    100% {
+        top: 50vh;
+        left: -263px;
+    }
+}
+
+@keyframes rightCicleAnimation {
+    0% {
+        top: -200px;
+        right: -398px;
+    }
+
+    50% {
+        top: 50vh;
+        right: -428px;
+    }
+
+    100% {
+        top: -200px;
+        right: -398px;
+    }
 }
 
 body:before,
@@ -29,6 +76,7 @@ body:after {
     position: absolute;
     top: 50vh;
     left: -263px;
+    animation: leftCicleAnimation 10s linear infinite;
 }
 
 body:after {
@@ -36,7 +84,8 @@ body:after {
     right: -398px;
     width: 540px;
     height: 588px;
-    top: 83px;
+    top: -200px;
+    animation: rightCicleAnimation 10s linear infinite;
 }
 
 .container {
@@ -85,3 +134,6 @@ body:after {
 // About Components
 @import "partials/about-grid";
 @import "partials/about-ceo";
+
+// Contact Components
+@import "partials/contact-form";

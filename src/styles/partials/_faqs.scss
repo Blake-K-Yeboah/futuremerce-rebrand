@@ -38,6 +38,10 @@
     max-width: 587px;
     border-bottom: 1px solid rgba(255, 255, 255, .13);
 
+    &.hidden {
+        display: none;
+    }
+
     &-head {
         padding: 20px 0;
         display: flex;
@@ -82,6 +86,57 @@
 
         svg.close {
             display: block;
+        }
+    }
+}
+
+.filterable-faqs {
+    margin: 127px auto 175px;
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .button {
+        margin-top: 70px;
+    }
+
+    &_filters {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 24px;
+        margin-bottom: 70px;
+        width: 100%;
+    }
+
+    &_filter {
+        width: fit-content;
+        min-width: 104px;
+        border-radius: 99px;
+        color: #fff;
+        border: 1px solid #fff;
+        font-size: 14px;
+        line-height: 18px;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 39px;
+        transition: .3s ease-in-out;
+        text-transform: capitalize;
+        padding: 0 24px;
+        cursor: pointer;
+
+        &:not(.active):hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        &.active {
+            background: #fff;
+            color: #000;
         }
     }
 }
