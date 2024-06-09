@@ -1,7 +1,7 @@
 ---
 import type { NavbarLink } from "../../types";
 
-const breadcrumbs: NavbarLink[] = [
+let breadcrumbs: NavbarLink[] = [
     {
         label: "Home",
         href: "/",
@@ -37,6 +37,10 @@ breadcrumbs.push({
     label: Astro.url.pathname.split("/")[1].replaceAll("-", " "),
     href: "",
 });
+
+if (breadcrumbs[breadcrumbs.length - 1].label === "get started") {
+    breadcrumbs[breadcrumbs.length - 1].label = "free proposal";
+}
 ---
 
 <div class="breadcrumbs container">

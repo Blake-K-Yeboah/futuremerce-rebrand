@@ -1,0 +1,63 @@
+---
+import type { MetaInfo } from "../types";
+
+// Components
+import Layout from "../layouts/Layout.astro";
+import Breadcrumbs from "../components/Breadcrumbs/Breadcrumbs.astro";
+import Button from "../components/Button/Button.astro";
+import Container from "../components/Container/Container.astro";
+import FreeProposalForm from "../components/FreeProposalForm/FreeProposalForm.astro";
+
+// Meta Info
+const metaInfo: MetaInfo = {
+    description:
+        "Futuremerce is your Australian development partner, building high quality, high performing shopify stores embracing your vision.",
+    keywords: "shopify, development, agency",
+    shouldIndex: true,
+    schemaMetaInfo: `
+<meta itemprop="name" content="Futuremerce -  Get a free proposal">
+<meta itemprop="description" content="Futuremerce is your Australian development partner, building high quality, high performing shopify stores embracing your vision.">
+<meta itemprop="image" content="/overview.png">
+`,
+};
+---
+
+<Layout title="Futuremerce - Get a free proposal" metaInfo={metaInfo}>
+    <Breadcrumbs />
+
+    <Container>
+        <div class="page-grid">
+            <div class="page-grid_content">
+                <h1 class="page-grid_title">Get Your Project Started</h1>
+                <p class="page-grid_text">
+                    Get a free, no obligation proposal in 1 business day or less
+                    by filling out the form. We can usually begin working on
+                    your store within a 3 business days if you approve our
+                    proposal.
+                </p>
+                <h4 class="page-grid_subtitle">Not a fan of forms?</h4>
+                <br />
+                <Button type="primary" href="/get-started"
+                    >Book a call instead</Button
+                >
+            </div>
+            <div class="page-grid_form">
+                <FreeProposalForm />
+            </div>
+        </div>
+    </Container>
+</Layout>
+
+<style lang="scss" is:inline>
+    .footer_wrapper:after {
+        height: 600px;
+        top: 100px;
+    }
+
+    .footer {
+        overflow: hidden;
+    }
+    .footer_get-started {
+        display: none;
+    }
+</style>
