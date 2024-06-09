@@ -1,0 +1,62 @@
+---
+import { getCollection } from "astro:content";
+
+// Components
+import Button from "../Button/Button.astro";
+import FAQ from "../FAQ/FAQ.astro";
+import Container from "../Container/Container.astro";
+
+const faqs = await getCollection("faqs");
+const filters = [...new Set(faqs.map((f) => f.data.type))];
+---
+
+<section class="filterable-faqs">
+    <Container>
+        <div class="filterable-faqs_filters">
+            {
+                filters.map((filter) => (
+                    <a title={filter} class="filterable-faqs_filter">
+                        {filter}
+                    </a>
+                ))
+            }
+        </div>
+        <div class="filterable-faqs_inner">
+            {faqs.map((faq) => <FAQ faq={faq} />)}
+        </div>
+        <Button type="primary" href="/contact">Ask Another Question</Button>
+    </Container>
+</section>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        document
+            .querySelectorAll(".filterable-faqs_filter")
+            .forEach((filterEl) => {
+                filterEl.addEventListener("click", (e) => {
+                    if (!e.target?.classList.contains("active")) {
+                        document
+                            .querySelector(".filterable-faqs_filter.active")
+                            ?.classList.remove("active");
+                        e.target?.classList.add("active");
+
+                        document
+                            .querySelectorAll(
+                                ".filterable-faqs .faqs_accordion",
+                            )
+                            .forEach((faqEl) => {
+                                faqEl.classList.toggle(
+                                    "hidden",
+                                    faqEl.getAttribute("data-type") !==
+                                        e.target!.getAttribute("title"),
+                                );
+                            });
+                    }
+                });
+            });
+
+        document
+            .querySelector(".filterable-faqs_filter:first-of-type")!
+            .click();
+    });
+</script>

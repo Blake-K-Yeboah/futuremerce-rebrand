@@ -1,0 +1,89 @@
+---
+import type { MetaInfo } from "../types";
+
+// Components
+import Layout from "../layouts/Layout.astro";
+import Breadcrumbs from "../components/Breadcrumbs/Breadcrumbs.astro";
+import Button from "../components/Button/Button.astro";
+import ContactForm from "../components/ContactForm/ContactForm.astro";
+import Container from "../components/Container/Container.astro";
+
+// Meta Info
+const metaInfo: MetaInfo = {
+    description:
+        "Futuremerce is your Australian development partner, building high quality, high performing shopify stores embracing your vision.",
+    keywords: "shopify, development, agency",
+    shouldIndex: true,
+    schemaMetaInfo: `
+<meta itemprop="name" content="Futuremerce - Get in touch">
+<meta itemprop="description" content="Futuremerce is your Australian development partner, building high quality, high performing shopify stores embracing your vision.">
+<meta itemprop="image" content="/overview.png">
+`,
+};
+---
+
+<Layout title="Futuremerce - Get in touch" metaInfo={metaInfo}>
+    <Breadcrumbs />
+
+    <Container>
+        <div class="page-grid">
+            <div class="page-grid_content">
+                <h1 class="page-grid_title">Get in touch</h1>
+                <p class="page-grid_text">
+                    We’d love to hear from you. We welcome you to contact us
+                    with any questions you may have using the form on this page.
+                    We typically get back to you within 1 business day or less.
+                </p>
+                <h4 class="page-grid_subtitle">Got a project in mind?</h4>
+                <div class="page-grid_icon-group">
+                    <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        ><path
+                            d="M4 6.66667V5.66667C3.73478 5.66667 3.48043 5.77202 3.29289 5.95956C3.10536 6.1471 3 6.40145 3 6.66667H4ZM28 6.66667H29C29 6.40145 28.8946 6.1471 28.7071 5.95956C28.5196 5.77202 28.2652 5.66667 28 5.66667V6.66667ZM4 7.66667H28V5.66667H4V7.66667ZM27 6.66667V22.6667H29V6.66667H27ZM25.3333 24.3333H6.66667V26.3333H25.3333V24.3333ZM5 22.6667V6.66667H3V22.6667H5ZM6.66667 24.3333C5.74667 24.3333 5 23.5867 5 22.6667H3C3 23.6391 3.38631 24.5718 4.07394 25.2594C4.76158 25.947 5.69421 26.3333 6.66667 26.3333V24.3333ZM27 22.6667C27 23.5867 26.2533 24.3333 25.3333 24.3333V26.3333C26.3058 26.3333 27.2384 25.947 27.9261 25.2594C28.6137 24.5718 29 23.6391 29 22.6667H27Z"
+                            fill="url(#paint0_linear_54_208)"></path><path
+                            d="M4 6.66667L16 18.6667L28 6.66667"
+                            stroke="url(#paint1_linear_54_208)"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"></path><defs
+                            ><linearGradient
+                                id="paint0_linear_54_208"
+                                x1="16"
+                                y1="5.66667"
+                                x2="16"
+                                y2="26.3333"
+                                gradientUnits="userSpaceOnUse"
+                                ><stop stop-color="#BCB7FF"></stop><stop
+                                    offset="1"
+                                    stop-color="#703AB4"></stop></linearGradient
+                            ><linearGradient
+                                id="paint1_linear_54_208"
+                                x1="16"
+                                y1="6.66667"
+                                x2="16"
+                                y2="18.6667"
+                                gradientUnits="userSpaceOnUse"
+                                ><stop stop-color="#BCB7FF"></stop><stop
+                                    offset="1"
+                                    stop-color="#703AB4"></stop></linearGradient
+                            ></defs
+                        ></svg
+                    >
+                    hello@futuremerce.co
+                </div>
+                <Button type="primary" href="/get-started"
+                    >Get a risk-free proposal</Button
+                >
+            </div>
+            <div class="page-grid_form">
+                <ContactForm />
+            </div>
+        </div>
+    </Container>
+</Layout>
+
+<style lang="scss" is:inline></style>

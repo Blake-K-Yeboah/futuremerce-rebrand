@@ -1,0 +1,31 @@
+---
+import type { MetaInfo } from "../types";
+import { getCollection } from "astro:content";
+
+// Components
+import Layout from "../layouts/Layout.astro";
+import Breadcrumbs from "../components/Breadcrumbs/Breadcrumbs.astro";
+import FilterableFAQs from "../components/FilterableFAQs/FilterableFAQs.astro";
+
+// Meta Info
+const metaInfo: MetaInfo = {
+    description:
+        "Futuremerce is your Australian development partner, building high quality, high performing shopify stores embracing your vision.",
+    keywords: "shopify, development, agency",
+    shouldIndex: true,
+    schemaMetaInfo: `
+<meta itemprop="name" content="Futuremerce - FAQs">
+<meta itemprop="description" content="Futuremerce is your Australian development partner, building high quality, high performing shopify stores embracing your vision.">
+<meta itemprop="image" content="/overview.png">
+`,
+};
+---
+
+<Layout title="Futuremerce - FAQs" metaInfo={metaInfo}>
+    <Breadcrumbs />
+
+    <h1 class="page-title">Frequently Asked <br /> <span>Questions</span></h1>
+    <FilterableFAQs />
+</Layout>
+
+<style lang="scss" is:inline></style>
