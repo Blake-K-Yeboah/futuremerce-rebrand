@@ -1,6 +1,7 @@
 {
     "title": "One Time Quick Fix",
     "description": "Quickly troubleshoot a bug or issue with your store. Small issues can usually be solved in 1 business day.",
+    "shortDescription": "Quickly troubleshoot a bug or issue with your store.",
     "image": "quick-fix.svg",
     "order": 5
 }

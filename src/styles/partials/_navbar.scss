@@ -82,14 +82,18 @@
         top: calc(100% + 24px);
         left: 50%;
         transform: translateX(-50%);
-        width: max-content;
+        width: 767px;
         z-index: 5;
-        display: flex;
-        gap: 8px;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 16px;
         display: none;
 
+        &[data-dropdown*="services"] {
+            width: 924px;
+        }
+
         &.active {
-            display: flex;
+            display: grid;
         }
 
         &-link {
@@ -99,10 +103,16 @@
             text-decoration: none;
             padding: 8px 14px;
             transition: .25s ease-in-out;
+            width: 100%;
 
             &:hover {
                 background: rgba(255, 255, 255, 0.05);
                 border-radius: 8px;
+            }
+
+            img {
+                width: 27px;
+                height: fit-content;
             }
 
             >p {

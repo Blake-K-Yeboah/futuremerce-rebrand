@@ -5,6 +5,10 @@ import Button from "../Button/Button.astro";
 
 import Container from "../Container/Container.astro";
 import { Icon } from "astro-icon/components";
+import { getCollection } from "astro:content";
+
+const allServices = await getCollection("services");
+allServices.sort((a, b) => (a.data.order > b.data.order ? 1 : -1));
 
 const links: NavbarLink[] = [
     {
@@ -34,6 +38,12 @@ const links: NavbarLink[] = [
     {
         label: "Services",
         href: "#services-dropdown",
+        sublinks: allServices.map((service) => ({
+            label: service.data.title,
+            text: service.data.shortDescription,
+            icon: service.data.image,
+            href: `/services/${service.id}`,
+        })),
     },
     {
         label: "Pricing",
@@ -139,6 +149,21 @@ const links: NavbarLink[] = [
             const dropdown = document.querySelector(
                 `.navbar_dropdown[data-dropdown="${"#" + href.split("#")[1]}"]`,
             );
+
+            const activeDropdown = document.querySelector(
+                ".navbar_dropdown.active",
+            );
+
+            if (
+                activeDropdown &&
+                activeDropdown.getAttribute("data-dropdown") !=
+                    "#" + href.split("#")[1]
+            ) {
+                activeDropdown.classList.remove("active");
+                document
+                    .querySelector(".navbar_link.active")
+                    ?.classList.remove("active");
+            }
 
             dropdown?.classList.toggle("active");
             linkEl.classList.toggle("active");

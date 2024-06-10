@@ -7,6 +7,7 @@ const serviceCollection = defineCollection({
     description: z.string(),
     image: z.string(),
     order: z.number(),
+    shortDescription: z.string(),
     cta: z.object({
       label: z.string(),
       link: z.string(),
