@@ -5,6 +5,7 @@ import type { CollectionEntry } from "astro:content";
 import type { Box } from "../../types";
 
 import boxCTAArrow from "../../icons/box-cta-arrow.svg";
+import Button from "../Button/Button.astro";
 
 interface Props {
     box: CollectionEntry<"services"> | Box;
@@ -43,11 +44,17 @@ if ("collection" in box && box.collection == "services") {
     <h4 class="box_title">{data.title}</h4>
     <p class="box_description">{data.description}</p>
     {
-        data.cta && (
-            <a href={data.cta.link} class="box_cta" title="{box.cta.label}">
+        data.cta && !data.cta.is_button ? (
+            <a href={data.cta.link} class="box_cta" title={data.cta.label}>
                 {data.cta.label}
                 <Image src={boxCTAArrow} alt="" loading="eager" />
             </a>
+        ) : data.cta ? (
+            <Button type="primary" link={data.cta.link}>
+                {data.cta.label}
+            </Button>
+        ) : (
+            ""
         )
     }
 </div>

@@ -1,0 +1,66 @@
+---
+import type { Box, MetaInfo } from "../../types";
+
+// Components
+import Layout from "../../layouts/Layout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs.astro";
+import BoxGrid from "../../components/BoxGrid/BoxGrid.astro";
+
+// Images
+import subscription from "../../icons/subscription.svg";
+import proposalPricing from "../../icons/proposal-pricing.svg";
+
+// Meta Info
+const metaInfo: MetaInfo = {
+    description:
+        "Our pricing is as flexible as your needs. Choose from fixed project-based pricing, an unlimited Shopify development subscription or one of our other specific packages.",
+    keywords: "shopify, development, agency",
+    shouldIndex: true,
+    schemaMetaInfo: `
+<meta itemprop="name" content="Futuremerce - Pricing">
+<meta itemprop="description" content="Our pricing is as flexible as your needs. Choose from fixed project-based pricing, an unlimited Shopify development subscription or one of our other specific packages.">
+<meta itemprop="image" content="/overview.png">
+`,
+};
+
+// Content
+const pricingTypes: Box[] = [
+    {
+        title: "Proposal Pricing",
+        description:
+            "Get a fixed-price quote, taking into account your specific needs ad circumstance. Perfect for clients who want a clear understanding of the cost before getting started.",
+        image: proposalPricing,
+        cta: {
+            label: "Get a free quote",
+            link: "/get-started",
+            is_button: true,
+        },
+    },
+    {
+        title: "Subscription Pricing",
+        description:
+            "Unlock the full potential of having Futuremerce by your side with a Shopify development subscription. Perfect for agencies, larger stores or anyone with ongoing development needs.",
+        image: subscription,
+        cta: {
+            label: "See development plans",
+            link: "/pricing/subscription",
+            is_button: true,
+        },
+    },
+];
+---
+
+<Layout title="Futuremerce - Pricing" metaInfo={metaInfo}>
+    <Breadcrumbs />
+
+    <h1 class="page-title"><span>Pricing</span> Packages</h1>
+    <p class="page-text">
+        Our pricing is as flexible as your needs. Choose from fixed
+        project-based pricing, an unlimited Shopify development subscription or
+        one of our other specific packages.
+    </p>
+
+    <BoxGrid items={pricingTypes} />
+</Layout>
+
+<style lang="scss" is:inline></style>

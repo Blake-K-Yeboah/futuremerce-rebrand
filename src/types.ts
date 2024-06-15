@@ -51,6 +51,7 @@ export interface Box {
 export interface interfaceBoxCTA {
     label: string;
     link: string;
+    is_button?: boolean;
 }
 
 export interface TextImageGroupProps {

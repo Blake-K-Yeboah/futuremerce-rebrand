@@ -14,6 +14,6 @@ if (items[0].hasOwnProperty("data")) {
 }
 ---
 
-<section class="box-grid">
+<section class={`box-grid ${items.length == 2 ? "two-cols" : ""}`}>
     {items.map((item: any) => <Box box={item} />)}
 </section>
