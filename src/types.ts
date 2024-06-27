@@ -44,6 +44,7 @@ export interface TitleProps {
 export interface Box {
     image?: ImageMetadata;
     title: string;
+    subtitle?: string;
     description: string;
     cta?: interfaceBoxCTA;
 }

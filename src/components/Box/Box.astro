@@ -42,6 +42,7 @@ if ("collection" in box && box.collection == "services") {
         )
     }
     <h4 class="box_title">{data.title}</h4>
+    {data.subtitle ? <h5 class="box_subtitle">{data.subtitle}</h5> : ""}
     <p class="box_description">{data.description}</p>
     {
         data.cta && !data.cta.is_button ? (

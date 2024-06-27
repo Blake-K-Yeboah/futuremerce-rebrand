@@ -78,7 +78,6 @@ const pricingBoxes: Box[] = [
 
 <Layout title="Futuremerce - Shopify development agency" metaInfo={metaInfo}>
     <HomepageHero />
-    <StandOut />
 
     <Title
         title="How We Can Help"
@@ -89,6 +88,8 @@ const pricingBoxes: Box[] = [
 
     <Title title="We’re Futuremerce" subtitle="about" icon={AboutIcon} />
     <HomepageAbout />
+
+    <StandOut />
 
     <TextImageGroup
         title="You run your business. We'll handle the tech."
@@ -113,6 +114,10 @@ const pricingBoxes: Box[] = [
 </Layout>
 
 <style lang="scss" is:inline>
+    body > section:nth-child(4) {
+        margin-bottom: 130px;
+    }
+
     body > section:nth-child(5) {
         margin-bottom: 180px;
     }
