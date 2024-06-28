@@ -14,6 +14,10 @@
         margin: 67px auto 0;
         text-align: center;
 
+        &.long {
+            width: 100%;
+        }
+
         >span {
             background: linear-gradient(90deg, #bcb7ff 0%, #703ab4 100%);
             background-clip: text;

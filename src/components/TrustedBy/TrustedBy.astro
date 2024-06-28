@@ -1,0 +1,23 @@
+---
+import { Image } from "astro:assets";
+
+// Images
+import imageOne from "../../images/trusted-by-logo-1.png";
+import imageTwo from "../../images/trusted-by-logo-2.png";
+import imageThree from "../../images/trusted-by-logo-3.png";
+---
+
+<section class="trusted-by">
+    <p class="trusted-by_title">TRUSTED BY</p>
+    <div class="trusted-by_grid">
+        <Image src={imageOne} alt="" width="49" height="49" loading="eager" />
+        <Image src={imageTwo} alt="" width="49" height="49" loading="eager" />
+        <Image
+            src={imageThree}
+            alt=""
+            width="150"
+            height="27"
+            loading="eager"
+        />
+    </div>
+</section>

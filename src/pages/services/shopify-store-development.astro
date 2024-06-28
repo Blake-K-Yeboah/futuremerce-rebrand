@@ -1,0 +1,97 @@
+---
+import type { Box, MetaInfo } from "../../types";
+
+// Components
+import Layout from "../../layouts/Layout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs.astro";
+import BoxGrid from "../../components/BoxGrid/BoxGrid.astro";
+import Title from "../../components/Title/Title.astro";
+import Button from "../../components/Button/Button.astro";
+import FAQs from "../../components/FAQs/FAQs.astro";
+import TrustedBy from "../../components/TrustedBy/TrustedBy.astro";
+
+// Images
+import ServicesHomepageIcon from "../../icons/services-homepage.svg";
+import subscription from "../../icons/subscription.svg";
+
+// Meta Info
+const metaInfo: MetaInfo = {
+    description:
+        "At Futuremerce, we design and develop custom Shopify stores that perfectly reflect your brand and drive sales.",
+    keywords: "shopify, development, agency",
+    shouldIndex: true,
+    schemaMetaInfo: `
+<meta itemprop="name" content="Futuremerce - Shopify Store Development">
+<meta itemprop="description" content="At Futuremerce, we design and develop custom Shopify stores that perfectly reflect your brand and drive sales.">
+<meta itemprop="image" content="/overview.png">
+`,
+};
+
+// Content
+const benefits: Box[] = [
+    {
+        title: "Store Setup & Configuration",
+        description:
+            "We'll create a beautiful and branded store that stands out from the crowd  through Shopify’s powerful, customizable platform.",
+        image: subscription,
+    },
+    {
+        title: "Functionality development",
+        description:
+            "Add the features you need to streamline your operations and enhance the customer experience.",
+        image: subscription,
+    },
+    {
+        title: "App integrations",
+        description:
+            "Through Shopify, you can connect your store to powerful tools to boost marketing, sales, and fulfillment.",
+        image: subscription,
+    },
+    {
+        title: "Mobile Optimization",
+        description:
+            "We ensure your store is fully responsive, providing an exceptional shopping experience on all devices.",
+        image: subscription,
+    },
+    {
+        title: "Migration to Shopify",
+        description:
+            "Looking to switch to Shopify? We ensure a smooth transition with minimal downtime so your customers are not affected.",
+        image: subscription,
+    },
+    {
+        title: "Custom Design",
+        description:
+            "Elevate your brand with aesthetic and user-friendly design from our team of experienced UI/UX designers",
+        image: subscription,
+    },
+];
+---
+
+<Layout title="Futuremerce - Shopify Store Development" metaInfo={metaInfo}>
+    <Breadcrumbs />
+
+    <h1 class="page-title long">Shopify Store <span>Development</span></h1>
+    <p class="page-text">
+        At Futuremerce, we specialize in crafting tailor-made Shopify stores
+        that are not just visually stunning but also optimized for performance.
+        Whether you're a startup launching your first online store or an
+        established brand looking to revamp your existing site, our expert team
+        is here to turn your e-commerce dreams into reality.
+    </p>
+    <Button href="/get-started" type="primary">Get Started</Button>
+    <TrustedBy />
+
+    <Title
+        title="What We Offer"
+        subtitle="BENEFITS"
+        icon={ServicesHomepageIcon}
+    />
+    <BoxGrid items={benefits} />
+</Layout>
+
+<style lang="scss" is:inline>
+    body > .button {
+        margin: 40px auto;
+    }
+</style>

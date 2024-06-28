@@ -2,7 +2,9 @@
 import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
 
+// Components
 import Button from "../Button/Button.astro";
+import TrustedBy from "../TrustedBy/TrustedBy.astro";
 
 // Images
 import imageOne from "../../images/trusted-by-logo-1.png";
@@ -29,30 +31,5 @@ import backgroundLine from "../../images/background-line.png";
         <Button type="primary" link="/get-started">Get Started</Button>
         <Icon name="devices" class="homepage-hero_icon" />
     </div>
-    <div class="homepage-hero_trusted-by">
-        <p class="homepage-hero_trusted-by_title">TRUSTED BY</p>
-        <div class="homepage-hero_trusted-by_grid">
-            <Image
-                src={imageOne}
-                alt=""
-                width="49"
-                height="49"
-                loading="eager"
-            />
-            <Image
-                src={imageTwo}
-                alt=""
-                width="49"
-                height="49"
-                loading="eager"
-            />
-            <Image
-                src={imageThree}
-                alt=""
-                width="150"
-                height="27"
-                loading="eager"
-            />
-        </div>
-    </div>
+    <TrustedBy />
 </header>
