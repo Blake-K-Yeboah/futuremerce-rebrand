@@ -1,5 +1,6 @@
 ---
 import type { Box, MetaInfo } from "../../types";
+import { getCollection } from "astro:content";
 
 // Components
 import Layout from "../../layouts/Layout.astro";
@@ -9,10 +10,24 @@ import Title from "../../components/Title/Title.astro";
 import Button from "../../components/Button/Button.astro";
 import FAQs from "../../components/FAQs/FAQs.astro";
 import TrustedBy from "../../components/TrustedBy/TrustedBy.astro";
+import TextImageGroup from "../../components/TextImageGroup/TextImageGroup.astro";
+import HomepageAbout from "../../components/HomepageAbout/HomepageAbout.astro";
 
 // Images
 import ServicesHomepageIcon from "../../icons/services-homepage.svg";
-import subscription from "../../icons/subscription.svg";
+import shopify from "../../icons/shopify.svg";
+import design from "../../icons/brush.svg";
+import settings from "../../icons/settingscog.svg";
+import functionality from "../../icons/services/development/functionality.svg";
+import mobileOptimization from "../../icons/services/development/mobile-optimization.svg";
+import migration from "../../icons/services/development/migration.svg";
+import imageGroup1 from "../../images/development-1.png";
+import imageGroup2 from "../../images/development-2.png";
+import pricing from "../../icons/homepage-pricing.svg";
+import pricingBox1 from "../../icons/fixed-price.svg";
+import pricingBox2 from "../../icons/subscription-pricing.svg";
+import pricingBox3 from "../../icons/packages.svg";
+import AboutIcon from "../../icons/about-homepage.svg";
 
 // Meta Info
 const metaInfo: MetaInfo = {
@@ -33,37 +48,74 @@ const benefits: Box[] = [
         title: "Store Setup & Configuration",
         description:
             "We'll create a beautiful and branded store that stands out from the crowd  through Shopify’s powerful, customizable platform.",
-        image: subscription,
+        image: shopify,
     },
     {
         title: "Functionality development",
         description:
             "Add the features you need to streamline your operations and enhance the customer experience.",
-        image: subscription,
+        image: functionality,
     },
     {
         title: "App integrations",
         description:
             "Through Shopify, you can connect your store to powerful tools to boost marketing, sales, and fulfillment.",
-        image: subscription,
+        image: settings,
     },
     {
         title: "Mobile Optimization",
         description:
             "We ensure your store is fully responsive, providing an exceptional shopping experience on all devices.",
-        image: subscription,
+        image: mobileOptimization,
     },
     {
         title: "Migration to Shopify",
         description:
             "Looking to switch to Shopify? We ensure a smooth transition with minimal downtime so your customers are not affected.",
-        image: subscription,
+        image: migration,
     },
     {
         title: "Custom Design",
         description:
             "Elevate your brand with aesthetic and user-friendly design from our team of experienced UI/UX designers",
-        image: subscription,
+        image: design,
+    },
+];
+
+const faqs = await getCollection("faqs", ({ data }) => {
+    return data.type === "development";
+});
+
+const pricingBoxes: Box[] = [
+    {
+        image: pricingBox1,
+        title: "Fixed Price Projects",
+        description:
+            "Get a fixed-price quote, taking into account  your specific circumstances. Perfect for clients who want a clear understanding of the cost before getting started.",
+        cta: {
+            label: "Get a free quote",
+            link: "/get-started",
+        },
+    },
+    {
+        image: pricingBox2,
+        title: "Subscription Pricing",
+        description:
+            "Have all of your development needs taken care of with a Futuremerce development subscription. Perfect for agencies and clients with ongoing development needs.",
+        cta: {
+            label: "See development plans",
+            link: "/services/development-subscriptions",
+        },
+    },
+    {
+        image: pricingBox3,
+        title: "Other Packages",
+        description:
+            "We also have other packages including ongoing maintenance, performance optimisation, and bug fixes to help streamline your needs.",
+        cta: {
+            label: "Browse other packages",
+            link: "/pricing",
+        },
     },
 ];
 ---
@@ -88,10 +140,48 @@ const benefits: Box[] = [
         icon={ServicesHomepageIcon}
     />
     <BoxGrid items={benefits} />
+
+    <TextImageGroup title="Set yourself up for success" text="At Futuremerce, your success is our mission. We’re dedicated to building Shopify stores that not only look great but also perform exceptionally. Join our growing list of satisfied clients and watch your online business thrive." image={imageGroup1} />
+    <TextImageGroup title="Unleash Your Online Potential" text="Don’t let your online store blend into the background. With Futuremerce, your Shopify store will shine brightly in the competitive e-commerce landscape. Reach out to us today to explore how we can turn your vision into a reality and get a free project estimate." image={imageGroup2} />
+
+    <Title title="We’re Futuremerce" subtitle="about" icon={AboutIcon} />
+    <HomepageAbout />
+
+    <Title 
+        title="Let’s Talk Numbers"
+        subtitle="PRICING"
+        icon={pricing}
+        />
+    <BoxGrid items={pricingBoxes} />
+
+    
+    <FAQs faqs={faqs} />
 </Layout>
 
-<style lang="scss" is:inline>
+<style is:inline>
     body > .button {
         margin: 40px auto;
+    }
+
+    .title-group {
+        margin-top: 140px;
+    }
+
+    .text-image-group:nth-of-type(2n + 1) {
+        flex-direction: row;
+    }
+
+    .text-image-group:nth-of-type(2n) {
+        flex-direction: row-reverse;
+    }
+
+    .text-image-group:nth-of-type(2n + 1)::after {
+        right: 100px;
+        left: unset;
+    }
+
+    .text-image-group:nth-of-type(2n)::after {
+        right: unset;
+        left: 100px;
     }
 </style>
