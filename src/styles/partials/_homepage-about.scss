@@ -7,10 +7,10 @@
     grid-template-columns: 5fr 7fr;
     gap: 24px;
     position: relative;
-
+    z-index: 2;
 
     &::after {
-        content: '';
+        content: "";
         position: absolute;
         z-index: 1;
         top: -50px;
@@ -20,7 +20,7 @@
         width: 250px;
         background: var(--primary);
         filter: blur(200px);
-        opacity: .2;
+        opacity: 0.2;
     }
 
     &_image {

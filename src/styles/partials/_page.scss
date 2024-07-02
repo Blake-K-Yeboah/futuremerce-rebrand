@@ -1,9 +1,10 @@
 .page {
     &-title {
-
-        background: linear-gradient(90deg,
-                #ffffff 0%,
-                rgba(255, 255, 255, 0.81) 100%);
+        background: linear-gradient(
+            90deg,
+            #ffffff 0%,
+            rgba(255, 255, 255, 0.81) 100%
+        );
         background-clip: text;
         -webkit-background-clip: text;
         color: transparent;
@@ -11,14 +12,14 @@
         font-size: 64px;
         line-height: 72px;
         font-weight: 600;
-        margin: 67px auto 0;
+        margin: 80px auto 0;
         text-align: center;
 
         &.long {
             width: 100%;
         }
 
-        >span {
+        > span {
             background: linear-gradient(90deg, #bcb7ff 0%, #703ab4 100%);
             background-clip: text;
             -webkit-background-clip: text;
@@ -51,9 +52,11 @@
         }
 
         &_title {
-            background: linear-gradient(90deg,
-                    #ffffff 0%,
-                    rgba(255, 255, 255, 0.81) 100%);
+            background: linear-gradient(
+                90deg,
+                #ffffff 0%,
+                rgba(255, 255, 255, 0.81) 100%
+            );
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
@@ -66,7 +69,7 @@
             margin: 24px 0 40px;
             font-size: 18px;
             line-height: 24px;
-            color: #AEAEAE;
+            color: #aeaeae;
         }
 
         &_icon-group {
@@ -77,11 +80,11 @@
             gap: 12px;
             font-size: 16px;
             line-height: 24px;
-            color: #AEAEAE;
+            color: #aeaeae;
         }
 
         &_subtitle {
-            color: #FFF;
+            color: #fff;
             font-size: 24px;
             line-height: 24px;
             font-weight: 600;
@@ -91,7 +94,7 @@
             flex: 0 0 560px;
             width: 560px;
             height: fit-content;
-            background: #13131E;
+            background: #13131e;
             border: 1px solid rgba(255, 255, 255, 0.12);
             border-radius: 16px;
             padding: 40px;
