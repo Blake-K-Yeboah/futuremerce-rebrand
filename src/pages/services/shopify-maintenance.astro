@@ -1,0 +1,131 @@
+---
+import type { Box, MetaInfo } from "../../types";
+import { getCollection } from "astro:content";
+
+// Components
+import Layout from "../../layouts/Layout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs.astro";
+import BoxGrid from "../../components/BoxGrid/BoxGrid.astro";
+import Title from "../../components/Title/Title.astro";
+import Button from "../../components/Button/Button.astro";
+import FAQs from "../../components/FAQs/FAQs.astro";
+import TrustedBy from "../../components/TrustedBy/TrustedBy.astro";
+import TextImageGroup from "../../components/TextImageGroup/TextImageGroup.astro";
+import HomepageAbout from "../../components/HomepageAbout/HomepageAbout.astro";
+
+// Images
+import ServicesHomepageIcon from "../../icons/services-homepage.svg";
+import design from "../../icons/brush.svg";
+import settings from "../../icons/settingscog.svg";
+import functionality from "../../icons/services/development/functionality.svg";
+import bugFixes from "../../icons/quick-fix.svg";
+import analytics from "../../icons/analytics.svg";
+import imageGroup1 from "../../images/maintenance-1.png";
+import imageGroup2 from "../../images/maintenance-2.png";
+import AboutIcon from "../../icons/about-homepage.svg";
+
+// Meta Info
+const metaInfo: MetaInfo = {
+    description:
+        "Our Shopify maintenance service takes the burden of technical upkeep off your shoulders. Our expert team will handle all the behind-the-scenes tasks to ensure your store stays: up to date, secure, opt9imized and bug-free.",
+    keywords: "shopify, development, agency",
+    shouldIndex: true,
+    schemaMetaInfo: `
+<meta itemprop="name" content="Futuremerce - Shopify Maintenance">
+<meta itemprop="description" content="Our Shopify maintenance service takes the burden of technical upkeep off your shoulders. Our expert team will handle all the behind-the-scenes tasks to ensure your store stays: up to date, secure, opt9imized and bug-free.">
+<meta itemprop="image" content="/overview.png">
+`,
+};
+
+// Content
+const benefits: Box[] = [
+    {
+        title: "Bug Fixes & Troubleshooting",
+        description:
+            "We'll promptly address any technical issues that arise ensuring a frictionless experience for your customers.",
+        image: bugFixes,
+    },
+    {
+        title: "Ongoing Technical Support",
+        description:
+            "Dedicated team at your fingertips to build new features, provide technical advice and ensure your store is running smoothly.",
+        image: functionality,
+    },
+    {
+        title: "App Management",
+        description:
+            "We’ll review and update apps to ensure they are compatible with your store and not causing performance issues.",
+        image: settings,
+    },
+    {
+        title: "New Page Designs",
+        description:
+            "Strategic designs for new pages and features at your request to maximize conversions and elevate your brand.",
+        image: design,
+    },
+    {
+        title: "Analytics Analysis",
+        description:
+            "Analyze customer behavior data to identify areas for improvement in conversions and your funnel.",
+        image: analytics,
+    },
+];
+
+const faqs = await getCollection("faqs", ({ data }) => {
+    return data.type === "development"; // TODO: Update Category
+});
+---
+
+<Layout title="Futuremerce - Shopify Maintenance" metaInfo={metaInfo}>
+    <Breadcrumbs />
+
+    <h1 class="page-title long">Shopify <span>Maintenance</span></h1>
+    <p class="page-text">
+        Our Shopify maintenance service takes the burden of technical upkeep off your shoulders. Our expert team will handle all the behind-the-scenes tasks to ensure your store stays: up to date, secure, opt9imized and bug-free.
+    </p>
+    <Button href="/get-started" type="primary">Get Started</Button>
+    <TrustedBy />
+
+    <Title
+        title="What We Offer"
+        subtitle="BENEFITS"
+        icon={ServicesHomepageIcon}
+    />
+    <BoxGrid items={benefits} />
+
+    <TextImageGroup title="Keep your Shopify store running smoothly." text="Running a successful online store takes constant work. Between managing inventory, fulfilling orders, and marketing your brand. Focus on growing your business, while we keep your Shopify store running like a well-oiled machine." image={imageGroup1} />
+    <TextImageGroup title="Peace of mind is priceless." text={`Our Shopify maintenance plans ensure your store is in safe hands with automated backups, regular app management, ongoing technical support and more. Contact us for more details regarding our maintenance plans.`}image={imageGroup2} />
+
+    <Title title="We’re Futuremerce" subtitle="about" icon={AboutIcon} />
+    <HomepageAbout />
+
+    <FAQs faqs={faqs} />
+</Layout>
+
+<style is:inline>
+    body > .button {
+        margin: 40px auto;
+    }
+
+    .title-group {
+        margin-top: 140px;
+    }
+
+    .text-image-group:nth-of-type(2n + 1) {
+        flex-direction: row;
+    }
+
+    .text-image-group:nth-of-type(2n) {
+        flex-direction: row-reverse;
+    }
+
+    .text-image-group:nth-of-type(2n + 1)::after {
+        right: 100px;
+        left: unset;
+    }
+
+    .text-image-group:nth-of-type(2n)::after {
+        right: unset;
+        left: 100px;
+    }
+</style>

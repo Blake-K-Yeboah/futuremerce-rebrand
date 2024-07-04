@@ -12,3 +12,13 @@ const { title, text, image } = Astro.props as TextImageGroupProps;
     </div>
     <Image src={image} alt="" loading="lazy" class="text-image-group_image" />
 </section>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll('.text-image-group_text').forEach((textEl) => {
+            if (textEl.textContent?.includes('Contact us')) {
+                textEl.innerHTML = textEl.innerHTML.replace('Contact us', '<a href="/contact">Contact us</a>')
+            }
+        });
+    });
+</script>
