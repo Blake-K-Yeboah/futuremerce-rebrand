@@ -1,0 +1,138 @@
+---
+import type { Box, MetaInfo } from "../../types";
+import { getCollection } from "astro:content";
+
+// Components
+import Layout from "../../layouts/Layout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs.astro";
+import BoxGrid from "../../components/BoxGrid/BoxGrid.astro";
+import Title from "../../components/Title/Title.astro";
+import Button from "../../components/Button/Button.astro";
+import FAQs from "../../components/FAQs/FAQs.astro";
+import TrustedBy from "../../components/TrustedBy/TrustedBy.astro";
+import TextImageGroup from "../../components/TextImageGroup/TextImageGroup.astro";
+import HomepageAbout from "../../components/HomepageAbout/HomepageAbout.astro";
+
+// Images
+import ServicesHomepageIcon from "../../icons/services-homepage.svg";
+import mobile from "../../icons/services/development/mobile-optimization.svg";
+import migration from "../../icons/services/development/migration.svg";
+import imageOptimisation from "../../icons/image-optimisation.svg";
+import settings from "../../icons/settingscog.svg";
+import design from "../../icons/brush.svg";
+import users from "../../icons/about-us-icon.svg";
+import imageGroup1 from "../../images/performance-optimisation-2.png";
+import imageGroup2 from "../../images/quick-fix-2.png";
+import AboutIcon from "../../icons/about-homepage.svg";
+
+// Meta Info
+const metaInfo: MetaInfo = {
+    description:
+        "In today's competitive online marketplace, a beautiful and user-friendly online store is essential. But a pretty face isn't enough. Your Shopify store needs a strategic UX/UI design that: Captures attention, guides users seamlessly and optimizes conversions.",
+    keywords: "shopify, development, agency",
+    shouldIndex: true,
+    schemaMetaInfo: `
+<meta itemprop="name" content="Futuremerce - UX/UI Design">
+<meta itemprop="description" content="In today's competitive online marketplace, a beautiful and user-friendly online store is essential. But a pretty face isn't enough. Your Shopify store needs a strategic UX/UI design that: Captures attention, guides users seamlessly and optimizes conversions.">
+<meta itemprop="image" content="/overview.png">
+`,
+};
+
+// Content
+const benefits: Box[] = [
+    {
+        title: "User-centric UX/UI Design",
+        description:
+            "Our designers will create a stunning visual identity for your store, including product pages, typography, and color schemes.",
+        image: design,
+    },
+    {
+        title: "Usability Testing",
+        description:
+            "We'll conduct usability testing to ensure a seamless and intuitive user experience that optimizes conversions.",
+        image: users,
+    },
+    {
+        title: "Responsive Design",
+        description:
+            "Your store will look great on desktops, tablets, and mobile phones, where a significant portion of online shopping occurs.",
+        image: mobile,
+    },
+    {
+        title: "Development-ready assets",
+        description:
+            "We'll provide all the necessary design assets for your Shopify developer to implement the design seamlessly.",
+        image: migration,
+    },
+    {
+        title: "Information Architecture",
+        description:
+            "We'll create a logical and organized structure for your store's content and products, ensuring a user-friendly experience.",
+        image: settings,
+    },
+    {
+        title: "Wireframing and Prototyping",
+        description:
+            "We'll develop low-fidelity and high-fidelity prototypes to test and refine the user experience before investing in final designs.",
+        image: imageOptimisation,
+    },
+];
+
+const faqs = await getCollection("faqs", ({ data }) => {
+    return data.type === "development"; // TODO: Update Category
+});
+---
+
+<Layout title="Futuremerce - UX/UI Design" metaInfo={metaInfo}>
+    <Breadcrumbs />
+
+    <h1 class="page-title long">UX/UI <span>Design</span></h1>
+    <p class="page-text">
+        In today's competitive online marketplace, a beautiful and user-friendly online store is essential. But a pretty face isn't enough. Your Shopify store needs a strategic UX/UI design that: Captures attention, guides users seamlessly and optimizes conversions.
+    </p>
+    <Button href="/get-started" type="primary">Get Started</Button>
+    <TrustedBy />
+
+    <Title
+        title="What We Offer"
+        subtitle="BENEFITS"
+        icon={ServicesHomepageIcon}
+    />
+    <BoxGrid items={benefits} />
+
+    <TextImageGroup title="UX/UI Design for eCommerce Success." text="Investing in a well-designed store is an investment in your business growth. We'll help you create an online shopping experience that delights your customers, drives sales, and sets you apart from the competition." image={imageGroup1} />
+    <TextImageGroup title="Craft an Ecommerce Experience that Converts" text="We design high-converting experiences with our user-centric approach to UX/UI design. From product pages to the checkout process, we'll strategically design elements to drive conversions and turn visitors into paying customers." image={imageGroup2} />
+
+    <Title title="We’re Futuremerce" subtitle="about" icon={AboutIcon} />
+    <HomepageAbout />
+
+    <FAQs faqs={faqs} />
+</Layout>
+
+<style is:inline>
+    body > .button {
+        margin: 40px auto;
+    }
+
+    .title-group {
+        margin-top: 140px;
+    }
+
+    .text-image-group:nth-of-type(2n + 1) {
+        flex-direction: row;
+    }
+
+    .text-image-group:nth-of-type(2n) {
+        flex-direction: row-reverse;
+    }
+
+    .text-image-group:nth-of-type(2n + 1)::after {
+        right: 100px;
+        left: unset;
+    }
+
+    .text-image-group:nth-of-type(2n)::after {
+        right: unset;
+        left: 100px;
+    }
+</style>

@@ -1,6 +1,6 @@
 export interface LayoutProps {
-	title: string;
-	metaInfo: MetaInfo;
+    title: string;
+    metaInfo: MetaInfo;
 }
 
 export interface MetaInfo {
@@ -25,8 +25,8 @@ export interface NavbarSubLink {
 }
 
 export interface ButtonProps {
-    type: 'primary' | 'secondary';
-    link?: 'string';
+    type: "primary" | "secondary";
+    link?: "string";
 }
 
 export interface CVP {
@@ -57,6 +57,7 @@ export interface interfaceBoxCTA {
 
 export interface TextImageGroupProps {
     title: string;
-    text: string;
+    text?: string;
+    list?: string[];
     image: ImageMetadata;
 }

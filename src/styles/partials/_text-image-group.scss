@@ -55,7 +55,8 @@
         -webkit-background-clip: text;
     }
 
-    &_text {
+    &_text,
+    &_list {
         color: #989898;
         font-size: 22px;
         line-height: 30px;
@@ -64,6 +65,15 @@
         a {
             text-decoration: none;
             color: var(--primary);
+        }
+    }
+
+    &_list {
+        padding-left: 20px;
+
+        > li {
+            margin: 14px 0;
+            line-height: 26px;
         }
     }
 

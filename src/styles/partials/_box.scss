@@ -68,6 +68,10 @@
                 width: fit-content;
                 min-height: 32px;
                 max-width: 37px;
+
+                &[src*="step"] {
+                    max-width: unset;
+                }
             }
         }
 

@@ -1,0 +1,125 @@
+---
+import type { Box, MetaInfo } from "../../types";
+import { getCollection } from "astro:content";
+
+// Components
+import Layout from "../../layouts/Layout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs.astro";
+import BoxGrid from "../../components/BoxGrid/BoxGrid.astro";
+import Title from "../../components/Title/Title.astro";
+import Button from "../../components/Button/Button.astro";
+import FAQs from "../../components/FAQs/FAQs.astro";
+import TrustedBy from "../../components/TrustedBy/TrustedBy.astro";
+import TextImageGroup from "../../components/TextImageGroup/TextImageGroup.astro";
+import HomepageAbout from "../../components/HomepageAbout/HomepageAbout.astro";
+import Container from "../../components/Container/Container.astro";
+
+// Images
+import ServicesHomepageIcon from "../../icons/services-homepage.svg";
+import process1 from "../../icons/process/step3.svg";
+import process2 from "../../icons/process/step2.svg";
+import process3 from "../../icons/process/step1.svg";
+import imageGroup1 from "../../images/quick-fix-1.png";
+import imageGroup2 from "../../images/quick-fix-2.png";
+import AboutIcon from "../../icons/about-homepage.svg";
+
+// Meta Info
+const metaInfo: MetaInfo = {
+    description:
+        "Is a nagging bug or technical issue hindering your Shopify store?  Don't let it turn into a major headache! Our Shopify quick fix service is designed to tackle those pesky issues quickly and efficiently. We can resolve most issues within 1-2 business days.",
+    keywords: "shopify, development, agency",
+    shouldIndex: true,
+    schemaMetaInfo: `
+<meta itemprop="name" content="Futuremerce - Shopify Quick Fixes">
+<meta itemprop="description" content="Is a nagging bug or technical issue hindering your Shopify store?  Don't let it turn into a major headache! Our Shopify quick fix service is designed to tackle those pesky issues quickly and efficiently. We can resolve most issues within 1-2 business days.">
+<meta itemprop="image" content="/overview.png">
+`,
+};
+
+// Content
+const howItWorks: Box[] = [
+    {
+        image: process1,
+        title: "Tell us your problem",
+        description:
+            "Describe the issue you're facing with your Shopify store. The more details you provide, the faster we can diagnose the problem.",
+    },
+    {
+        image: process2,
+        title: "Our team gets to work",
+        description:
+            "Once we’re granted access, our skilled developers will diagnose and address the problem efficiently.",
+    },
+    {
+        image: process3,
+        title: "Quick Fix, Big Impact",
+        description:
+            "Say goodbye to the frustrating bug, get your store back to peak performance to keep your business thriving.",
+    },
+];
+
+const faqs = await getCollection("faqs", ({ data }) => {
+    return data.type === "development"; // TODO: Update Category
+});
+---
+
+<Layout title="Futuremerce - Shopify Quick Fixes" metaInfo={metaInfo}>
+    <Breadcrumbs />
+
+    <h1 class="page-title long">Shopify Quick <span>Fixes</span></h1>
+    <p class="page-text">
+        Is a nagging bug or technical issue hindering your Shopify store?  Don't let it turn into a major headache! Our Shopify quick fix service is designed to tackle those pesky issues quickly and efficiently. We can resolve most issues within 1-2 business days.
+    </p>
+    <Button href="/get-started" type="primary">Get Started</Button>
+    <TrustedBy />
+
+    <Title
+        title="How It Works?"
+        subtitle="THE PROCESS"
+        icon={ServicesHomepageIcon}
+    />
+    <BoxGrid items={howItWorks} />
+    <Container>
+    <Button type="primary" link="/get-started">Let's Get Started</Button>
+    </Container>
+
+    <TextImageGroup title="Our quick fix service is perfect for:" list={['Fixing minor bugs or errors affecting product pages, checkout processes, or functionality.', 'Addressing configuration issues with apps or third-party integrations.', 'Resolving minor layout or design glitches.', 'Implementing small code tweaks for enhanced performance.']} image={imageGroup1} />
+    <TextImageGroup title="Get a Free Quote" list={['4 hours of dedicated developer time to diagnose and resolve your issue.', 'Peace of mind, knowing your store is in expert hands and the issue will be resolved swiftly', 'Transparent communication, keeping you informed on the progress.']} image={imageGroup2} />
+
+    <Title title="We’re Futuremerce" subtitle="about" icon={AboutIcon} />
+    <HomepageAbout />
+
+    <FAQs faqs={faqs} />
+</Layout>
+
+<style is:inline>
+    body > .button {
+        margin: 40px auto;
+    }
+
+    body > .container:not(.breadcrumbs) {
+        margin-top: 56px;
+    }
+
+    .title-group {
+        margin-top: 140px;
+    }
+
+    .text-image-group:nth-of-type(2n + 1) {
+        flex-direction: row;
+    }
+
+    .text-image-group:nth-of-type(2n) {
+        flex-direction: row-reverse;
+    }
+
+    .text-image-group:nth-of-type(2n + 1)::after {
+        right: 100px;
+        left: unset;
+    }
+
+    .text-image-group:nth-of-type(2n)::after {
+        right: unset;
+        left: 100px;
+    }
+</style>
