@@ -28,8 +28,18 @@ import backgroundLine from "../../images/background-line.png";
                 >.</span
             >
         </h1>
-        <Button type="primary" link="/get-started">Get Started</Button>
+        <Button type="primary" link="#services">Discover more</Button>
         <Icon name="devices" class="homepage-hero_icon" />
     </div>
     <TrustedBy />
 </header>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelector('.homepage-hero .button')?.addEventListener('click', () => {
+            document.querySelector('.title-group')?.scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+</script>

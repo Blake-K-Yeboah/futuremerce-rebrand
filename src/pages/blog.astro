@@ -1,0 +1,44 @@
+---
+import type { MetaInfo } from "../types";
+
+// Components
+import Layout from "../layouts/Layout.astro";
+import Breadcrumbs from "../components/Breadcrumbs/Breadcrumbs.astro";
+import Posts from "../components/Posts/Posts.astro";
+
+// Images
+
+// Meta Info
+const metaInfo: MetaInfo = {
+    description:
+        "Discover valuable tips and strategies for optimizing your store to thrive in today’s competitive landscape.",
+    keywords: "shopify, development, agency",
+    shouldIndex: true,
+    schemaMetaInfo: `
+<meta itemprop="name" content="Futuremerce - Tips & Strategies to help your store grow">
+<meta itemprop="description" content="Discover valuable tips and strategies for optimizing your store to thrive in today’s competitive landscape.">
+<meta itemprop="image" content="/overview.png">
+`,
+};
+---
+
+<Layout title="Futuremerce - Tips & Strategies to help your store grow" metaInfo={metaInfo}>
+    <Breadcrumbs />
+
+    <h1 class="page-title">Tips & Strategies To Help Your <span>Shopify Store</span></h1>
+    <p class="page-text">
+        Discover valuable tips and strategies for optimizing your store to thrive in today’s competitive landscape.
+    </p>
+
+    <Posts />
+</Layout>
+
+<style lang="scss" is:inline>
+    .page-title {
+        width: 824px;
+    }
+
+    .page-text {
+        max-width: 493px;
+    }
+</style>

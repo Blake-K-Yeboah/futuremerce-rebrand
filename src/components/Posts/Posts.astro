@@ -1,0 +1,12 @@
+---
+import { getCollection } from "astro:content";
+
+// Get Posts
+const posts = await getCollection('blog');
+posts.sort((a,b) => Date.parse(b.data.date) - Date.parse(a.data.date));
+
+---
+
+<div>
+    {posts.map(post => <h4>{post.data.title}</h4>)}
+</div>
