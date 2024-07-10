@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap");
 
 :root {
-    --primary: #8B81FF;
+    --primary: #8b81ff;
 }
 
 * {
@@ -12,7 +12,7 @@
 
 body {
     font-family: "Red Hat Display", sans-serif;
-    background: #100F17;
+    background: #100f17;
     position: relative;
     overflow-x: hidden;
 
@@ -21,7 +21,7 @@ body {
     }
 
     &::-webkit-scrollbar-track {
-        background: #13131E;
+        background: #13131e;
     }
 
     &::-webkit-scrollbar-thumb {
@@ -66,12 +66,12 @@ body {
 
 body:before,
 body:after {
-    content: '';
+    content: "";
     width: 367px;
     height: 431px;
     border-radius: 50%;
     background: var(--primary);
-    opacity: .14;
+    opacity: 0.14;
     filter: blur(106px);
     position: absolute;
     top: 50vh;
@@ -100,7 +100,7 @@ body:after {
     color: #787878;
     font-size: 14px;
     font-weight: 800;
-    letter-spacing: .1em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
 }
 
@@ -114,23 +114,22 @@ body:after {
     margin-top: 34px;
 }
 
-
 // General Components
-@import 'partials/navbar';
-@import 'partials/button';
-@import 'partials/title';
-@import 'partials/box';
-@import 'partials/text-image-group';
-@import 'partials/faqs';
-@import 'partials/footer';
-@import 'partials/breadcrumbs';
-@import 'partials/page';
-@import 'partials/trusted-by';
+@import "partials/navbar";
+@import "partials/button";
+@import "partials/title";
+@import "partials/box";
+@import "partials/text-image-group";
+@import "partials/faqs";
+@import "partials/footer";
+@import "partials/breadcrumbs";
+@import "partials/page";
+@import "partials/trusted-by";
 
 // Homepage Components
-@import 'partials/homepage-hero';
-@import 'partials/stand-out';
-@import 'partials/homepage-about';
+@import "partials/homepage-hero";
+@import "partials/stand-out";
+@import "partials/homepage-about";
 
 // About Components
 @import "partials/about-grid";
@@ -138,3 +137,6 @@ body:after {
 
 // Contact Components
 @import "partials/contact-form";
+
+// Blog Components
+@import "partials/posts";

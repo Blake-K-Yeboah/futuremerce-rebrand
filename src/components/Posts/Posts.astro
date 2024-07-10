@@ -1,12 +1,101 @@
 ---
 import { getCollection } from "astro:content";
 
+// Components
+import Button from "../Button/Button.astro";
+import PostCard from "../PostCard/PostCard.astro";
+import Container from "../Container/Container.astro";
+
 // Get Posts
 const posts = await getCollection('blog');
 posts.sort((a,b) => Date.parse(b.data.date) - Date.parse(a.data.date));
 
----
+// Filters
+const filters = [...new Set(posts.map(p => p.data.category))];
 
-<div>
-    {posts.map(post => <h4>{post.data.title}</h4>)}
-</div>
+---
+<section class="posts">
+    <Container>
+        <div class="posts_search">
+            <input type="text" id="posts-search" placeholder="Search for something..." />
+            <Button type="primary">Search</Button>
+        </div>
+        <div class="posts_filters">
+            <div class="posts_filter active" data-filter="">All Articles</div>
+            {filters.map(filter => <div class="posts_filter" data-filter={filter}>{filter}</div>)}
+        </div>
+        <div class="posts_grid">
+            {posts.map((post, index) => <PostCard post={post} hidden={index > 8} />)}
+        </div>
+        <div class="posts_btn">
+            <Button type="primary">Load More</Button>
+        </div>
+    </Container>
+</section>
+
+<script>
+    // @ts-nocheck
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelector('.posts_btn .button').addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            document.querySelectorAll('.post-card').forEach(postCardEl => postCardEl.classList.remove('hidden'));
+            document.querySelector('.posts_btn .button').remove();
+        });
+
+        document.querySelectorAll('.posts_filter').forEach(filterEl => filterEl.addEventListener('click', (e: any) => {
+            const filter = e.target.getAttribute('data-filter');
+
+            if (!e.target.classList.contains('active')) {
+                if (document.querySelector('.posts_btn .button')) {
+                    document.querySelector('.posts_btn .button').remove();
+                }
+
+                document.querySelector('.posts_filter.active')?.classList.remove('active');
+               e.target?.classList.add('active');
+
+                document.querySelectorAll('.post-card').forEach(postCardEl => {
+                    if (postCardEl.getAttribute('data-category').includes(filter) || filter == '') {
+                        postCardEl.classList.remove('hidden')
+                    } else {
+                        postCardEl.classList.add('hidden');
+                    }
+                });
+            }
+        }));
+
+        document.querySelector('.posts_search input').addEventListener('keydown', (event) => {
+            if (event.key === 'Enter' || event.keyCode === 13) {
+                document.querySelector('.posts_search .button').click();
+            }
+        });
+
+        document.querySelector('.posts_search .button').addEventListener('click', (e) => {
+            const search = document.querySelector('.posts_search input').value.toLowerCase();
+
+            document.querySelector('.posts_filter:first-of-type').click();
+
+            if (document.querySelector('.posts_btn .button')) {
+                document.querySelector('.posts_btn .button').remove();
+            }
+
+            document.querySelectorAll('.post-card').forEach(postCardEl => {
+                if (postCardEl.querySelector('.post-card_title').textContent.toLowerCase().includes(search)) {
+                    postCardEl.classList.remove('hidden')
+                } else {
+                    postCardEl.classList.add('hidden');
+                }
+            });
+
+            if (document.querySelectorAll('.post-card:not(.hidden)').length == 0) {
+                const noPostsEl = document.createElement('p');
+                noPostsEl.classList.add('posts_zero-found');
+                noPostsEl.textContent = 'No posts found for your search.';
+
+                document.querySelector('.posts .container').append(noPostsEl);
+            } else if (document.querySelector('.posts_zero-found')) {
+                document.querySelector('.posts_zero-found').remove();
+            }
+        });
+    });
+</script>
