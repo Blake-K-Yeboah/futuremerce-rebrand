@@ -101,6 +101,7 @@
     background: #13131e;
     display: flex;
     flex-direction: column;
+    text-decoration: none;
 
     &.hidden {
         display: none;
@@ -125,7 +126,6 @@
         font-weight: 600;
         line-height: 32px;
         color: #fff;
-        text-decoration: none;
     }
 
     &_date {
@@ -147,7 +147,6 @@
     &_read-more {
         display: flex;
         align-items: center;
-        text-decoration: none;
         color: var(--primary);
         gap: 8px;
         font-size: 14px;

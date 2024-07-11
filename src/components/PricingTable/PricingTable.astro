@@ -1,0 +1,76 @@
+---
+import Button from "../Button/Button.astro";
+
+const plans = [
+    {
+        name: 'Regular',
+        price: 3999,
+        descriptionLineOne: "One project at a time.",
+        descriptionLineTwo: "Pause or cancel anytime.",
+        points: [
+            'One project at a time',
+            'Dedicated Team',
+            'Shopify development services',
+            'Ongoing maintenance & support',
+            'No lock-in contracts',
+            'Pause or cancel anytime',
+        ],
+        button: {
+            label: 'Get Started',
+            link: '#stripe'
+        },
+        bestValue: false
+    },
+    {
+        name: 'Pro',
+        price: 5999,
+        descriptionLineOne: "Two projects at a time.",
+        descriptionLineTwo: "Pause or cancel anytime.",
+        points: [
+            'One project at a time',
+            'Dedicated Team',
+            'Shopify development services',
+            'Ongoing maintenance & support',
+            'No lock-in contracts',
+            'Pause or cancel anytime',
+        ],
+        button: {
+            label: 'Get Started',
+            link: '#stripe'
+        },
+        bestValue: true
+    },
+    {
+        name: 'Ultimate',
+        price: '13999+',
+        descriptionLineOne: "More than 3 projects at a time.",
+        descriptionLineTwo: "Prioritised service.",
+        points: [
+            '3+ Projects at a time',
+            'Dedicated Team',
+            'Shopify development services',
+            'Ongoing maintenance & support',
+            'No lock-in contracts',
+            'Pause or cancel anytime',
+        ],
+        button: {
+            label: 'Contact Sales',
+            link: '/contact'
+        },
+        bestValue: false
+    },
+];
+---
+
+<section class="pricing-table">
+    {plans.map(plan => {
+        return <div class={`pricing-table_plan ${plan.bestValue ? 'best-value' : ''}`}>
+            <h6 class="pricing-table_plan-name">{plan.name}</h6>
+            <div class="pricing-table_plan-price">A${plan.price} <span>/ month</span></div>
+            <p class="pricing-table_plan-description">{plan.descriptionLineOne} <br> {plan.descriptionLineTwo}</p>
+            <div class="pricing-table_plan-divider"></div>
+            {plan.points.map(point => <div class="pricing-table_plan-point">{point}</div>)}
+            <Button link={plan.button.link} type="primary">{plan.button.label}</Button>
+        </div>
+    })}
+</section>

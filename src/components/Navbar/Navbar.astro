@@ -90,26 +90,29 @@ const links: NavbarLink[] = [
                                 class="navbar_dropdown"
                                 data-dropdown={link.href}
                             >
-                                {link.sublinks!.map((sublink) => (
-                                    <a
-                                        href={sublink.href}
-                                        class="navbar_dropdown-link"
-                                    >
-                                        <Image
-                                            src={
-                                                import(
-                                                    /* @vite-ignore */ "/src/icons/" +
-                                                        sublink.icon
-                                                )
-                                            }
-                                            alt=""
-                                        />
-                                        <p>
-                                            <span>{sublink.label}</span>
-                                            {sublink.text}
-                                        </p>
-                                    </a>
-                                ))}
+                                <div 
+                                class="navbar_dropdown-inner">
+                                    {link.sublinks!.map((sublink) => (
+                                        <a
+                                            href={sublink.href}
+                                            class="navbar_dropdown-link"
+                                        >
+                                            <Image
+                                                src={
+                                                    import(
+                                                        /* @vite-ignore */ "/src/icons/" +
+                                                            sublink.icon
+                                                    )
+                                                }
+                                                alt=""
+                                            />
+                                            <p>
+                                                <span>{sublink.label}</span>
+                                                {sublink.text}
+                                            </p>
+                                        </a>
+                                    ))}
+                                </div>
                             </div>
                         ) : (
                             ""
@@ -149,6 +152,7 @@ const links: NavbarLink[] = [
             const dropdown = document.querySelector(
                 `.navbar_dropdown[data-dropdown="${"#" + href.split("#")[1]}"]`,
             );
+            const navbar = document.querySelector('.navbar');
 
             const activeDropdown = document.querySelector(
                 ".navbar_dropdown.active",
@@ -167,6 +171,7 @@ const links: NavbarLink[] = [
 
             dropdown?.classList.toggle("active");
             linkEl.classList.toggle("active");
+            navbar?.classList.toggle("active");
         };
 
         const links = document.querySelectorAll(".navbar_link");

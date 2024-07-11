@@ -7,14 +7,18 @@
     top: 0;
     left: 0;
     background: transparent;
-    transition: background .25s ease-in-out, height .25s ease-in-out;
-    border-bottom: 1px solid #1B1B1B;
+    transition: background 0.25s ease-in-out, height 0.25s ease-in-out;
+    border-bottom: 1px solid #1b1b1b;
 
     &.scrolled {
-        background: #100F17;
+        background: #100f17;
         height: 80px;
         box-shadow: 0 0 20px rgba(255, 255, 255, 0.01);
         border-bottom: none;
+    }
+
+    &.active {
+        background: #13131e;
     }
 
     .container {
@@ -28,7 +32,7 @@
         width: fit-content;
         cursor: pointer;
 
-        >svg {
+        > svg {
             width: 200px;
             height: 37px;
         }
@@ -45,7 +49,6 @@
         align-items: center;
         justify-content: center;
         gap: 32px;
-        position: relative;
     }
 
     &_link {
@@ -53,13 +56,13 @@
         align-items: center;
         gap: 3px;
         font-size: 16px;
-        color: #E2E2E2;
+        color: #e2e2e2;
         font-weight: 400;
         text-decoration: none;
-        transition: .25s ease;
+        transition: 0.25s ease;
 
         svg {
-            transition: .25s ease;
+            transition: 0.25s ease;
         }
 
         &:hover {
@@ -74,26 +77,48 @@
     }
 
     &_dropdown {
-        padding: 20px;
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        background: #13131E;
+        padding: 40px 20px;
+        background: #13131e;
         border-radius: 16px;
         position: absolute;
-        top: calc(100% + 24px);
-        left: 50%;
-        transform: translateX(-50%);
-        width: 767px;
+        top: 100%;
+        width: 100vw;
+        box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.05);
         z-index: 5;
-        grid-template-columns: 1fr 1fr 1fr;
-        gap: 24px 16px;
         display: none;
+        align-items: center;
+        overflow: hidden;
 
-        &[data-dropdown*="services"] {
-            width: 924px;
+        &-inner {
+            max-width: 767px;
+            width: 100%;
+            margin: 0 auto;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 24px 16px;
+            position: relative;
+
+            &:after {
+                content: "";
+                width: 100vw;
+                height: 1px;
+                background: rgba(255, 255, 255, 0.05);
+                position: absolute;
+                top: -40px;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+
+        &[data-dropdown*="services"] .navbar_dropdown-inner {
+            max-width: 924px;
         }
 
         &.active {
-            display: grid;
+            display: flex;
+
+            .navbar_dropdown-inner {
+                display: grid;
+            }
         }
 
         &-link {
@@ -102,7 +127,7 @@
             gap: 12px;
             text-decoration: none;
             padding: 8px 14px;
-            transition: .25s ease-in-out;
+            transition: 0.25s ease-in-out;
             width: 100%;
 
             &:hover {
@@ -115,11 +140,11 @@
                 height: fit-content;
             }
 
-            >p {
+            > p {
                 font-size: 14px;
                 color: #707070;
 
-                >span {
+                > span {
                     display: block;
                     font-size: 16px;
                     color: #fff;

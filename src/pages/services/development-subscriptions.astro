@@ -1,0 +1,185 @@
+---
+import type { Box, MetaInfo } from "../../types";
+import { getCollection } from "astro:content";
+
+// Components
+import Layout from "../../layouts/Layout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs.astro";
+import BoxGrid from "../../components/BoxGrid/BoxGrid.astro";
+import Title from "../../components/Title/Title.astro";
+import Button from "../../components/Button/Button.astro";
+import FAQs from "../../components/FAQs/FAQs.astro";
+import TrustedBy from "../../components/TrustedBy/TrustedBy.astro";
+import HomepageAbout from "../../components/HomepageAbout/HomepageAbout.astro";
+import Container from "../../components/Container/Container.astro";
+import PricingTable from "../../components/PricingTable/PricingTable.astro";
+
+// Images
+import ServicesHomepageIcon from "../../icons/services-homepage.svg";
+import HowWeWorkIcon from "../../icons/howwework.svg";
+import process1 from "../../icons/process/step3.svg";
+import process2 from "../../icons/process/step2.svg";
+import process3 from "../../icons/process/step1.svg";
+import functionality from "../../icons/services/development/functionality.svg";
+import turnAroundTimes from "../../icons/subscription-pricing.svg";
+import topNotch from "../../icons/quality-assurance.svg";
+import fixedPrice from "../../icons/fixed-price.svg";
+import budgetFriendly from "../../icons/budget-friendly.svg";
+import AboutIcon from "../../icons/about-homepage.svg";
+import PricingIcon from "../../icons/homepage-pricing.svg";
+
+// Meta Info
+const metaInfo: MetaInfo = {
+    description:
+        "Is your Shopify store underperforming?  Are slow loading times, buggy features, and a confusing user experience hurting your sales? You're not alone. Many Shopify stores struggle to reach their full potential due to performance issues. That’s where we come in.",
+    keywords: "shopify, development, agency",
+    shouldIndex: true,
+    schemaMetaInfo: `
+<meta itemprop="name" content="Futuremerce - Shopify Store Performance Optimisation">
+<meta itemprop="description" content="Is your Shopify store underperforming?  Are slow loading times, buggy features, and a confusing user experience hurting your sales? You're not alone. Many Shopify stores struggle to reach their full potential due to performance issues. That’s where we come in.">
+<meta itemprop="image" content="/overview.png">
+`,
+};
+
+// Content
+const benefits: Box[] = [
+    {
+        title: "Development Board",
+        description:
+            "Add as many projects/tasks to your board as you’d like. Keep track of their progress through a simple, Kanban style board.",
+        image: functionality,
+    },
+    {
+        title: "Fast Turnaround Times",
+        description:
+            "Get your development work completed one task at a time in as little as a few days on average.",
+        image: turnAroundTimes,
+    },
+    {
+        title: "Top-notch Quality",
+        description:
+            "High-quality development team available at your finger tips whenever you need it. Get the development help you need, on your terms. ",
+        image: topNotch,
+    },
+    {
+        title: "No Long-Term Commitment",
+        description:
+            "No long-term commitments or full-time hires - just the development expertise you need, when you need it.",
+        image: fixedPrice,
+    },
+    {
+        title: "Fixed monthly rate",
+        description:
+            "Say goodbye to project cost overruns and hello to a fixed monthly rate with no hidden fees that fits your budget.",
+        image: budgetFriendly,
+    },
+];
+
+const processBoxes: Box[] = [
+    {
+        image: process1,
+        title: "Choose Your Plan",
+        description:
+            "We offer a range of plans designed to meet the specific needs and goals of your business. Choose what suits you best.",
+    },
+    {
+        image: process2,
+        title: "Schedule an Onboarding call",
+        description:
+            "Next, schedule your onboarding call where we can tailor our project management setup and align on your preferences.",
+    },
+    {
+        image: process3,
+        title: "Start Your First Project",
+        description:
+            "Once everything is setup, you can send over your first project and our team will dive straight into action.",
+    },
+];
+
+const faqs = await getCollection("faqs", ({ data }) => {
+    return data.type === "development"; // TODO: Update Category
+});
+---
+
+<Layout title="Futuremerce - Shopify Store Performance Optimisation" metaInfo={metaInfo}>
+    <Breadcrumbs />
+
+    <h1 class="page-title"><span>Unlimited</span> Shopify Projects, One Flat Monthly Rate</h1>
+    <p class="page-text">
+        Replace unreliable freelancers and expensive agencies with a simple, subscription service for your Shopify development needs.
+    </p>
+    <Button link="#discover-more" type="primary">Discover More</Button>
+    <TrustedBy />
+
+    <div id="process"></div>
+    <Title
+        title="How it Works?"
+        subtitle="THE PROCESS"
+        icon={HowWeWorkIcon}
+    />
+    <BoxGrid items={processBoxes} />
+    <Container>
+        <Button link="#view-plans" type="primary">View Plans</Button>
+    </Container>
+
+     <Title
+        title="All the Perks, None of the Hassle"
+        subtitle="BENEFITS"
+        icon={ServicesHomepageIcon}
+    />
+    <BoxGrid items={benefits} />
+
+
+     <Title
+        title="Choose Your Plan"
+        subtitle="PRICING"
+        icon={PricingIcon}
+    />
+    <PricingTable />
+
+    <FAQs faqs={faqs} />
+
+    <Title title="We’re Futuremerce" subtitle="about" icon={AboutIcon} />
+    <HomepageAbout />
+</Layout>
+
+<style is:inline>
+    .page-title {
+        width: 900px;
+    }
+
+    .page-text {
+        width: 547px;
+    }
+
+    body > .button {
+        margin: 40px auto;
+    }
+
+    body > .container > .button {
+        margin-top: 60px;
+    }
+
+    .title-group {
+        margin-top: 140px;
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelector('body > .button:first-of-type')?.addEventListener('click', (e) => {
+            e.preventDefault();
+
+            document.querySelector('.trusted-by')?.scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+        document.querySelector('body > .container > .button')?.addEventListener('click', (e) => {
+            e.preventDefault();
+
+            document.querySelectorAll('.title-group')[2]?.scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    })
+</script>
