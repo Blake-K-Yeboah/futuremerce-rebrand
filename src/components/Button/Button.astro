@@ -4,7 +4,7 @@ import { type ButtonProps } from "../../types";
 const { type, link } = Astro.props as ButtonProps;
 ---
 
-<a class={`button button-${type}`} data-link={link ? link : ''}>
+<a class={`button button-${type}`} data-link={link ? link : ""}>
     <slot />
     {
         type == "primary" ? (
@@ -37,10 +37,10 @@ const { type, link } = Astro.props as ButtonProps;
     }
 </a>
 
-<script>
-    document.querySelectorAll('.button').forEach(buttonEl => {
-        if(buttonEl.getAttribute('data-link') != '') {
-            buttonEl.setAttribute('href', buttonEl.getAttribute('data-link')!);
+<script is:inline data-astro-rerun>
+    document.querySelectorAll(".button").forEach((buttonEl) => {
+        if (buttonEl.getAttribute("data-link") != "") {
+            buttonEl.setAttribute("href", buttonEl.getAttribute("data-link"));
         }
-    })
+    });
 </script>

@@ -45,17 +45,11 @@ const { faq, hidden } = Astro.props as Props;
     </div>
 </div>
 
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        document
-            .querySelectorAll(".faqs_accordion-head")
-            .forEach((accordion) => {
-                accordion.addEventListener("click", (e) => {
-                    if (e.target)
-                        e.target
-                            .closest(".faqs_accordion")
-                            .classList.toggle("active");
-                });
-            });
+<script is:inline data-astro-rerun>
+    document.querySelectorAll(".faqs_accordion-head").forEach((accordion) => {
+        accordion.addEventListener("click", (e) => {
+            if (e.target)
+                e.target.closest(".faqs_accordion").classList.toggle("active");
+        });
     });
 </script>

@@ -1,6 +1,7 @@
 ---
 import "../styles/globals.scss";
 import { type LayoutProps } from "../types";
+import { ViewTransitions } from "astro:transitions";
 
 import SEO from "../components/SEO/SEO.astro";
 import Navbar from "../components/Navbar/Navbar.astro";
@@ -23,6 +24,8 @@ if (metaInfo && metaInfo.itemType) itemType = metaInfo.itemType;
 			rel="stylesheet"
 			href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css"
 		/>
+
+		<ViewTransitions />
 	</head>
 	<body itemscope itemtype={itemType}>
 		<Navbar />
@@ -45,19 +48,18 @@ if (metaInfo && metaInfo.itemType) itemType = metaInfo.itemType;
 				});
 			};
 		</script>
-	</body>
-	
-	<script>
-		// Smooth Scrolling
-		import Lenis from "@studio-freight/lenis";
+		<script>
+			// Smooth Scrolling
+			import Lenis from "@studio-freight/lenis";
 
-		const lenis = new Lenis();
+			const lenis = new Lenis();
 
-		function raf(time) {
-			lenis.raf(time);
+			function raf(time) {
+				lenis.raf(time);
+				requestAnimationFrame(raf);
+			}
+
 			requestAnimationFrame(raf);
-		}
-
-		requestAnimationFrame(raf);
-	</script>
+		</script>
+	</body>
 </html>

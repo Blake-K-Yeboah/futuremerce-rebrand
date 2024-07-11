@@ -31,12 +31,12 @@ import PricingIcon from "../../icons/homepage-pricing.svg";
 // Meta Info
 const metaInfo: MetaInfo = {
     description:
-        "Is your Shopify store underperforming?  Are slow loading times, buggy features, and a confusing user experience hurting your sales? You're not alone. Many Shopify stores struggle to reach their full potential due to performance issues. That’s where we come in.",
+        "Replace unreliable freelancers and expensive agencies with a simple, subscription service for your Shopify development needs.",
     keywords: "shopify, development, agency",
     shouldIndex: true,
     schemaMetaInfo: `
-<meta itemprop="name" content="Futuremerce - Shopify Store Performance Optimisation">
-<meta itemprop="description" content="Is your Shopify store underperforming?  Are slow loading times, buggy features, and a confusing user experience hurting your sales? You're not alone. Many Shopify stores struggle to reach their full potential due to performance issues. That’s where we come in.">
+<meta itemprop="name" content="Futuremerce - Shopify Development as a subscription">
+<meta itemprop="description" content="Replace unreliable freelancers and expensive agencies with a simple, subscription service for your Shopify development needs.">
 <meta itemprop="image" content="/overview.png">
 `,
 };
@@ -101,40 +101,37 @@ const faqs = await getCollection("faqs", ({ data }) => {
 });
 ---
 
-<Layout title="Futuremerce - Shopify Store Performance Optimisation" metaInfo={metaInfo}>
+<Layout
+    title="Futuremerce - Shopify Development as a subscription"
+    metaInfo={metaInfo}
+>
     <Breadcrumbs />
 
-    <h1 class="page-title"><span>Unlimited</span> Shopify Projects, One Flat Monthly Rate</h1>
+    <h1 class="page-title">
+        <span>Unlimited</span> Shopify Projects, One Flat Monthly Rate
+    </h1>
     <p class="page-text">
-        Replace unreliable freelancers and expensive agencies with a simple, subscription service for your Shopify development needs.
+        Replace unreliable freelancers and expensive agencies with a simple,
+        subscription service for your Shopify development needs.
     </p>
     <Button link="#discover-more" type="primary">Discover More</Button>
     <TrustedBy />
 
     <div id="process"></div>
-    <Title
-        title="How it Works?"
-        subtitle="THE PROCESS"
-        icon={HowWeWorkIcon}
-    />
+    <Title title="How it Works?" subtitle="THE PROCESS" icon={HowWeWorkIcon} />
     <BoxGrid items={processBoxes} />
     <Container>
         <Button link="#view-plans" type="primary">View Plans</Button>
     </Container>
 
-     <Title
+    <Title
         title="All the Perks, None of the Hassle"
         subtitle="BENEFITS"
         icon={ServicesHomepageIcon}
     />
     <BoxGrid items={benefits} />
 
-
-     <Title
-        title="Choose Your Plan"
-        subtitle="PRICING"
-        icon={PricingIcon}
-    />
+    <Title title="Choose Your Plan" subtitle="PRICING" icon={PricingIcon} />
     <PricingTable />
 
     <FAQs faqs={faqs} />
@@ -165,21 +162,23 @@ const faqs = await getCollection("faqs", ({ data }) => {
     }
 </style>
 
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        document.querySelector('body > .button:first-of-type')?.addEventListener('click', (e) => {
+<script is:inline data-astro-rerun>
+    document
+        .querySelector("body > .button:first-of-type")
+        ?.addEventListener("click", (e) => {
             e.preventDefault();
 
-            document.querySelector('.trusted-by')?.scrollIntoView({
-                behavior: 'smooth'
+            document.querySelector(".trusted-by")?.scrollIntoView({
+                behavior: "smooth",
             });
         });
-        document.querySelector('body > .container > .button')?.addEventListener('click', (e) => {
+    document
+        .querySelector("body > .container > .button")
+        ?.addEventListener("click", (e) => {
             e.preventDefault();
 
-            document.querySelectorAll('.title-group')[2]?.scrollIntoView({
-                behavior: 'smooth'
+            document.querySelectorAll(".title-group")[2]?.scrollIntoView({
+                behavior: "smooth",
             });
         });
-    })
 </script>

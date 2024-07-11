@@ -34,12 +34,12 @@ import backgroundLine from "../../images/background-line.png";
     <TrustedBy />
 </header>
 
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        document.querySelector('.homepage-hero .button')?.addEventListener('click', () => {
-            document.querySelector('.title-group')?.scrollIntoView({
-                behavior: 'smooth'
+<script is:inline data-astro-rerun>
+    document
+        .querySelector(".homepage-hero .button")
+        ?.addEventListener("click", () => {
+            document.querySelector(".title-group")?.scrollIntoView({
+                behavior: "smooth",
             });
         });
-    });
 </script>

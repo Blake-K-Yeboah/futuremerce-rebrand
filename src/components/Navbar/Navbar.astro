@@ -56,7 +56,7 @@ const links: NavbarLink[] = [
 ];
 ---
 
-<nav class="navbar">
+<nav class="navbar" transition:persist>
     <Container>
         <a class="navbar_brand" href="/" aria-label="Home">
             <Icon name="transparent-logo" />
@@ -90,8 +90,7 @@ const links: NavbarLink[] = [
                                 class="navbar_dropdown"
                                 data-dropdown={link.href}
                             >
-                                <div 
-                                class="navbar_dropdown-inner">
+                                <div class="navbar_dropdown-inner">
                                     {link.sublinks!.map((sublink) => (
                                         <a
                                             href={sublink.href}
@@ -127,59 +126,75 @@ const links: NavbarLink[] = [
     </Container>
 </nav>
 
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
+<script is:inline>
+    const navbar = document.querySelector(".navbar");
+
+    const handleScroll = () => {
+        if (window.scrollY > 10) {
+            navbar?.classList.add("scrolled");
+        } else {
+            navbar?.classList.remove("scrolled");
+        }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    handleScroll();
+
+    const handleDropdown = (e) => {
+        const linkEl = e.target.href
+            ? e.target
+            : e.target.closest(".navbar_link");
+        const href = linkEl.href;
+
+        const dropdown = document.querySelector(
+            `.navbar_dropdown[data-dropdown="${"#" + href.split("#")[1]}"]`,
+        );
         const navbar = document.querySelector(".navbar");
 
-        const handleScroll = () => {
-            if (window.scrollY > 10) {
-                navbar?.classList.add("scrolled");
-            } else {
-                navbar?.classList.remove("scrolled");
-            }
-        };
+        const activeDropdown = document.querySelector(
+            ".navbar_dropdown.active",
+        );
 
-        window.addEventListener("scroll", handleScroll);
+        if (
+            activeDropdown &&
+            activeDropdown.getAttribute("data-dropdown") !=
+                "#" + href.split("#")[1]
+        ) {
+            activeDropdown.classList.remove("active");
+            document
+                .querySelector(".navbar_link.active")
+                ?.classList.remove("active");
+            navbar?.classList.remove("active");
+        }
 
-        handleScroll();
+        dropdown?.classList.toggle("active");
+        linkEl.classList.toggle("active");
+        navbar?.classList.toggle("active");
+    };
 
-        const handleDropdown = (e: any) => {
-            const linkEl = e.target!.href
-                ? e.target
-                : e.target.closest(".navbar_link");
-            const href = linkEl.href;
+    const links = document.querySelectorAll(".navbar_link");
 
-            const dropdown = document.querySelector(
-                `.navbar_dropdown[data-dropdown="${"#" + href.split("#")[1]}"]`,
-            );
-            const navbar = document.querySelector('.navbar');
+    links.forEach((linkEl) => {
+        if (linkEl.querySelector("svg") != null) {
+            linkEl.addEventListener("click", handleDropdown);
+        }
+    });
 
-            const activeDropdown = document.querySelector(
-                ".navbar_dropdown.active",
-            );
+    const handleDropdownSublink = (e) => {
+        const activeDropdown = document.querySelector(
+            ".navbar_dropdown.active",
+        );
+        const navbar = document.querySelector(".navbar");
 
-            if (
-                activeDropdown &&
-                activeDropdown.getAttribute("data-dropdown") !=
-                    "#" + href.split("#")[1]
-            ) {
-                activeDropdown.classList.remove("active");
-                document
-                    .querySelector(".navbar_link.active")
-                    ?.classList.remove("active");
-            }
+        activeDropdown.classList.remove("active");
+        document
+            .querySelector(".navbar_link.active")
+            ?.classList.remove("active");
+        navbar?.classList.remove("active");
+    };
 
-            dropdown?.classList.toggle("active");
-            linkEl.classList.toggle("active");
-            navbar?.classList.toggle("active");
-        };
-
-        const links = document.querySelectorAll(".navbar_link");
-
-        links.forEach((linkEl) => {
-            if (linkEl.querySelector("svg") != null) {
-                linkEl.addEventListener("click", handleDropdown);
-            }
-        });
+    document.querySelectorAll(".navbar_dropdown-link").forEach((linkEl) => {
+        linkEl.addEventListener("click", handleDropdownSublink);
     });
 </script>

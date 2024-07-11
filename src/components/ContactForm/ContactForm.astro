@@ -51,11 +51,11 @@ import Button from "../Button/Button.astro";
     </div>
 </form>
 
-<script>
+<script is:inline data-astro-rerun>
     const handleFormSubmit = () => {
-        const name = document.querySelector("#name")!.value;
-        const email = document.querySelector("#email")!.value;
-        const message = document.querySelector("#message")!.value;
+        const name = document.querySelector("#name").value;
+        const email = document.querySelector("#email").value;
+        const message = document.querySelector("#message").value;
 
         let errors = [];
 
@@ -85,9 +85,7 @@ import Button from "../Button/Button.astro";
         }
 
         // Submit form with Ajax
-        var data = new FormData(
-            document.querySelector(".contact-form") as HTMLFormElement,
-        );
+        var data = new FormData(document.querySelector(".contact-form"));
         fetch("https://formspree.io/f/xwkggend", {
             method: "POST",
             body: data,
@@ -97,7 +95,7 @@ import Button from "../Button/Button.astro";
         })
             .then((response) => {
                 if (response.ok) {
-                    document.querySelector(".contact-form")!.innerHTML +=
+                    document.querySelector(".contact-form").innerHTML +=
                         `<div class="contact-form_success">Thanks for reaching out! We'll be in touch as soon as possible.</div>`;
                     document
                         .querySelector(".contact-form")
@@ -105,7 +103,7 @@ import Button from "../Button/Button.astro";
                 }
             })
             .catch((error) => {
-                document.querySelector(".contact-form")!.innerHTML +=
+                document.querySelector(".contact-form").innerHTML +=
                     `<div class="contact-form_error">Oops! There was a problem submitting your form</div>`;
             });
     };

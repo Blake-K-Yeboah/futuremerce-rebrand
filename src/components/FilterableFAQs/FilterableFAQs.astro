@@ -28,35 +28,27 @@ const filters = [...new Set(faqs.map((f) => f.data.type))];
     </Container>
 </section>
 
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        document
-            .querySelectorAll(".filterable-faqs_filter")
-            .forEach((filterEl) => {
-                filterEl.addEventListener("click", (e) => {
-                    if (!e.target?.classList.contains("active")) {
-                        document
-                            .querySelector(".filterable-faqs_filter.active")
-                            ?.classList.remove("active");
-                        e.target?.classList.add("active");
+<script is:inline data-astro-rerun>
+    document.querySelectorAll(".filterable-faqs_filter").forEach((filterEl) => {
+        filterEl.addEventListener("click", (e) => {
+            if (!e.target?.classList.contains("active")) {
+                document
+                    .querySelector(".filterable-faqs_filter.active")
+                    ?.classList.remove("active");
+                e.target?.classList.add("active");
 
-                        document
-                            .querySelectorAll(
-                                ".filterable-faqs .faqs_accordion",
-                            )
-                            .forEach((faqEl) => {
-                                faqEl.classList.toggle(
-                                    "hidden",
-                                    faqEl.getAttribute("data-type") !==
-                                        e.target!.getAttribute("title"),
-                                );
-                            });
-                    }
-                });
-            });
-
-        document
-            .querySelector(".filterable-faqs_filter:first-of-type")!
-            .click();
+                document
+                    .querySelectorAll(".filterable-faqs .faqs_accordion")
+                    .forEach((faqEl) => {
+                        faqEl.classList.toggle(
+                            "hidden",
+                            faqEl.getAttribute("data-type") !==
+                                e.target.getAttribute("title"),
+                        );
+                    });
+            }
+        });
     });
+
+    document.querySelector(".filterable-faqs_filter:first-of-type").click();
 </script>
