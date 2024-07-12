@@ -1,0 +1,32 @@
+---
+//@ts-nocheck
+import { CollectionEntry, getEntries, getCollection } from "astro:content";
+import PostCard from "../PostCard/PostCard.astro";
+
+interface Props {
+    post: CollectionEntry<"blog">;
+}
+
+const { post } = Astro.props as Props;
+
+let relatedPosts: CollectionEntry<"blog">[] = [];
+
+if ("relatedPosts" in post.data) {
+    relatedPosts = await getEntries(post.data.relatedPosts);
+} else {
+    relatedPosts = await getCollection("blog", ({ data, slug }) => {
+        return slug !== post.slug && data.category == post.data.category;
+    });
+}
+---
+
+<section class="related-posts">
+    <h4 class="related-posts_title">You may also like</h4>
+    <div class="posts_grid">
+        {
+            relatedPosts.splice(0, 3).map((post) => {
+                return <PostCard post={post} hidden={false} />;
+            })
+        }
+    </div>
+</section>

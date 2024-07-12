@@ -1,0 +1,87 @@
+---
+import type { MetaInfo } from "../../types";
+import { getCollection } from "astro:content";
+
+// Components
+import Layout from "../../layouts/Layout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs.astro";
+import Container from "../../components/Container/Container.astro";
+import Share from "../../components/Share/Share.astro";
+import RelatedPosts from "../../components/RelatedPosts/RelatedPosts.astro";
+
+// Get Post
+export async function getStaticPaths() {
+    const blogEntries = await getCollection("blog");
+    return blogEntries.map((entry) => ({
+        params: { slug: entry.slug },
+        props: { entry },
+    }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
+// Meta Info
+const metaInfo: MetaInfo = {
+    description:
+        "These terms and conditions outline the rules and regulations for the use of Futuremerce's Website, located at futuremerce.com.",
+    keywords: "shopify, development, agency",
+    shouldIndex: true,
+    itemType: "http://schema.org/BlogPosting",
+    schemaMetaInfo: `
+<meta itemprop="author" content="Futuremerce">
+<meta itemprop="name" content="${entry.data.title}">
+<meta itemprop="description" content="${entry.data.excerpt}">
+<meta itemprop="image" content="https://www.futuremerce.com/post-thumbnails/${entry.slug}.webp"
+`,
+};
+
+// Post Details
+const d = new Date(entry.data.date);
+let date = d.toLocaleDateString("en-us", { day: "numeric" });
+let ending = date.endsWith("3") ? "rd" : date.endsWith("2") ? "nd" : "th";
+let month = d.toLocaleDateString("en-us", { month: "long" });
+let year = d.toLocaleDateString("en-us", { year: "numeric" });
+---
+
+<Layout title={`${entry.data.title} - Futuremerce`} metaInfo={metaInfo}>
+    <Breadcrumbs />
+
+    <Container>
+        <h1 class="title">
+            {entry.data.title}
+        </h1>
+        <span class="category">{entry.data.category}</span>
+        <img
+            src={`/post-thumbnails/${entry.slug}.webp`}
+            alt={entry.data.title}
+            class="image"
+            loading="eager"
+            fetchpriority="high"
+        />
+        <div class="header-row">
+            <p class="date">{`${date}${ending} ${month} ${year}`}</p>
+            <Share slug={entry.slug} />
+        </div>
+
+        <div class="post-body">
+            <Content />
+        </div>
+
+        <div class="post-footer">
+            <p class="share-text">Share this article</p>
+            <Share slug={entry.slug} />
+        </div>
+    </Container>
+
+    <RelatedPosts post={entry} />
+</Layout>
+
+<style is:inline lang="scss">
+    body > .container:last-of-type {
+        width: 100%;
+        padding: 0 20px;
+        margin: 0 auto;
+        max-width: 1000px;
+    }
+</style>
