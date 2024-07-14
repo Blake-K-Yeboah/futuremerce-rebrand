@@ -1,0 +1,33 @@
+---
+import type { MetaInfo } from "../types";
+
+// Components
+import Layout from "../layouts/Layout.astro";
+import Breadcrumbs from "../components/Breadcrumbs/Breadcrumbs.astro";
+import Button from "../components/Button/Button.astro";
+
+// Meta Info
+const metaInfo: MetaInfo = {
+    description: "404 Page Not Found",
+    keywords: "shopify, development, agency",
+    shouldIndex: false,
+};
+---
+
+<Layout title="Futuremerce - 404" metaInfo={metaInfo}>
+    <Breadcrumbs />
+
+    <h1 class="page-title">
+        <span>404</span> Page Not Found
+    </h1>
+    <p class="page-text">
+        The page you tried to visit no longer exists. Please ensure the URL you
+        typed is correct.
+    </p>
+    <Button link="/" type="primary">Go Home</Button>
+</Layout>
+<style lang="scss" is:inline>
+    body > .button {
+        margin: 40px auto 140px;
+    }
+</style>
