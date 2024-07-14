@@ -41,32 +41,29 @@ const filters = [...new Set(posts.map((p) => p.data.category))];
                 ))
             }
         </div>
-        <div class="posts_btn">
-            <Button type="primary">Load More</Button>
-        </div>
     </Container>
 </section>
 
 <script is:inline data-astro-rerun>
-    document
-        .querySelector(".posts_btn .button")
-        .addEventListener("click", (e) => {
-            e.preventDefault();
+    // document
+    //     .querySelector(".posts_btn .button")
+    //     .addEventListener("click", (e) => {
+    //         e.preventDefault();
 
-            document
-                .querySelectorAll(".post-card")
-                .forEach((postCardEl) => postCardEl.classList.remove("hidden"));
-            document.querySelector(".posts_btn .button").remove();
-        });
+    //         document
+    //             .querySelectorAll(".post-card")
+    //             .forEach((postCardEl) => postCardEl.classList.remove("hidden"));
+    //         document.querySelector(".posts_btn .button").remove();
+    //     });
 
     document.querySelectorAll(".posts_filter").forEach((filterEl) =>
         filterEl.addEventListener("click", (e) => {
             const filter = e.target.getAttribute("data-filter");
 
             if (!e.target.classList.contains("active")) {
-                if (document.querySelector(".posts_btn .button")) {
-                    document.querySelector(".posts_btn .button").remove();
-                }
+                // if (document.querySelector(".posts_btn .button")) {
+                //     document.querySelector(".posts_btn .button").remove();
+                // }
 
                 document
                     .querySelector(".posts_filter.active")

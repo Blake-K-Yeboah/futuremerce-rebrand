@@ -39,8 +39,14 @@ const { type, link } = Astro.props as ButtonProps;
 
 <script is:inline data-astro-rerun>
     document.querySelectorAll(".button").forEach((buttonEl) => {
-        if (buttonEl.getAttribute("data-link") != "") {
-            buttonEl.setAttribute("href", buttonEl.getAttribute("data-link"));
+        const dataLink = buttonEl.getAttribute("data-link");
+
+        if (dataLink == "#book-a-call") {
+            buttonEl.setAttribute("data-cal-link", "futuremerce/30min");
+            buttonEl.setAttribute("data-cal-namespace", "");
+            buttonEl.setAttribute("data-cal-config", `{"layout":"month_view"}`);
+        } else if (dataLink != "") {
+            buttonEl.setAttribute("href", dataLink);
         }
     });
 </script>

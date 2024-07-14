@@ -178,6 +178,12 @@ const links: NavbarLink[] = [
     links.forEach((linkEl) => {
         if (linkEl.querySelector("svg") != null) {
             linkEl.addEventListener("click", handleDropdown);
+        } else {
+            linkEl.addEventListener("click", (e) => {
+                if (!e.target.getAttribute("href").includes("#")) {
+                    window.scrollTo(0, 0);
+                }
+            });
         }
     });
 
