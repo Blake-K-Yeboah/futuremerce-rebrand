@@ -25,8 +25,9 @@ export interface NavbarSubLink {
 }
 
 export interface ButtonProps {
-    type: "primary" | "secondary";
+    type: "primary" | "secondary" | "link";
     link?: "string";
+    href?: "string";
 }
 
 export interface CVP {

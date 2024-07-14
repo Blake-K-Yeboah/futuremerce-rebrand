@@ -24,7 +24,7 @@ const filters = [...new Set(faqs.map((f) => f.data.type))];
         <div class="filterable-faqs_inner">
             {faqs.map((faq) => <FAQ faq={faq} />)}
         </div>
-        <Button type="primary" href="/contact">Ask Another Question</Button>
+        <Button type="primary" link="/contact">Ask Another Question</Button>
     </Container>
 </section>
 

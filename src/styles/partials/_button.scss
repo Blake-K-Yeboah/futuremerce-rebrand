@@ -10,17 +10,19 @@
     font-weight: 400;
     text-decoration: none;
     gap: 8px;
-    transition: 0.25s ease-in-out;
+    transition: 0.25s ease;
     min-width: 150px;
     cursor: pointer;
 
     svg path {
-        transition: 0.25s ease-in-out;
+        transition: 0.25s ease;
     }
 
     &:hover {
         background: var(--primary);
         color: #fff;
+        gap: 16px;
+        padding: 8px 20px;
 
         svg path {
             fill: #fff;
@@ -35,5 +37,22 @@
     &-primary {
         color: #000;
         background: #fff;
+    }
+
+    &-link {
+        width: fit-content;
+        height: fit-content;
+        min-width: unset;
+        padding: 0;
+        background: none !important;
+        color: #fff;
+
+        &:hover {
+            color: var(--primary);
+        }
+
+        svg {
+            display: none;
+        }
     }
 }

@@ -15,7 +15,7 @@ const { faqs } = Astro.props as Props;
         <div class="faqs_content">
             <h6 class="faqs_subtitle">// FREQUENTLY ASKED QUESTIONS</h6>
             <h4 class="faqs_title">Have a Question?</h4>
-            <Button type="secondary" link="/faqs">View All FAQs</Button>
+            <Button type="secondary" link="/faq">View All FAQs</Button>
         </div>
         <div class="faqs_accordions">
             {faqs.map((faq) => <FAQ faq={faq} />)}

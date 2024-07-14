@@ -1,7 +1,11 @@
 ---
 import { type ButtonProps } from "../../types";
 
-const { type, link } = Astro.props as ButtonProps;
+let { type, link, href } = Astro.props as ButtonProps;
+
+if (href) {
+    link = href;
+}
 ---
 
 <a class={`button button-${type}`} data-link={link ? link : ""}>

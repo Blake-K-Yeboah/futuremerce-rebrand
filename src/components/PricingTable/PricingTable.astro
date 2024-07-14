@@ -16,7 +16,7 @@ const plans = [
             'Pause or cancel anytime',
         ],
         button: {
-            label: 'Get Started',
+            label: 'Get Started Now',
             link: '#stripe'
         },
         bestValue: false
@@ -35,7 +35,7 @@ const plans = [
             'Pause or cancel anytime',
         ],
         button: {
-            label: 'Get Started',
+            label: 'Get Started Now',
             link: '#stripe'
         },
         bestValue: true
@@ -71,6 +71,7 @@ const plans = [
             <div class="pricing-table_plan-divider"></div>
             {plan.points.map(point => <div class="pricing-table_plan-point">{point}</div>)}
             <Button link={plan.button.link} type="primary">{plan.button.label}</Button>
+            {plan.button.label == 'Get Started Now' && <p class="pricing-table_plan-book">or <Button type="link" link="#book-a-call">book a call</Button></p>}
         </div>
     })}
 </section>
