@@ -3,75 +3,97 @@ import Button from "../Button/Button.astro";
 
 const plans = [
     {
-        name: 'Regular',
+        name: "Regular",
         price: 3999,
         descriptionLineOne: "One project at a time.",
         descriptionLineTwo: "Pause or cancel anytime.",
         points: [
-            'One project at a time',
-            'Dedicated Team',
-            'Shopify development services',
-            'Ongoing maintenance & support',
-            'No lock-in contracts',
-            'Pause or cancel anytime',
+            "One project at a time",
+            "Dedicated Team",
+            "Shopify development services",
+            "Ongoing maintenance & support",
+            "No lock-in contracts",
+            "Pause or cancel anytime",
         ],
         button: {
-            label: 'Get Started Now',
-            link: '#stripe'
+            label: "Get Started Now",
+            link: "https://buy.stripe.com/aEU3fLdATaCb5jieVc",
         },
-        bestValue: false
+        bestValue: false,
     },
     {
-        name: 'Pro',
+        name: "Pro",
         price: 5999,
         descriptionLineOne: "Two projects at a time.",
         descriptionLineTwo: "Pause or cancel anytime.",
         points: [
-            'One project at a time',
-            'Dedicated Team',
-            'Shopify development services',
-            'Ongoing maintenance & support',
-            'No lock-in contracts',
-            'Pause or cancel anytime',
+            "Two projects at a time",
+            "Dedicated Team",
+            "Shopify development services",
+            "Ongoing maintenance & support",
+            "No lock-in contracts",
+            "Pause or cancel anytime",
         ],
         button: {
-            label: 'Get Started Now',
-            link: '#stripe'
+            label: "Get Started Now",
+            link: "https://buy.stripe.com/5kA8A5cwP6lV1328wP",
         },
-        bestValue: true
+        bestValue: true,
     },
     {
-        name: 'Ultimate',
-        price: '13999+',
+        name: "Ultimate",
+        price: "13999+",
         descriptionLineOne: "More than 3 projects at a time.",
         descriptionLineTwo: "Prioritised service.",
         points: [
-            '3+ Projects at a time',
-            'Dedicated Team',
-            'Shopify development services',
-            'Ongoing maintenance & support',
-            'No lock-in contracts',
-            'Pause or cancel anytime',
+            "3+ Projects at a time",
+            "Dedicated Team",
+            "Shopify development services",
+            "Ongoing maintenance & support",
+            "No lock-in contracts",
+            "Pause or cancel anytime",
         ],
         button: {
-            label: 'Contact Sales',
-            link: '/contact'
+            label: "Contact Sales",
+            link: "/contact",
         },
-        bestValue: false
+        bestValue: false,
     },
 ];
 ---
 
 <section class="pricing-table">
-    {plans.map(plan => {
-        return <div class={`pricing-table_plan ${plan.bestValue ? 'best-value' : ''}`}>
-            <h6 class="pricing-table_plan-name">{plan.name}</h6>
-            <div class="pricing-table_plan-price">A${plan.price} <span>/ month</span></div>
-            <p class="pricing-table_plan-description">{plan.descriptionLineOne} <br> {plan.descriptionLineTwo}</p>
-            <div class="pricing-table_plan-divider"></div>
-            {plan.points.map(point => <div class="pricing-table_plan-point">{point}</div>)}
-            <Button link={plan.button.link} type="primary">{plan.button.label}</Button>
-            {plan.button.label == 'Get Started Now' && <p class="pricing-table_plan-book">or <Button type="link" link="#book-a-call">book a call</Button></p>}
-        </div>
-    })}
+    {
+        plans.map((plan) => {
+            return (
+                <div
+                    class={`pricing-table_plan ${plan.bestValue ? "best-value" : ""}`}
+                >
+                    <h6 class="pricing-table_plan-name">{plan.name}</h6>
+                    <div class="pricing-table_plan-price">
+                        A${plan.price} <span>/ month</span>
+                    </div>
+                    <p class="pricing-table_plan-description">
+                        {plan.descriptionLineOne} <br />{" "}
+                        {plan.descriptionLineTwo}
+                    </p>
+                    <div class="pricing-table_plan-divider" />
+                    {plan.points.map((point) => (
+                        <div class="pricing-table_plan-point">{point}</div>
+                    ))}
+                    <Button link={plan.button.link} type="primary">
+                        {plan.button.label}
+                    </Button>
+                    {plan.button.label == "Get Started Now" && (
+                        <p class="pricing-table_plan-book">
+                            or{" "}
+                            <Button type="link" link="#book-a-call">
+                                book a call
+                            </Button>
+                        </p>
+                    )}
+                </div>
+            );
+        })
+    }
 </section>

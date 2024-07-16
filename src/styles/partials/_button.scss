@@ -18,7 +18,7 @@
         transition: 0.25s ease;
     }
 
-    &:hover {
+    &:not(.button-link):hover {
         background: var(--primary);
         color: #fff;
         gap: 16px;
