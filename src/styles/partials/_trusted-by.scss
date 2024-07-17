@@ -22,14 +22,30 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
+
+            @media screen and (max-width: 1023px) {
+                width: 110px;
+            }
+
+            @media screen and (max-width: 600px) {
+                width: 40px;
+            }
         }
 
         &:before {
             right: calc(100% + 31px);
+
+            @media screen and (max-width: 600px) {
+                right: calc(100% + 16px);
+            }
         }
 
         &:after {
             left: calc(100% + 31px);
+
+            @media screen and (max-width: 600px) {
+                left: calc(100% + 16px);
+            }
         }
     }
 
@@ -39,5 +55,10 @@
         align-items: center;
         justify-content: center;
         gap: 30px;
+
+        @media screen and (max-width: 600px) {
+            transform: scale(0.8);
+            gap: 16px;
+        }
     }
 }

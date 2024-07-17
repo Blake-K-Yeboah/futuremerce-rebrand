@@ -122,9 +122,81 @@ const links: NavbarLink[] = [
         </div>
         <div class="navbar_actions">
             <Button type="secondary" link="#book-a-call">Book a Call</Button>
+            <button class="navbar_menu">
+                <svg class="open" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.25 10H33.75M6.25 20H33.75M6.25 30H33.75" stroke="white" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <svg class="close" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.6663 30.5133L9.48633 29.3333L18.8197 20L9.48633 10.6667L10.6663 9.48666L19.9997 18.82L29.333 9.48666L30.513 10.6667L21.1797 20L30.513 29.3333L29.333 30.5133L19.9997 21.18L10.6663 30.5133Z" fill="white"/></svg>
+
+            </button>
         </div>
     </Container>
 </nav>
+
+<aside class="mobile-menu">
+    <div class="mobile-menu_inner">
+        <div class="mobile-menu_list">
+        {
+                    links.map((link) => (
+                        <>
+                            <a href={link.href} class="mobile-menu_link">
+                                {link.label}{" "}
+                                {link.hasOwnProperty("sublinks") ? (
+                                    <svg
+                                        width="13"
+                                        height="12"
+                                        viewBox="0 0 13 12"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <path
+                                            d="M6.78418 8.25L3.03418 4.5L3.55918 3.975L6.78418 7.2L10.0092 3.975L10.5342 4.5L6.78418 8.25Z"
+                                            fill="white"
+                                            fill-opacity="0.5"
+                                        />
+                                    </svg>
+                                ) : (
+                                    ""
+                                )}
+                            </a>
+                            {link.hasOwnProperty("sublinks") ? (
+                                <div
+                                    class="mobile-menu_dropdown"
+                                    data-dropdown={link.href}
+                                >
+                                    <div class="mobile-menu_dropdown-inner">
+                                        {link.sublinks!.map((sublink) => (
+                                            <a
+                                                href={sublink.href}
+                                                class="mobile-menu_dropdown-link"
+                                            >
+                                                <Image
+                                                    src={
+                                                        import(
+                                                            /* @vite-ignore */ "/src/icons/" +
+                                                                sublink.icon
+                                                        )
+                                                    }
+                                                    alt=""
+                                                />
+                                                <p>
+                                                    <span>{sublink.label}</span>
+                                                    {sublink.text}
+                                                </p>
+                                            </a>
+                                        ))}
+                                    </div>
+                                </div>
+                            ) : (
+                                ""
+                            )}
+                        </>
+                    ))
+                }
+                <a href="/contact" class="mobile-menu_link">Contact Us</a>
+        </div>
+        <Button type="secondary" link="#book-a-call">Book a Call</Button>
+    </div>
+    <div class="mobile-menu_backdrop"></div>
+</aside>
 
 <script is:inline>
     const navbar = document.querySelector(".navbar");
@@ -202,5 +274,56 @@ const links: NavbarLink[] = [
 
     document.querySelectorAll(".navbar_dropdown-link").forEach((linkEl) => {
         linkEl.addEventListener("click", handleDropdownSublink);
+    });
+
+    // Mobile
+    document.querySelector('.navbar_menu').addEventListener('click', () => {
+        document.body.classList.toggle('mobile-menu-active');
+        document.body.classList.toggle('no-scroll');
+        document.documentElement.classList.toggle('no-scroll');
+    });
+
+    const handleMobileMenuDropdown = (e) => {
+        const linkEl = e.target.href
+            ? e.target
+            : e.target.closest(".mobile-menu_link");
+        const href = linkEl.href;
+
+        const dropdown = document.querySelector(
+            `.mobile-menu_dropdown[data-dropdown="${"#" + href.split("#")[1]}"]`,
+        );
+
+        const activeDropdown = document.querySelector(
+            ".mobile-menu_dropdown.active",
+        );
+
+        if (
+            activeDropdown &&
+            activeDropdown.getAttribute("data-dropdown") !=
+                "#" + href.split("#")[1]
+        ) {
+            activeDropdown.classList.remove("active");
+            document
+                .querySelector(".mobile-menu_link.active")
+                ?.classList.remove("active");
+        }
+
+        dropdown?.classList.toggle("active");
+        linkEl.classList.toggle("active");
+    }
+
+    document.querySelectorAll('.mobile-menu_link').forEach((linkEl) => {
+        if (linkEl.querySelector("svg") != null) {
+            linkEl.addEventListener("click", handleMobileMenuDropdown);
+        } else {
+            linkEl.addEventListener("click", (e) => {
+                if (!e.target.getAttribute("href").includes("#")) {
+                    window.scrollTo(0, 0);
+                    document.body.classList.toggle('mobile-menu-active');
+                    document.body.classList.toggle('no-scroll');
+                    document.documentElement.classList.toggle('no-scroll');
+                }
+            });
+        }
     });
 </script>

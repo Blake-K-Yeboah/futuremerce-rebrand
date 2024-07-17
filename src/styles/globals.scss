@@ -10,11 +10,21 @@
     box-sizing: border-box;
 }
 
+html,
+body {
+    overflow-x: hidden;
+}
+
+html.no-scroll,
+body.no-scroll {
+    overflow: hidden;
+    position: relative;
+}
+
 body {
     font-family: "Red Hat Display", sans-serif;
     background: #100f17;
     position: relative;
-    overflow-x: hidden;
 
     &::-webkit-scrollbar {
         width: 5px;
@@ -77,6 +87,10 @@ body:after {
     top: 50vh;
     left: -263px;
     animation: leftCicleAnimation 10s linear infinite;
+
+    @media screen and (max-width: 1023px) {
+        transform: translateX(-100px);
+    }
 }
 
 body:after {
@@ -86,6 +100,10 @@ body:after {
     height: 588px;
     top: -200px;
     animation: rightCicleAnimation 10s linear infinite;
+
+    @media screen and (max-width: 1023px) {
+        transform: translateX(100px);
+    }
 }
 
 .container {
@@ -112,6 +130,12 @@ body:after {
     text-align: center;
     text-transform: capitalize;
     margin-top: 34px;
+
+    @media screen and (max-width: 1023px) {
+        font-size: 32px;
+        line-height: 38px;
+        margin-top: 24px;
+    }
 }
 
 // General Components

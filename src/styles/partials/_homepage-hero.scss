@@ -9,6 +9,17 @@
     position: relative;
     max-height: 1000px;
 
+    @media screen and (max-width: 1023px) {
+        padding-top: 50px;
+        height: 80vh;
+    }
+
+    @media screen and (max-width: 767px) {
+        padding-top: 0;
+        height: fit-content;
+        margin: 120px 0;
+    }
+
     &_backgroud-line {
         position: absolute;
         top: 50%;
@@ -25,6 +36,10 @@
         align-items: center;
         position: relative;
         z-index: 3;
+
+        @media screen and (max-width: 1023px) {
+            max-width: 700px;
+        }
     }
 
     &_icon {
@@ -32,12 +47,32 @@
             margin: 0 auto 18px 0;
             width: 21px;
             height: 24px;
+
+            @media screen and (max-width: 600px) {
+                position: relative;
+                left: -20px;
+            }
+
+            @media screen and (max-width: 355px) {
+                position: relative;
+                left: 0;
+            }
         }
 
         &:last-of-type {
             margin-left: auto;
             width: 30px;
             height: 23.5px;
+
+            @media screen and (max-width: 600px) {
+                position: relative;
+                left: 20px;
+            }
+
+            @media screen and (max-width: 355px) {
+                position: relative;
+                left: 0;
+            }
         }
     }
 
@@ -68,11 +103,29 @@
         margin: 22px auto 58px;
         text-align: center;
 
+        @media screen and (max-width: 1023px) {
+            font-size: 60px;
+            line-height: 66px;
+            width: 100%;
+        }
+
+        @media screen and (max-width: 600px) {
+            font-size: 40px;
+            line-height: 45px;
+            margin: 24px auto 40px;
+        }
+
         > span {
             background: linear-gradient(90deg, #bcb7ff 0%, #703ab4 100%);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
+
+            @media screen and (max-width: 1023px) {
+                &:first-of-type {
+                    display: block;
+                }
+            }
         }
     }
 }

@@ -18,5 +18,11 @@
     &_icon {
         min-width: fit-content;
         height: fit-content;
+
+        @media screen and (max-width: 1023px) {
+            transform: scale(0.75);
+            min-width: 75px;
+            width: 75px;
+        }
     }
 }
