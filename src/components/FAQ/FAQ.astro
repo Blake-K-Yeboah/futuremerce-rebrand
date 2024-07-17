@@ -41,13 +41,17 @@ const { faq, hidden } = Astro.props as Props;
         </svg>
     </div>
     <div class="faqs_accordion-body">
-        {faq.data.answer}
+        <Fragment set:html={faq.data.answer} />
     </div>
 </div>
 
 <script is:inline data-astro-rerun>
     document.querySelectorAll(".faqs_accordion-head").forEach((accordion) => {
         accordion.addEventListener("click", (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            e.stopImmediatePropagation();
+            
             if (e.target)
                 e.target.closest(".faqs_accordion").classList.toggle("active");
         });

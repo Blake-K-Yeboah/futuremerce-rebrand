@@ -7,7 +7,7 @@ import FAQ from "../FAQ/FAQ.astro";
 import Container from "../Container/Container.astro";
 
 const faqs = await getCollection("faqs");
-const filters = [...new Set(faqs.map((f) => f.data.type))];
+const filters = [...new Set(faqs.map((f) => f.data.type.toLowerCase()))].sort();
 ---
 
 <section class="filterable-faqs">
@@ -42,7 +42,7 @@ const filters = [...new Set(faqs.map((f) => f.data.type))];
                     .forEach((faqEl) => {
                         faqEl.classList.toggle(
                             "hidden",
-                            faqEl.getAttribute("data-type") !==
+                            faqEl.getAttribute("data-type").toLowerCase() !==
                                 e.target.getAttribute("title"),
                         );
                     });
