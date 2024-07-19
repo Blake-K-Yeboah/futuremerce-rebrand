@@ -105,6 +105,12 @@ const faqs = await getCollection("faqs", ({ data }) => {
         margin-top: 140px;
     }
 
+        @media screen and (max-width: 767px) {
+            .title-group {
+                margin-top: 80px;
+            }
+        }
+
     .text-image-group:nth-of-type(2n + 1) {
         flex-direction: row;
     }

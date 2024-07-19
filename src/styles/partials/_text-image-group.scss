@@ -8,6 +8,16 @@
     justify-content: space-between;
     position: relative;
 
+    @media screen and (max-width: 1023px) {
+        margin: 80px auto 0;
+    }
+
+    @media screen and (max-width: 767px) {
+        flex-direction: column-reverse !important;
+        align-items: flex-start !important;
+        gap: 40px;
+    }
+
     &::after {
         content: "";
         position: absolute;
@@ -20,6 +30,11 @@
         background: var(--primary);
         filter: blur(100px);
         opacity: 0.2;
+
+        @media screen and (max-width: 1023px) {
+            width: 200px;
+            height: 200px;
+        }
     }
 
     > div {
@@ -27,6 +42,14 @@
         width: 536px;
         position: relative;
         z-index: 2;
+
+        @media screen and (max-width: 1023px) {
+            flex: 0 0 calc(100% - 24px - 300px);
+        }
+        @media screen and (max-width: 767px) {
+            flex: unset;
+            width: 100%;
+        }
     }
 
     &_image {
@@ -38,6 +61,19 @@
         border-radius: 24px;
         position: relative;
         z-index: 2;
+
+        @media screen and (max-width: 1023px) {
+            flex: 0 0 300px;
+            width: 300px;
+            height: 300px;
+        }
+
+        @media screen and (max-width: 767px) {
+            flex: unset;
+            width: 100%;
+            object-fit: cover;
+            height: 150px;
+        }
     }
 
     &_title {
@@ -53,6 +89,12 @@
         );
         background-clip: text;
         -webkit-background-clip: text;
+
+        @media screen and (max-width: 1023px) {
+            font-size: 32px;
+            line-height: 40px;
+            max-width: 390px;
+        }
     }
 
     &_text,
@@ -61,6 +103,12 @@
         font-size: 22px;
         line-height: 30px;
         margin-top: 40px;
+
+        @media screen and (max-width: 1023px) {
+            font-size: 16px;
+            line-height: 24px;
+            margin-top: 24px;
+        }
 
         a {
             text-decoration: none;

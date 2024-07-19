@@ -33,12 +33,21 @@
 
         &:nth-child(n + 2) {
             margin-top: 35px;
+
+            @media screen and (max-width: 767px) {
+                margin-top: 24px;
+            }
         }
 
         &.grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 30px;
+
+            @media screen and (max-width: 767px) {
+                gap: 24px;
+                grid-template-columns: 1fr;
+            }
         }
     }
 
@@ -49,7 +58,7 @@
         font-weight: 400;
         margin-top: 14px;
 
-        >span {
+        > span {
             color: #727272;
         }
     }
@@ -62,7 +71,7 @@
         line-height: 100%;
         font-weight: 400;
         margin-top: 14px;
-        background: #100F17;
+        background: #100f17;
         border-radius: 99px;
         border: none;
         appearance: none;
@@ -76,7 +85,7 @@
 
         &::placeholder {
             color: rgba(255, 255, 255, 0.4);
-            font-family: 'Lato', sans-serif;
+            font-family: "Lato", sans-serif;
         }
     }
 }

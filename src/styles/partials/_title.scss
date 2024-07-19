@@ -13,6 +13,7 @@
 
     &_title {
         @include title();
+        text-align: left;
     }
 
     &_icon {
@@ -23,6 +24,11 @@
             transform: scale(0.75);
             min-width: 75px;
             width: 75px;
+        }
+
+        @media screen and (max-width: 360px) {
+            width: 50px;
+            min-width: 50px;
         }
     }
 }

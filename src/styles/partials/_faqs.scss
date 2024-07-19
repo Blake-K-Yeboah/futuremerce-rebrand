@@ -9,18 +9,31 @@
     padding: 210px 24px;
     margin: 60px 0 100px;
 
+    @media screen and (max-width: 1023px) {
+        padding: 100px 24px;
+        margin-bottom: 20px;
+    }
+
     &_inner {
         max-width: 1220px;
         margin: 0 auto;
         display: flex;
         justify-content: space-between;
         align-items: center;
+
+        @media screen and (max-width: 1023px) {
+            flex-direction: column;
+            align-items: start;
+            gap: 40px;
+            max-width: 767px;
+        }
     }
 
     &_title {
         @include title();
         margin: 60px 0;
         position: relative;
+        text-align: left;
 
         &::after {
             content: "";
@@ -32,6 +45,10 @@
             right: 20px;
             top: -20px;
             z-index: 1;
+
+            @media screen and (max-width: 1023px) {
+                right: -100px;
+            }
         }
     }
 
@@ -44,6 +61,10 @@
     width: 100%;
     max-width: 587px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.13);
+
+    @media screen and (max-width: 1023px) {
+        max-width: unset;
+    }
 
     &.hidden {
         display: none;
@@ -59,6 +80,12 @@
         color: #d2d2d2;
         font-weight: 500;
         cursor: pointer;
+        gap: 16px;
+
+        @media screen and (max-width: 767px) {
+            font-size: 17px;
+            line-height: 23px;
+        }
 
         svg {
             min-width: 28px;
@@ -109,6 +136,10 @@
 .filterable-faqs {
     margin: 127px auto 175px;
 
+    @media screen and (max-width: 1023px) {
+        margin: 80px auto 100px;
+    }
+
     .container {
         display: flex;
         flex-direction: column;
@@ -117,6 +148,10 @@
 
     .button {
         margin-top: 70px;
+
+        @media screen and (max-width: 1023px) {
+            margin-top: 40px;
+        }
     }
 
     &_filters {
@@ -126,6 +161,15 @@
         gap: 24px;
         margin-bottom: 70px;
         width: 100%;
+
+        @media screen and (max-width: 1023px) {
+            justify-content: flex-start;
+            overflow-x: scroll;
+            padding: 0 20px;
+            width: calc(100% + 40px);
+            margin: 0 0 40px -20px;
+            gap: 0;
+        }
     }
 
     &_filter {
@@ -145,6 +189,11 @@
         text-transform: capitalize;
         padding: 0 24px;
         cursor: pointer;
+
+        @media screen and (max-width: 1023px) {
+            min-width: max-content;
+            margin-left: 8px;
+        }
 
         &:not(.active):hover {
             background: rgba(255, 255, 255, 0.25);

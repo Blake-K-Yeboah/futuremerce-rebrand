@@ -2,25 +2,30 @@
     padding: 24px;
     margin: 100px auto 144px;
 
+    @media screen and (max-width: 767px) {
+        margin-bottom: 75px;
+    }
+
     &_title {
         @include title();
 
-        >span {
-            background: linear-gradient(90deg, #BCB7FF 0%, #703AB4 100%);
+        > span {
+            background: linear-gradient(90deg, #bcb7ff 0%, #703ab4 100%);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
             position: relative;
 
             &:before {
-                content: '';
+                content: "";
                 position: absolute;
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%, -50%);
                 width: 567px;
                 height: 529px;
-                background: url('data:image/svg+xml,<svg width="567" height="529" viewBox="0 0 567 529" fill="none" xmlns="http://www.w3.org/2000/svg"><g filter="url(%23filter0_f_38_17)"><ellipse cx="283.5" cy="264.5" rx="87.5" ry="68.5" fill="%238B81FF" fill-opacity="0.14"/></g><defs><filter id="filter0_f_38_17" x="0" y="0" width="567" height="529" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur stdDeviation="98" result="effect1_foregroundBlur_38_17"/></filter></defs></svg>') center/cover no-repeat;
+                background: url('data:image/svg+xml,<svg width="567" height="529" viewBox="0 0 567 529" fill="none" xmlns="http://www.w3.org/2000/svg"><g filter="url(%23filter0_f_38_17)"><ellipse cx="283.5" cy="264.5" rx="87.5" ry="68.5" fill="%238B81FF" fill-opacity="0.14"/></g><defs><filter id="filter0_f_38_17" x="0" y="0" width="567" height="529" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur stdDeviation="98" result="effect1_foregroundBlur_38_17"/></filter></defs></svg>')
+                    center/cover no-repeat;
             }
         }
     }
@@ -33,6 +38,16 @@
         width: 100%;
         max-width: 1097px;
 
+        @media screen and (max-width: 1024px) {
+            grid-template-columns: 1fr 1fr;
+            max-width: 500px;
+        }
+
+        @media screen and (max-width: 500px) {
+            grid-template-columns: 1fr;
+            max-width: 500px;
+        }
+
         &-item {
             width: 100%;
             display: flex;
@@ -44,6 +59,7 @@
                 font-size: 24px;
                 font-weight: 600;
                 color: #fff;
+                text-align: center;
             }
 
             &-text {

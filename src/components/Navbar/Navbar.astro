@@ -198,7 +198,8 @@ const links: NavbarLink[] = [
     <div class="mobile-menu_backdrop"></div>
 </aside>
 
-<script is:inline>
+<script>
+    // @ts-nocheck
     const navbar = document.querySelector(".navbar");
 
     const handleScroll = () => {
@@ -255,6 +256,17 @@ const links: NavbarLink[] = [
                 if (!e.target.getAttribute("href").includes("#")) {
                     window.scrollTo(0, 0);
                 }
+
+        const activeDropdown = document.querySelector(
+            ".navbar_dropdown.active",
+        );
+        const navbar = document.querySelector(".navbar");
+
+        activeDropdown.classList.remove("active");
+        document
+            .querySelector(".navbar_link.active")
+            ?.classList.remove("active");
+        navbar?.classList.remove("active");
             });
         }
     });
@@ -283,7 +295,8 @@ const links: NavbarLink[] = [
         document.documentElement.classList.toggle('no-scroll');
     });
 
-    const handleMobileMenuDropdown = (e) => {
+    
+    window.handleMobileMenuDropdown = (e) => {
         const linkEl = e.target.href
             ? e.target
             : e.target.closest(".mobile-menu_link");
@@ -311,19 +324,40 @@ const links: NavbarLink[] = [
         dropdown?.classList.toggle("active");
         linkEl.classList.toggle("active");
     }
+</script>
 
-    document.querySelectorAll('.mobile-menu_link').forEach((linkEl) => {
-        if (linkEl.querySelector("svg") != null) {
-            linkEl.addEventListener("click", handleMobileMenuDropdown);
-        } else {
-            linkEl.addEventListener("click", (e) => {
-                if (!e.target.getAttribute("href").includes("#")) {
-                    window.scrollTo(0, 0);
-                    document.body.classList.toggle('mobile-menu-active');
-                    document.body.classList.toggle('no-scroll');
-                    document.documentElement.classList.toggle('no-scroll');
-                }
-            });
-        }
-    });
+<script is:inline data-astro-rerun>
+    if (window.handleMobileMenuDropdown != undefined) {
+        document.querySelectorAll('.mobile-menu_link').forEach((linkEl) => {
+            if (linkEl.querySelector("svg") != null) {
+                linkEl.addEventListener("click", handleMobileMenuDropdown);
+            } else {
+                linkEl.addEventListener("click", (e) => {
+                    if (!e.target.getAttribute("href").includes("#")) {
+                        window.scrollTo(0, 0);
+                        document.body.classList.toggle('mobile-menu-active');
+                        document.body.classList.toggle('no-scroll');
+                        document.documentElement.classList.toggle('no-scroll');
+                    }
+                });
+            }
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.mobile-menu_link').forEach((linkEl) => {
+            if (linkEl.querySelector("svg") != null) {
+                linkEl.addEventListener("click", handleMobileMenuDropdown);
+            } else {
+                linkEl.addEventListener("click", (e) => {
+                    if (!e.target.getAttribute("href").includes("#")) {
+                        window.scrollTo(0, 0);
+                        document.body.classList.toggle('mobile-menu-active');
+                        document.body.classList.toggle('no-scroll');
+                        document.documentElement.classList.toggle('no-scroll');
+                    }
+                });
+            }
+        });
+    })
 </script>
