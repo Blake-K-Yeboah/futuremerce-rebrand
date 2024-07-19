@@ -50,10 +50,11 @@ if (metaInfo && metaInfo.itemType) itemType = metaInfo.itemType;
 		</script>
 
 		<script>
+			// @ts-nocheck
 			// Smooth Scrolling
 			import Lenis from "@studio-freight/lenis";
 
-			const lenis = new Lenis();
+			window.lenis = new Lenis();
 
 			function raf(time: number) {
 				lenis.raf(time);
@@ -64,7 +65,7 @@ if (metaInfo && metaInfo.itemType) itemType = metaInfo.itemType;
 		</script>
 
 		<script type="text/javascript" is:inline>
-			// Calendly
+			// Cal.com
 			(function (C, A, L) {
 				let p = function (a, ar) {
 					a.q.push(ar);
