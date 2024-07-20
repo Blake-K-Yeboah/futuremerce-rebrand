@@ -221,6 +221,15 @@ const links: NavbarLink[] = [
 
 <script>
     // @ts-nocheck
+    window.trackLinkClick = (text, url) => {
+			window.dataLayer = window.dataLayer || [];
+            dataLayer.push({
+                event: 'link_click',
+                link_text: text,
+                link_url: url
+            });
+    }
+
     const navbar = document.querySelector(".navbar");
 
     const handleScroll = () => {
@@ -283,11 +292,16 @@ const links: NavbarLink[] = [
                 );
                 const navbar = document.querySelector(".navbar");
 
-                activeDropdown.classList.remove("active");
+                if (activeDropdown) {
+                    activeDropdown.classList.remove("active");
+                }
+
                 document
                     .querySelector(".navbar_link.active")
                     ?.classList.remove("active");
                 navbar?.classList.remove("active");
+
+                trackLinkClick(e.target.textContent.trim(), e.target.getAttribute("href"));
             });
         }
     });
@@ -298,11 +312,18 @@ const links: NavbarLink[] = [
         );
         const navbar = document.querySelector(".navbar");
 
-        activeDropdown.classList.remove("active");
+        if (activeDropdown) {
+            activeDropdown.classList.remove("active");
+        }
+
         document
             .querySelector(".navbar_link.active")
             ?.classList.remove("active");
         navbar?.classList.remove("active");
+
+        let url = e.target.getAttribute("href") ?? e.target.closest('a').getAttribute('href');
+
+        trackLinkClick(e.target.textContent.trim(), url);
     };
 
     document.querySelectorAll(".navbar_dropdown-link").forEach((linkEl) => {
@@ -314,12 +335,6 @@ const links: NavbarLink[] = [
         document.body.classList.toggle("mobile-menu-active");
         document.body.classList.toggle("no-scroll");
         document.documentElement.classList.toggle("no-scroll");
-
-        if (document.body.classList.contains("no-scroll")) {
-            lenis.stop();
-        } else {
-            lenis.start();
-        }
     });
 
     window.handleMobileMenuDropdown = (e) => {
@@ -365,6 +380,8 @@ const links: NavbarLink[] = [
                         document.body.classList.toggle("no-scroll");
                         document.documentElement.classList.toggle("no-scroll");
                     }
+
+                    trackLinkClick(e.target.textContent.trim(), e.target.getAttribute("href"));
                 });
             }
         });
@@ -382,6 +399,8 @@ const links: NavbarLink[] = [
                         document.body.classList.toggle("no-scroll");
                         document.documentElement.classList.toggle("no-scroll");
                     }
+
+                    trackLinkClick(e.target.textContent.trim(), e.target.getAttribute("href"));
                 });
             }
         });
