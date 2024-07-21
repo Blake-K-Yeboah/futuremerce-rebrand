@@ -314,12 +314,6 @@ const links: NavbarLink[] = [
         document.body.classList.toggle("mobile-menu-active");
         document.body.classList.toggle("no-scroll");
         document.documentElement.classList.toggle("no-scroll");
-
-        if (document.body.classList.contains("no-scroll")) {
-            lenis.stop();
-        } else {
-            lenis.start();
-        }
     });
 
     window.handleMobileMenuDropdown = (e) => {
