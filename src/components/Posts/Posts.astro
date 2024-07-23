@@ -45,17 +45,7 @@ const filters = [...new Set(posts.map((p) => p.data.category))];
 </section>
 
 <script>
-    // document
-    //     .querySelector(".posts_btn .button")
-    //     .addEventListener("click", (e) => {
-    //         e.preventDefault();
-
-    //         document
-    //             .querySelectorAll(".post-card")
-    //             .forEach((postCardEl) => postCardEl.classList.remove("hidden"));
-    //         document.querySelector(".posts_btn .button").remove();
-    //     });
-
+    // @ts-nocheck
     document.querySelectorAll(".posts_filter").forEach((filterEl) =>
         filterEl.addEventListener("click", (e) => {
             const filter = e.target.getAttribute("data-filter");
@@ -85,7 +75,7 @@ const filters = [...new Set(posts.map((p) => p.data.category))];
                         }
                     });
             }
-        }),
+        })
     );
 
     document

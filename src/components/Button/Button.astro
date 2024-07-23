@@ -43,7 +43,7 @@ if (href) {
 
 <script>
     document.querySelectorAll(".button").forEach((buttonEl) => {
-        const dataLink = buttonEl.getAttribute("data-link");
+        const dataLink: any = buttonEl.getAttribute("data-link");
 
         if (dataLink == "#book-a-call") {
             buttonEl.setAttribute("data-cal-link", "futuremerce/30min");
