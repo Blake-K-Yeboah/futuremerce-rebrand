@@ -161,14 +161,14 @@ const faqs = await getCollection("faqs", ({ data }) => {
         margin-top: 140px;
     }
 
-        @media screen and (max-width: 767px) {
-            .title-group {
-                margin-top: 80px;
-            }
+    @media screen and (max-width: 767px) {
+        .title-group {
+            margin-top: 80px;
         }
+    }
 </style>
 
-<script is:inline data-astro-rerun>
+<script>
     document
         .querySelector("body > .button:first-of-type")
         ?.addEventListener("click", (e) => {

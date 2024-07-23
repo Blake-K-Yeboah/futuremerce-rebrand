@@ -191,3 +191,25 @@ links[0].sublinks = services.map((service) => ({
         </div>
     </section>
 </footer>
+
+<script is:inline>
+    document.addEventListener("DOMContentLoaded", () => {
+        document
+            .querySelector(".footer_get-started .button")
+            .addEventListener("click", (e) => {
+                e.preventDefault();
+
+                window.dataLayer = window.dataLayer || [];
+                dataLayer.push({
+                    event: "button_click",
+                    button_text: "Lets Go",
+                    button_url: "/get-started",
+                    button_location: "footer",
+                });
+
+                setTimeout(() => {
+                    window.location.href = "/get-started";
+                }, 500);
+            });
+    });
+</script>

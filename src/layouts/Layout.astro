@@ -20,37 +20,66 @@ if (metaInfo && metaInfo.itemType) itemType = metaInfo.itemType;
 		<SEO title={title} metaInfo={metaInfo} />
 
 		<!-- Google Tag Manager -->
-		<script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-		})(window,document,'script','dataLayer','GTM-MBTSJ9LC');</script>
+		<script is:inline>
+			(function (w, d, s, l, i) {
+				w[l] = w[l] || [];
+				w[l].push({
+					"gtm.start": new Date().getTime(),
+					event: "gtm.js",
+				});
+				var f = d.getElementsByTagName(s)[0],
+					j = d.createElement(s),
+					dl = l != "dataLayer" ? "&l=" + l : "";
+				j.async = true;
+				j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+				f.parentNode.insertBefore(j, f);
+			})(window, document, "script", "dataLayer", "GTM-MBTSJ9LC");
+		</script>
 		<!-- End Google Tag Manager -->
-
 
 		<!-- Glide CSS -->
 		<link
 			rel="stylesheet"
 			href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css"
 		/>
-
-		<ViewTransitions />
 	</head>
 	<body itemscope itemtype={itemType}>
 		<!-- Google Tag Manager (noscript) -->
-		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBTSJ9LC"
-		height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+		<noscript
+			><iframe
+				src="https://www.googletagmanager.com/ns.html?id=GTM-MBTSJ9LC"
+				height="0"
+				width="0"
+				style="display:none;visibility:hidden"></iframe></noscript
+		>
 		<!-- End Google Tag Manager (noscript) -->
 
 		<Navbar />
-		<slot transition:animate="slide" />
+		<slot />
 		<Footer />
 
-		<script is:inline data-astro-rerun>
-			// Track Page Changes
-			window.dataLayer = window.dataLayer || [];
-  			function gtag(){dataLayer.push(arguments);}
-			gtag('event', 'page_view', {'page_title': document.title, 'page_location': window.location.href});
+		<script is:inline>
+			// document.addEventListener(
+			// 	"astro:page-load",
+			// 	() => {
+			// 		console.log("RUNNING 1");
+			// 		if (!document.body.classList.contains("tracking-setup")) {
+			// 			window.dataLayer = window.dataLayer || [];
+			// 			document.body.classList.add("tracking-setup");
+
+			// 			console.log("RUNNING 2");
+
+			// 			function gtag() {
+			// 				dataLayer.push(arguments);
+			// 			}
+			// 			gtag("event", "page_view", {
+			// 				page_title: document.title,
+			// 				page_location: window.location.href,
+			// 			});
+			// 		}
+			// 	},
+			// 	{ once: true },
+			// );
 		</script>
 
 		<script>

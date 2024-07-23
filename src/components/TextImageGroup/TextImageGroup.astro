@@ -24,7 +24,7 @@ const { title, text, image, list } = Astro.props as TextImageGroupProps;
     <Image src={image} alt="" loading="lazy" class="text-image-group_image" />
 </section>
 
-<script is:inline data-astro-rerun>
+<script>
     document.querySelectorAll(".text-image-group_text").forEach((textEl) => {
         if (textEl.textContent?.includes("Contact us")) {
             textEl.innerHTML = textEl.innerHTML.replace(

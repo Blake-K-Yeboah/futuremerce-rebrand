@@ -28,7 +28,7 @@ const filters = [...new Set(faqs.map((f) => f.data.type.toLowerCase()))].sort();
     </Container>
 </section>
 
-<script is:inline data-astro-rerun>
+<script>
     document.querySelectorAll(".filterable-faqs_filter").forEach((filterEl) => {
         filterEl.addEventListener("click", (e) => {
             if (!e.target?.classList.contains("active")) {

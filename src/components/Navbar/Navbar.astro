@@ -222,13 +222,13 @@ const links: NavbarLink[] = [
 <script>
     // @ts-nocheck
     window.trackLinkClick = (text, url) => {
-			window.dataLayer = window.dataLayer || [];
-            dataLayer.push({
-                event: 'link_click',
-                link_text: text,
-                link_url: url
-            });
-    }
+        window.dataLayer = window.dataLayer || [];
+        dataLayer.push({
+            event: "link_click",
+            link_text: text,
+            link_url: url,
+        });
+    };
 
     const navbar = document.querySelector(".navbar");
 
@@ -283,45 +283,18 @@ const links: NavbarLink[] = [
             linkEl.addEventListener("click", handleDropdown);
         } else {
             linkEl.addEventListener("click", (e) => {
-                if (!e.target.getAttribute("href").includes("#")) {
-                    window.scrollTo(0, 0);
-                }
-
-                const activeDropdown = document.querySelector(
-                    ".navbar_dropdown.active",
+                trackLinkClick(
+                    e.target.textContent.trim(),
+                    e.target.getAttribute("href"),
                 );
-                const navbar = document.querySelector(".navbar");
-
-                if (activeDropdown) {
-                    activeDropdown.classList.remove("active");
-                }
-
-                document
-                    .querySelector(".navbar_link.active")
-                    ?.classList.remove("active");
-                navbar?.classList.remove("active");
-
-                trackLinkClick(e.target.textContent.trim(), e.target.getAttribute("href"));
             });
         }
     });
 
     const handleDropdownSublink = (e) => {
-        const activeDropdown = document.querySelector(
-            ".navbar_dropdown.active",
-        );
-        const navbar = document.querySelector(".navbar");
-
-        if (activeDropdown) {
-            activeDropdown.classList.remove("active");
-        }
-
-        document
-            .querySelector(".navbar_link.active")
-            ?.classList.remove("active");
-        navbar?.classList.remove("active");
-
-        let url = e.target.getAttribute("href") ?? e.target.closest('a').getAttribute('href');
+        let url =
+            e.target.getAttribute("href") ??
+            e.target.closest("a").getAttribute("href");
 
         trackLinkClick(e.target.textContent.trim(), url);
     };
@@ -367,42 +340,44 @@ const links: NavbarLink[] = [
     };
 </script>
 
-<script is:inline data-astro-rerun>
-    if (window.handleMobileMenuDropdown != undefined) {
-        document.querySelectorAll(".mobile-menu_link").forEach((linkEl) => {
-            if (linkEl.querySelector("svg") != null) {
-                linkEl.addEventListener("click", handleMobileMenuDropdown);
-            } else {
-                linkEl.addEventListener("click", (e) => {
-                    if (!e.target.getAttribute("href").includes("#")) {
-                        window.scrollTo(0, 0);
-                        document.body.classList.toggle("mobile-menu-active");
-                        document.body.classList.toggle("no-scroll");
-                        document.documentElement.classList.toggle("no-scroll");
-                    }
-
-                    trackLinkClick(e.target.textContent.trim(), e.target.getAttribute("href"));
-                });
-            }
-        });
-    }
-
+<script is:inline>
     document.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll(".mobile-menu_link").forEach((linkEl) => {
             if (linkEl.querySelector("svg") != null) {
                 linkEl.addEventListener("click", handleMobileMenuDropdown);
             } else {
                 linkEl.addEventListener("click", (e) => {
-                    if (!e.target.getAttribute("href").includes("#")) {
-                        window.scrollTo(0, 0);
-                        document.body.classList.toggle("mobile-menu-active");
-                        document.body.classList.toggle("no-scroll");
-                        document.documentElement.classList.toggle("no-scroll");
-                    }
+                    let url =
+                        e.target.getAttribute("href") ??
+                        e.target.closest("a").getAttribute("href");
 
-                    trackLinkClick(e.target.textContent.trim(), e.target.getAttribute("href"));
+                    trackLinkClick(e.target.textContent.trim(), url);
                 });
             }
         });
+
+        document
+            .querySelector(".navbar_actions .button")
+            .addEventListener("click", (e) => {
+                window.dataLayer = window.dataLayer || [];
+                dataLayer.push({
+                    event: "button_click",
+                    button_text: "Book a call",
+                    button_url: "#book-a-call",
+                    button_location: "navbar",
+                });
+            });
+
+        document
+            .querySelector(".mobile-menu_inner .button")
+            .addEventListener("click", (e) => {
+                window.dataLayer = window.dataLayer || [];
+                dataLayer.push({
+                    event: "button_click",
+                    button_text: "Book a call",
+                    button_url: "#book-a-call",
+                    button_location: "navbar",
+                });
+            });
     });
 </script>
