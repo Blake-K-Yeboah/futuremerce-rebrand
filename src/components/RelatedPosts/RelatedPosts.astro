@@ -18,6 +18,10 @@ if ("relatedPosts" in post.data) {
         return slug !== post.slug && data.category == post.data.category;
     });
 }
+
+if (relatedPosts.length == 0) {
+    relatedPosts = await getCollection("blog");
+}
 ---
 
 <section class="related-posts">
