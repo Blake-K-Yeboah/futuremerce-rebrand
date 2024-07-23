@@ -195,21 +195,16 @@ links[0].sublinks = services.map((service) => ({
 <script is:inline>
     document.addEventListener("DOMContentLoaded", () => {
         document
-            .querySelector(".footer_get-started .button")
-            .addEventListener("click", (e) => {
-                e.preventDefault();
-
-                window.dataLayer = window.dataLayer || [];
-                dataLayer.push({
-                    event: "button_click",
-                    button_text: "Lets Go",
-                    button_url: "/get-started",
-                    button_location: "footer",
+            .querySelectorAll(".footer_inner .footer_links-group-link").forEach(linkEl => {
+                linkEl.addEventListener("click", (e) => {
+                    window.dataLayer = window.dataLayer || [];
+                    dataLayer.push({
+                        event: "link_click",
+                        link_text: e.target.textContent,
+                        link_url: e.target.getAttribute('href'),
+                    });
                 });
-
-                setTimeout(() => {
-                    window.location.href = "/get-started";
-                }, 500);
-            });
+            })
+            
     });
 </script>

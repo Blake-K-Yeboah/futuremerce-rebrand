@@ -4,7 +4,7 @@ import type { CollectionEntry } from "astro:content";
 import Box from "../Box/Box.astro";
 
 interface Props {
-    items: CollectionEntry<"services">[] | Box[];
+    items: any[];
 }
 
 const { items } = Astro.props as Props;

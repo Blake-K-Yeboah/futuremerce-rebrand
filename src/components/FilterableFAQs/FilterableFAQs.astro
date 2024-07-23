@@ -29,6 +29,7 @@ const filters = [...new Set(faqs.map((f) => f.data.type.toLowerCase()))].sort();
 </section>
 
 <script>
+    // @ts-nocheck
     document.querySelectorAll(".filterable-faqs_filter").forEach((filterEl) => {
         filterEl.addEventListener("click", (e) => {
             if (!e.target?.classList.contains("active")) {
@@ -43,7 +44,7 @@ const filters = [...new Set(faqs.map((f) => f.data.type.toLowerCase()))].sort();
                         faqEl.classList.toggle(
                             "hidden",
                             faqEl.getAttribute("data-type").toLowerCase() !==
-                                e.target.getAttribute("title"),
+                                e.target.getAttribute("title")
                         );
                     });
             }

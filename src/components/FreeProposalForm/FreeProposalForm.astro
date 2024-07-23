@@ -2,7 +2,7 @@
 import Button from "../Button/Button.astro";
 ---
 
-<form class="contact-form" method="POST">
+<form class="contact-form" method="POST" id="free-proposal-form" name="free-proposal-form">
     <div class="contact-form_group grid">
         <div>
             <label for="name">Name*</label>
@@ -63,6 +63,7 @@ import Button from "../Button/Button.astro";
 </form>
 
 <script>
+    // @ts-nocheck
     const handleFormSubmit = () => {
         const name = document.querySelector("#name").value;
         const email = document.querySelector("#email").value;
@@ -99,6 +100,11 @@ import Button from "../Button/Button.astro";
             alert(errors[0]);
             return;
         }
+
+        // Tracking
+        window.dataLayer.push({
+            event: 'get_started_form_submission'
+        });
 
         // Submit form with Ajax
         var data = new FormData(document.querySelector(".contact-form"));

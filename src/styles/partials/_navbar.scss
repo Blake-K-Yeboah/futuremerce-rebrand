@@ -40,6 +40,11 @@
         > svg {
             width: 200px;
             height: 37px;
+
+            @media screen and (max-width: 500px) {
+                width: 175px;
+                height: 32.75px;
+            }
         }
     }
 

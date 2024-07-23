@@ -46,6 +46,7 @@ const { faq, hidden } = Astro.props as Props;
 </div>
 
 <script>
+    // @ts-nocheck
     document.querySelectorAll(".faqs_accordion-head").forEach((accordion) => {
         accordion.addEventListener("click", (e) => {
             e.preventDefault();

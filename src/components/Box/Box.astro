@@ -8,7 +8,7 @@ import boxCTAArrow from "../../icons/cta-arrow.svg";
 import Button from "../Button/Button.astro";
 
 interface Props {
-    box: CollectionEntry<"services"> | Box;
+    box: any;
 }
 
 const { box } = Astro.props as Props;
@@ -19,6 +19,7 @@ if ("collection" in box && box.collection == "services") {
     data.cta = {
         label: "Learn more",
         link: `/services/${box.id}`,
+        is_button: false,
     };
 }
 ---

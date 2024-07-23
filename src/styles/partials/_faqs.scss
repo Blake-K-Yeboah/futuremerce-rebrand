@@ -1,9 +1,11 @@
 .faqs {
-    background: linear-gradient(180deg,
-            #100f17 0%,
-            #13131e 17%,
-            #13131e 76%,
-            #100f17 100%);
+    background: linear-gradient(
+        180deg,
+        #100f17 0%,
+        #13131e 17%,
+        #13131e 76%,
+        #100f17 100%
+    );
     padding: 210px 24px;
     margin: 60px 0 100px;
 
@@ -28,16 +30,17 @@
     }
 
     &_title {
-        @include title();
         margin: 60px 0;
         position: relative;
         text-align: left;
+        @include title();
 
         &::after {
             content: "";
             width: 120px;
             height: 120px;
-            background: url('data:image/svg+xml,<svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M60 96V85.888C60 74.928 66.192 64.904 76 60C80.8146 57.56 84.8587 53.8333 87.6831 49.2337C90.5076 44.634 92.0018 39.3416 92 33.944C92 17.56 78.72 4 62.336 4H60.68C50 4 39.76 8.24 32.2 15.792L28 20M56 116H64" stroke="white" stroke-opacity="0.07" stroke-width="8"/></svg>') center/cover no-repeat;
+            background: url('data:image/svg+xml,<svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M60 96V85.888C60 74.928 66.192 64.904 76 60C80.8146 57.56 84.8587 53.8333 87.6831 49.2337C90.5076 44.634 92.0018 39.3416 92 33.944C92 17.56 78.72 4 62.336 4H60.68C50 4 39.76 8.24 32.2 15.792L28 20M56 116H64" stroke="white" stroke-opacity="0.07" stroke-width="8"/></svg>')
+                center/cover no-repeat;
             position: absolute;
             right: 20px;
             top: -20px;
@@ -108,7 +111,7 @@
             color: var(--primary);
         }
 
-        >ul {
+        > ul {
             padding-left: 20px;
             margin-top: 12px;
         }

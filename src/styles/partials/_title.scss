@@ -12,8 +12,8 @@
     }
 
     &_title {
-        @include title();
         text-align: left;
+        @include title();
     }
 
     &_icon {
