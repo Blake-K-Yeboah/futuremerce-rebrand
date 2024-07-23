@@ -1,0 +1,4 @@
+# Redirects from what the browser requests to what we serve
+/get-started         /
+/legal               /terms-and-conditions
+/posts/how-a-development-subscription-can-save-you-money/               /blog
