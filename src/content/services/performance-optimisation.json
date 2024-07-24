@@ -2,6 +2,6 @@
     "title": "Performance Optimisation",
     "description": "Site speed is key to ecommerce success. Our experienced team can help optimize your store’s performance.",
     "shortDescription": "Optimize your store's performance to increase conversions and sales.",
-    "image": "performance.svg",
+    "image": "/src/icons/performance.svg",
     "order": 3
 }

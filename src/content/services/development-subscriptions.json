@@ -2,6 +2,6 @@
     "title": "Development Subscriptions",
     "description": "Unlimited Shopify development, one flat monthly fee. Perfect for people and agencies with ongoing development needs.",
     "shortDescription": "Perfect for people with ongoing development needs.",
-    "image": "subscription.svg",
+    "image": "/src/icons/subscription.svg",
     "order": 4
 }

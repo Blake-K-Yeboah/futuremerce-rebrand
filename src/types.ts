@@ -20,7 +20,7 @@ export interface NavbarLink {
 export interface NavbarSubLink {
     label: string;
     text: string;
-    icon: string;
+    icon: ImageMetadata;
     href: string;
 }
 

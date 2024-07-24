@@ -108,7 +108,7 @@ import Button from "../Button/Button.astro";
                         ?.classList.add("success");
                 }
             })
-            .catch((error) => {
+            .catch(() => {
                 document.querySelector(".contact-form").innerHTML +=
                     `<div class="contact-form_error">Oops! There was a problem submitting your form</div>`;
             });
