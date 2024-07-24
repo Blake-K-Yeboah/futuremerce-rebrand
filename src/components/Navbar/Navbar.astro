@@ -97,12 +97,9 @@ const links: NavbarLink[] = [
                                             class="navbar_dropdown-link"
                                         >
                                             <Image
-                                                src={
-                                                    import(
-                                                        /* @vite-ignore */ "/src/icons/" +
-                                                            sublink.icon
-                                                    )
-                                                }
+                                                src={import(
+                                                    /* @vite-ignore */ `../../icons/${sublink.icon}`
+                                                )}
                                                 alt=""
                                             />
                                             <p>
@@ -190,12 +187,9 @@ const links: NavbarLink[] = [
                                             class="mobile-menu_dropdown-link"
                                         >
                                             <Image
-                                                src={
-                                                    import(
-                                                        /* @vite-ignore */ "/src/icons/" +
-                                                            sublink.icon
-                                                    )
-                                                }
+                                                src={import(
+                                                   /* @vite-ignore */ `../../icons/${sublink.icon}`
+                                                )}
                                                 alt=""
                                             />
                                             <p>
@@ -251,12 +245,12 @@ const links: NavbarLink[] = [
         const href = linkEl.href;
 
         const dropdown = document.querySelector(
-            `.navbar_dropdown[data-dropdown="${"#" + href.split("#")[1]}"]`,
+            `.navbar_dropdown[data-dropdown="${"#" + href.split("#")[1]}"]`
         );
         const navbar = document.querySelector(".navbar");
 
         const activeDropdown = document.querySelector(
-            ".navbar_dropdown.active",
+            ".navbar_dropdown.active"
         );
 
         if (
@@ -285,7 +279,7 @@ const links: NavbarLink[] = [
             linkEl.addEventListener("click", (e) => {
                 trackLinkClick(
                     e.target.textContent.trim(),
-                    e.target.getAttribute("href"),
+                    e.target.getAttribute("href")
                 );
             });
         }
@@ -317,11 +311,11 @@ const links: NavbarLink[] = [
         const href = linkEl.href;
 
         const dropdown = document.querySelector(
-            `.mobile-menu_dropdown[data-dropdown="${"#" + href.split("#")[1]}"]`,
+            `.mobile-menu_dropdown[data-dropdown="${"#" + href.split("#")[1]}"]`
         );
 
         const activeDropdown = document.querySelector(
-            ".mobile-menu_dropdown.active",
+            ".mobile-menu_dropdown.active"
         );
 
         if (
