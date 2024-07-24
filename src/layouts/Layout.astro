@@ -13,16 +13,10 @@ let itemType = "http://schema.org/WebPage";
 if (metaInfo && metaInfo.itemType) itemType = metaInfo.itemType;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
     <head>
         <SEO title={title} metaInfo={metaInfo} />
-
-        <!-- Glide CSS -->
-        <link
-            rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css"
-        />
     </head>
     <body itemscope itemtype={itemType}>
         <!-- Google Tag Manager (noscript) -->
