@@ -2,19 +2,20 @@ import { z, defineCollection, reference } from "astro:content";
 
 const serviceCollection = defineCollection({
     type: "data",
-    schema: z.object({
-        title: z.string(),
-        description: z.string(),
-        image: z.string(),
-        order: z.number(),
-        shortDescription: z.string(),
-        cta: z
-            .object({
-                label: z.string(),
-                link: z.string(),
-            })
-            .optional(),
-    }),
+    schema: ({ image }) =>
+        z.object({
+            title: z.string(),
+            description: z.string(),
+            image: image(),
+            order: z.number(),
+            shortDescription: z.string(),
+            cta: z
+                .object({
+                    label: z.string(),
+                    link: z.string(),
+                })
+                .optional(),
+        }),
 });
 
 const faqCollection = defineCollection({

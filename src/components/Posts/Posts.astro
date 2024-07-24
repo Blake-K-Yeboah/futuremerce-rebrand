@@ -88,7 +88,7 @@ const filters = [...new Set(posts.map((p) => p.data.category))];
 
     document
         .querySelector(".posts_search .button")
-        .addEventListener("click", (e) => {
+        .addEventListener("click", () => {
             const search = document
                 .querySelector(".posts_search input")
                 .value.toLowerCase();

@@ -7,6 +7,10 @@ import Container from "../Container/Container.astro";
 import { Icon } from "astro-icon/components";
 import { getCollection } from "astro:content";
 
+import aboutUsIcon from "../../icons/about-us-icon.svg";
+import faqsIcon from "../../icons/faqs-icon.svg";
+import contactIcon from "../../icons/contact-icon.svg";
+
 const allServices = await getCollection("services");
 allServices.sort((a, b) => (a.data.order > b.data.order ? 1 : -1));
 
@@ -18,19 +22,19 @@ const links: NavbarLink[] = [
             {
                 label: "About Us",
                 text: "Get to know us better",
-                icon: "about-us-icon.svg",
+                icon: aboutUsIcon,
                 href: "/about-us",
             },
             {
                 label: "FAQs",
                 text: "Answers to your questions",
-                icon: "faqs-icon.svg",
+                icon: faqsIcon,
                 href: "/faq",
             },
             {
                 label: "Contact",
                 text: "Get in touch with us",
-                icon: "contact-icon.svg",
+                icon: contactIcon,
                 href: "/contact",
             },
         ],
@@ -97,9 +101,7 @@ const links: NavbarLink[] = [
                                             class="navbar_dropdown-link"
                                         >
                                             <Image
-                                                src={import(
-                                                    /* @vite-ignore */ `../../icons/${sublink.icon}`
-                                                )}
+                                                src={sublink.icon}
                                                 alt=""
                                             />
                                             <p>
@@ -187,9 +189,7 @@ const links: NavbarLink[] = [
                                             class="mobile-menu_dropdown-link"
                                         >
                                             <Image
-                                                src={import(
-                                                   /* @vite-ignore */ `../../icons/${sublink.icon}`
-                                                )}
+                                                src={sublink.icon}
                                                 alt=""
                                             />
                                             <p>
@@ -352,7 +352,7 @@ const links: NavbarLink[] = [
 
         document
             .querySelector(".navbar_actions .button")
-            .addEventListener("click", (e) => {
+            .addEventListener("click", () => {
                 window.dataLayer = window.dataLayer || [];
                 dataLayer.push({
                     event: "button_click",
@@ -364,7 +364,7 @@ const links: NavbarLink[] = [
 
         document
             .querySelector(".mobile-menu_inner .button")
-            .addEventListener("click", (e) => {
+            .addEventListener("click", () => {
                 window.dataLayer = window.dataLayer || [];
                 dataLayer.push({
                     event: "button_click",

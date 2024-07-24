@@ -1,6 +1,5 @@
 ---
 import { Image } from "astro:assets";
-import type { CollectionEntry } from "astro:content";
 
 import type { Box } from "../../types";
 
@@ -29,13 +28,7 @@ if ("collection" in box && box.collection == "services") {
         data.image && (
             <div class="box_icon">
                 <Image
-                    src={
-                        typeof data.image != "string"
-                            ? data.image
-                            : import(
-                                  /* @vite-ignore */ "../../icons/" + data.image
-                              )
-                    }
+                    src={data.image}
                     alt=""
                     loading="eager"
                 />
