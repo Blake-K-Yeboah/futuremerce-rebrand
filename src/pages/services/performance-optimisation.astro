@@ -81,14 +81,28 @@ const benefits: Box[] = [
 const faqs = await getCollection("faqs", ({ data }) => {
     return data.type === "development";
 });
+
+// Breadcrumbs
+const links = [
+    {
+        label: "Performance Optimisation",
+        href: "",
+    },
+];
 ---
 
-<Layout title="Futuremerce - Shopify Store Performance Optimisation" metaInfo={metaInfo}>
-    <Breadcrumbs />
+<Layout
+    title="Futuremerce - Shopify Store Performance Optimisation"
+    metaInfo={metaInfo}
+>
+    <Breadcrumbs links={links} />
 
     <h1 class="page-title long">Performance <span>Optimisation</span></h1>
     <p class="page-text">
-        Is your Shopify store underperforming?  Are slow loading times, buggy features, and a confusing user experience hurting your sales? You're not alone. Many Shopify stores struggle to reach their full potential due to performance issues. That’s where we come in.
+        Is your Shopify store underperforming? Are slow loading times, buggy
+        features, and a confusing user experience hurting your sales? You're not
+        alone. Many Shopify stores struggle to reach their full potential due to
+        performance issues. That’s where we come in.
     </p>
     <Button href="/get-started" type="primary">Get Started</Button>
     <TrustedBy />
@@ -100,8 +114,16 @@ const faqs = await getCollection("faqs", ({ data }) => {
     />
     <BoxGrid items={benefits} />
 
-    <TextImageGroup title="Unleash the full potential of your online store" text="Investing in Shopify performance optimization is an investment in your business growth. We'll help you create a high-performing online store that delivers a superior customer experience and drives measurable results." image={imageGroup1} />
-    <TextImageGroup title="Get a Free Quote" text="Get a free quote for our comprehensive Shopify performance optimization service and see how we can help you uncover hidden performance bottlenecks and craft a faster, frictionless user experience to drive conversions." image={imageGroup2} />
+    <TextImageGroup
+        title="Unleash the full potential of your online store"
+        text="Investing in Shopify performance optimization is an investment in your business growth. We'll help you create a high-performing online store that delivers a superior customer experience and drives measurable results."
+        image={imageGroup1}
+    />
+    <TextImageGroup
+        title="Get a Free Quote"
+        text="Get a free quote for our comprehensive Shopify performance optimization service and see how we can help you uncover hidden performance bottlenecks and craft a faster, frictionless user experience to drive conversions."
+        image={imageGroup2}
+    />
 
     <Title title="We’re Futuremerce" subtitle="about" icon={AboutIcon} />
     <HomepageAbout />
@@ -118,11 +140,11 @@ const faqs = await getCollection("faqs", ({ data }) => {
         margin-top: 140px;
     }
 
-        @media screen and (max-width: 767px) {
-            .title-group {
-                margin-top: 80px;
-            }
+    @media screen and (max-width: 767px) {
+        .title-group {
+            margin-top: 80px;
         }
+    }
 
     .text-image-group:nth-of-type(2n + 1) {
         flex-direction: row;

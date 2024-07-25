@@ -99,13 +99,21 @@ const processBoxes: Box[] = [
 const faqs = await getCollection("faqs", ({ data }) => {
     return data.type === "Subscription Plans";
 });
+
+// Breadcrumbs
+const links = [
+    {
+        label: "Development Subscriptions",
+        href: "",
+    },
+];
 ---
 
 <Layout
     title="Futuremerce - Shopify Development as a subscription"
     metaInfo={metaInfo}
 >
-    <Breadcrumbs />
+    <Breadcrumbs links={links} />
 
     <h1 class="page-title">
         <span>Unlimited</span> Shopify Projects, One Flat Monthly Rate

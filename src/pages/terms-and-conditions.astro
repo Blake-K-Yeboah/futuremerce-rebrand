@@ -18,10 +18,18 @@ const metaInfo: MetaInfo = {
 <meta itemprop="image" content="/overview.png">
 `,
 };
+
+// Breadcrumbs
+const links = [
+    {
+        label: "Terms and Conditions",
+        href: "",
+    },
+];
 ---
 
 <Layout title="Futuremerce - Terms and Conditions" metaInfo={metaInfo}>
-    <Breadcrumbs />
+    <Breadcrumbs links={links} />
 
     <h1 class="page-title">
         Terms <span>and</span> Conditions

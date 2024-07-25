@@ -12,10 +12,18 @@ const metaInfo: MetaInfo = {
     keywords: "shopify, development, agency",
     shouldIndex: false,
 };
+
+// Breadcrumbs
+const links = [
+    {
+        label: "404",
+        href: "",
+    },
+];
 ---
 
 <Layout title="Futuremerce - 404" metaInfo={metaInfo}>
-    <Breadcrumbs />
+    <Breadcrumbs links={links} />
 
     <h1 class="page-title">
         <span>404</span> Page Not Found

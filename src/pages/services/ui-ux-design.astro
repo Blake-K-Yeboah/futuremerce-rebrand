@@ -81,14 +81,25 @@ const benefits: Box[] = [
 const faqs = await getCollection("faqs", ({ data }) => {
     return data.type === "pricing";
 });
+
+// Breadcrumbs
+const links = [
+    {
+        label: "UI UX Design",
+        href: "",
+    },
+];
 ---
 
 <Layout title="Futuremerce - UX/UI Design" metaInfo={metaInfo}>
-    <Breadcrumbs />
+    <Breadcrumbs links={links} />
 
     <h1 class="page-title long">UX/UI <span>Design</span></h1>
     <p class="page-text">
-        In today's competitive online marketplace, a beautiful and user-friendly online store is essential. But a pretty face isn't enough. Your Shopify store needs a strategic UX/UI design that: Captures attention, guides users seamlessly and optimizes conversions.
+        In today's competitive online marketplace, a beautiful and user-friendly
+        online store is essential. But a pretty face isn't enough. Your Shopify
+        store needs a strategic UX/UI design that: Captures attention, guides
+        users seamlessly and optimizes conversions.
     </p>
     <Button href="/get-started" type="primary">Get Started</Button>
     <TrustedBy />
@@ -100,8 +111,16 @@ const faqs = await getCollection("faqs", ({ data }) => {
     />
     <BoxGrid items={benefits} />
 
-    <TextImageGroup title="UX/UI Design for eCommerce Success." text="Investing in a well-designed store is an investment in your business growth. We'll help you create an online shopping experience that delights your customers, drives sales, and sets you apart from the competition." image={imageGroup1} />
-    <TextImageGroup title="Craft an Ecommerce Experience that Converts" text="We design high-converting experiences with our user-centric approach to UX/UI design. From product pages to the checkout process, we'll strategically design elements to drive conversions and turn visitors into paying customers." image={imageGroup2} />
+    <TextImageGroup
+        title="UX/UI Design for eCommerce Success."
+        text="Investing in a well-designed store is an investment in your business growth. We'll help you create an online shopping experience that delights your customers, drives sales, and sets you apart from the competition."
+        image={imageGroup1}
+    />
+    <TextImageGroup
+        title="Craft an Ecommerce Experience that Converts"
+        text="We design high-converting experiences with our user-centric approach to UX/UI design. From product pages to the checkout process, we'll strategically design elements to drive conversions and turn visitors into paying customers."
+        image={imageGroup2}
+    />
 
     <Title title="We’re Futuremerce" subtitle="about" icon={AboutIcon} />
     <HomepageAbout />
@@ -118,11 +137,11 @@ const faqs = await getCollection("faqs", ({ data }) => {
         margin-top: 140px;
     }
 
-        @media screen and (max-width: 767px) {
-            .title-group {
-                margin-top: 80px;
-            }
+    @media screen and (max-width: 767px) {
+        .title-group {
+            margin-top: 80px;
         }
+    }
 
     .text-image-group:nth-of-type(2n + 1) {
         flex-direction: row;

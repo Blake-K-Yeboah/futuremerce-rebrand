@@ -95,10 +95,18 @@ const otherPackages: Box[] = [
 const pricingFAQs = await getCollection("faqs", ({ data }) => {
     return data.type === "pricing";
 });
+
+// Breadcrumbs
+const links = [
+    {
+        label: "Pricing",
+        href: "",
+    },
+];
 ---
 
 <Layout title="Futuremerce - Pricing" metaInfo={metaInfo}>
-    <Breadcrumbs />
+    <Breadcrumbs links={links} />
 
     <h1 class="page-title"><span>Pricing</span> Packages</h1>
     <p class="page-text">

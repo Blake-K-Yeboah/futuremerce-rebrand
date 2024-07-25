@@ -42,10 +42,22 @@ let date = d.toLocaleDateString("en-us", { day: "numeric" });
 let ending = date.endsWith("3") ? "rd" : date.endsWith("2") ? "nd" : "th";
 let month = d.toLocaleDateString("en-us", { month: "long" });
 let year = d.toLocaleDateString("en-us", { year: "numeric" });
+
+// Breadcrumbs
+const links = [
+    {
+        label: "Blog",
+        href: "/blog",
+    },
+    {
+        label: entry.data.title,
+        href: "",
+    },
+];
 ---
 
 <Layout title={`${entry.data.title} - Futuremerce`} metaInfo={metaInfo}>
-    <Breadcrumbs />
+    <Breadcrumbs links={links} />
 
     <Container>
         <h1 class="title">
