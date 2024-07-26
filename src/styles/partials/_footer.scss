@@ -21,7 +21,7 @@
             flex-direction: column;
             align-items: start;
 
-            > .button {
+            >.button {
                 margin: 24px 0 0 78px;
             }
         }
@@ -30,12 +30,12 @@
             align-items: center;
             text-align: center;
 
-            > .button {
+            >.button {
                 margin: 28px 0 0;
             }
         }
 
-        > div {
+        >div {
             display: flex;
             align-items: center;
             gap: 28px;
@@ -83,10 +83,12 @@
             font-size: 20px;
             line-height: 24px;
             color: #a7a7a7;
+
             @media screen and (max-width: 1023px) {
                 font-size: 18px;
                 line-height: 22px;
             }
+
             @media screen and (max-width: 524px) {
                 font-size: 16px;
             }
@@ -149,6 +151,7 @@
             align-items: center;
             width: 100%;
         }
+
         svg {
             width: 200px;
             height: 37px;
@@ -219,7 +222,7 @@
             margin: 40px 0 24px;
         }
 
-        > a {
+        >a {
             text-decoration: none;
 
             svg {
@@ -257,7 +260,7 @@
             text-align: center;
         }
 
-        > p {
+        >p {
             color: rgba(167, 167, 167, 0.6);
             font-size: 14px;
             line-height: 18px;
@@ -269,4 +272,71 @@
             }
         }
     }
+
+    &_form {
+        display: flex;
+        align-items: center;
+        margin-top: 40px;
+        width: 400px;
+        max-width: 100%;
+        position: relative;
+
+        &-text {
+            width: 400px;
+            max-width: 100%;
+            color: rgba(167, 167, 167, 0.4);
+            font-size: 14.5px;
+            line-height: 20.5px;
+            margin-top: 16px;
+            padding: 0 8px;
+        }
+
+        &-success {
+            width: 400px;
+            max-width: 100%;
+            background: #04460892;
+            padding: 16px;
+            color: #00bb0c;
+            font-size: 16px;
+            line-height: 24px;
+            border-radius: 16px;
+            filter: brightness(1.35);
+            margin-top: 40px;
+        }
+
+        >input {
+            width: 100%;
+            height: 48px;
+            padding: 0 16px;
+            font-size: 14px;
+            line-height: 100%;
+            font-weight: 400;
+            background: #100f17;
+            border-radius: 99px;
+            border: none;
+            appearance: none;
+            color: #fff;
+
+            &::placeholder {
+                color: rgba(255, 255, 255, 0.4);
+                font-family: "Lato", sans-serif;
+            }
+        }
+
+        >.button {
+            width: 124px;
+            min-width: 124px;
+            padding: 0 !important;
+            gap: 4px !important;
+            position: absolute;
+            top: 0;
+            right: 0;
+
+            >svg {
+                width: 16px;
+                height: 16px;
+            }
+        }
+    }
+
 }

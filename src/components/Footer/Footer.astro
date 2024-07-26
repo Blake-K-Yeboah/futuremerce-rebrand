@@ -97,7 +97,25 @@ links[0].sublinks = services.map((service) => ({
                         building high quality, high performing shopify stores
                         embracing your vision.
                     </p>
-                    <!-- TODO EMAIL FORM  -->
+                    <div class="footer_form">
+                        <input
+                            type="email"
+                            placeholder="Email address"
+                            name="email"
+                            id="footer_email"
+                        />
+                        <Button type="primary">Subscribe</Button>
+                    </div>
+                    <p class="footer_form-text">
+                        Subscribe to our newsletter to get weekly tips &
+                        strategies to help your Shopify store.
+                    </p>
+                    <div
+                        style="display:none"
+                        class="sender-form-field"
+                        data-sender-form-id="lz2nvq3fdlx3wdhplcq"
+                    >
+                    </div>
                 </div>
                 <div class="footer_links">
                     {
@@ -195,16 +213,48 @@ links[0].sublinks = services.map((service) => ({
 <script is:inline>
     document.addEventListener("DOMContentLoaded", () => {
         document
-            .querySelectorAll(".footer_inner .footer_links-group-link").forEach(linkEl => {
+            .querySelectorAll(".footer_inner .footer_links-group-link")
+            .forEach((linkEl) => {
                 linkEl.addEventListener("click", (e) => {
                     window.dataLayer = window.dataLayer || [];
                     dataLayer.push({
                         event: "link_click",
                         link_text: e.target.textContent,
-                        link_url: e.target.getAttribute('href'),
+                        link_url: e.target.getAttribute("href"),
                     });
                 });
-            })
-            
+            });
+
+        // Handle Footer Form
+        document
+            .querySelector(".footer_form .button")
+            .addEventListener("click", (e) => {
+                const emailVal = document.querySelector("#footer_email").value;
+
+                if (
+                    !emailVal ||
+                    !emailVal.match(
+                        /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                    )
+                ) {
+                    alert("Please enter a valid email");
+                    return;
+                }
+
+                const iframe = document.querySelector(".footer iframe");
+                const iframeDocument =
+                    iframe.contentDocument || iframe.contentWindow.document;
+
+                iframeDocument.querySelector("input").value = emailVal;
+
+                iframeDocument.querySelector(".sender-form-button").click();
+
+                const success = document.createElement("div");
+                success.classList.add("footer_form-success");
+                success.innerHTML = `Thanks for subscribing!`;
+
+                document.querySelector(".footer_form").replaceWith(success);
+                document.querySelector(".footer_form-text").remove();
+            });
     });
 </script>
