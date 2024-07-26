@@ -1,47 +1,15 @@
 ---
 import type { NavbarLink } from "../../types";
 
+const { links } = Astro.props;
+
 let breadcrumbs: NavbarLink[] = [
     {
         label: "Home",
         href: "/",
     },
+    ...links,
 ];
-
-if (Astro.url.pathname.split("/").length > 2) {
-    switch (Astro.url.pathname.split("/")[1]) {
-        case "pricing":
-            breadcrumbs.push({
-                label: "Pricing",
-                href: "/pricing",
-            });
-            break;
-        case "posts":
-            breadcrumbs.push({
-                label: "Blog",
-                href: "/blog",
-            });
-            break;
-        case "posts":
-            breadcrumbs.push({
-                label: "Blog",
-                href: "/blog",
-            });
-            break;
-        default:
-            console.info("No parent page");
-    }
-}
-
-const urlArr = Astro.url.pathname.split("/");
-breadcrumbs.push({
-    label: urlArr[urlArr.length - 1].replaceAll("-", " "),
-    href: "",
-});
-
-if (breadcrumbs[breadcrumbs.length - 1].label === "get started") {
-    breadcrumbs[breadcrumbs.length - 1].label = "free proposal";
-}
 ---
 
 <div class="breadcrumbs container">

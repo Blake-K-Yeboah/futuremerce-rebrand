@@ -118,10 +118,18 @@ const pricingBoxes: Box[] = [
         },
     },
 ];
+
+// Breadcrumbs
+const links = [
+    {
+        label: "Shopify Store Development",
+        href: "",
+    },
+];
 ---
 
 <Layout title="Futuremerce - Shopify Store Development" metaInfo={metaInfo}>
-    <Breadcrumbs />
+    <Breadcrumbs links={links} />
 
     <h1 class="page-title long">Shopify Store <span>Development</span></h1>
     <p class="page-text">
@@ -141,20 +149,23 @@ const pricingBoxes: Box[] = [
     />
     <BoxGrid items={benefits} />
 
-    <TextImageGroup title="Set yourself up for success" text="At Futuremerce, your success is our mission. We’re dedicated to building Shopify stores that not only look great but also perform exceptionally. Join our growing list of satisfied clients and watch your online business thrive." image={imageGroup1} />
-    <TextImageGroup title="Unleash Your Online Potential" text="Don’t let your online store blend into the background. With Futuremerce, your Shopify store will shine brightly in the competitive e-commerce landscape. Reach out to us today to explore how we can turn your vision into a reality and get a free project estimate." image={imageGroup2} />
+    <TextImageGroup
+        title="Set yourself up for success"
+        text="At Futuremerce, your success is our mission. We’re dedicated to building Shopify stores that not only look great but also perform exceptionally. Join our growing list of satisfied clients and watch your online business thrive."
+        image={imageGroup1}
+    />
+    <TextImageGroup
+        title="Unleash Your Online Potential"
+        text="Don’t let your online store blend into the background. With Futuremerce, your Shopify store will shine brightly in the competitive e-commerce landscape. Reach out to us today to explore how we can turn your vision into a reality and get a free project estimate."
+        image={imageGroup2}
+    />
 
     <Title title="We’re Futuremerce" subtitle="about" icon={AboutIcon} />
     <HomepageAbout />
 
-    <Title 
-        title="Let’s Talk Numbers"
-        subtitle="PRICING"
-        icon={pricing}
-        />
+    <Title title="Let’s Talk Numbers" subtitle="PRICING" icon={pricing} />
     <BoxGrid items={pricingBoxes} />
 
-    
     <FAQs faqs={faqs} />
 </Layout>
 
@@ -167,11 +178,11 @@ const pricingBoxes: Box[] = [
         margin-top: 140px;
     }
 
-        @media screen and (max-width: 767px) {
-            .title-group {
-                margin-top: 80px;
-            }
+    @media screen and (max-width: 767px) {
+        .title-group {
+            margin-top: 80px;
         }
+    }
 
     .text-image-group:nth-of-type(2n + 1) {
         flex-direction: row;

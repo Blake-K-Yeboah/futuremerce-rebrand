@@ -18,10 +18,18 @@ const metaInfo: MetaInfo = {
 <meta itemprop="image" content="/overview.png">
 `,
 };
+
+// Breadcrumbs
+const links = [
+    {
+        label: "FAQ",
+        href: "",
+    },
+];
 ---
 
 <Layout title="Futuremerce - FAQs" metaInfo={metaInfo}>
-    <Breadcrumbs />
+    <Breadcrumbs links={links} />
 
     <h1 class="page-title">Frequently Asked <br /> <span>Questions</span></h1>
     <FilterableFAQs />

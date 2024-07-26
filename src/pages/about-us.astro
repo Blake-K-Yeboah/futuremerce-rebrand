@@ -52,10 +52,18 @@ const processBoxes: Box[] = [
             "Once the store is finished, we complete a thorough round of quality assurance to ensure a frictionless experience for your users. Once everything is good to go, we transfer the store ownership and push it live. ",
     },
 ];
+
+// Breadcrumbs
+const links = [
+    {
+        label: "About Us",
+        href: "",
+    },
+];
 ---
 
 <Layout title="Futuremerce - About Us" metaInfo={metaInfo}>
-    <Breadcrumbs />
+    <Breadcrumbs links={links} />
 
     <h1 class="page-title">Hey, we're <br /> <span>Futuremerce</span></h1>
     <AboutGrid />
@@ -84,9 +92,9 @@ const processBoxes: Box[] = [
     .box-grid + .container {
         margin: 77px auto 176px;
     }
-        @media screen and (max-width: 767px) {
-            .box-grid + .container {
-                margin: 40px auto 100px;
-            }
+    @media screen and (max-width: 767px) {
+        .box-grid + .container {
+            margin: 40px auto 100px;
         }
+    }
 </style>

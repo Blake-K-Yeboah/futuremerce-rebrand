@@ -61,14 +61,25 @@ const howItWorks: Box[] = [
 const faqs = await getCollection("faqs", ({ data }) => {
     return data.type === "development";
 });
+
+// Breadcrumbs
+const links = [
+    {
+        label: "Quick Fix",
+        href: "",
+    },
+];
 ---
 
 <Layout title="Futuremerce - Shopify Quick Fixes" metaInfo={metaInfo}>
-    <Breadcrumbs />
+    <Breadcrumbs links={links} />
 
     <h1 class="page-title long">Shopify Quick <span>Fixes</span></h1>
     <p class="page-text">
-        Is a nagging bug or technical issue hindering your Shopify store?  Don't let it turn into a major headache! Our Shopify quick fix service is designed to tackle those pesky issues quickly and efficiently. We can resolve most issues within 1-2 business days.
+        Is a nagging bug or technical issue hindering your Shopify store? Don't
+        let it turn into a major headache! Our Shopify quick fix service is
+        designed to tackle those pesky issues quickly and efficiently. We can
+        resolve most issues within 1-2 business days.
     </p>
     <Button href="/get-started" type="primary">Get Started</Button>
     <TrustedBy />
@@ -80,11 +91,28 @@ const faqs = await getCollection("faqs", ({ data }) => {
     />
     <BoxGrid items={howItWorks} />
     <Container>
-    <Button type="primary" link="/get-started">Let's Get Started</Button>
+        <Button type="primary" link="/get-started">Let's Get Started</Button>
     </Container>
 
-    <TextImageGroup title="Our quick fix service is perfect for:" list={['Fixing minor bugs or errors affecting product pages, checkout processes, or functionality.', 'Addressing configuration issues with apps or third-party integrations.', 'Resolving minor layout or design glitches.', 'Implementing small code tweaks for enhanced performance.']} image={imageGroup1} />
-    <TextImageGroup title="Get a Free Quote" list={['4 hours of dedicated developer time to diagnose and resolve your issue.', 'Peace of mind, knowing your store is in expert hands and the issue will be resolved swiftly', 'Transparent communication, keeping you informed on the progress.']} image={imageGroup2} />
+    <TextImageGroup
+        title="Our quick fix service is perfect for:"
+        list={[
+            "Fixing minor bugs or errors affecting product pages, checkout processes, or functionality.",
+            "Addressing configuration issues with apps or third-party integrations.",
+            "Resolving minor layout or design glitches.",
+            "Implementing small code tweaks for enhanced performance.",
+        ]}
+        image={imageGroup1}
+    />
+    <TextImageGroup
+        title="Get a Free Quote"
+        list={[
+            "4 hours of dedicated developer time to diagnose and resolve your issue.",
+            "Peace of mind, knowing your store is in expert hands and the issue will be resolved swiftly",
+            "Transparent communication, keeping you informed on the progress.",
+        ]}
+        image={imageGroup2}
+    />
 
     <Title title="We’re Futuremerce" subtitle="about" icon={AboutIcon} />
     <HomepageAbout />
@@ -105,11 +133,11 @@ const faqs = await getCollection("faqs", ({ data }) => {
         margin-top: 140px;
     }
 
-        @media screen and (max-width: 767px) {
-            .title-group {
-                margin-top: 80px;
-            }
+    @media screen and (max-width: 767px) {
+        .title-group {
+            margin-top: 80px;
         }
+    }
 
     .text-image-group:nth-of-type(2n + 1) {
         flex-direction: row;
