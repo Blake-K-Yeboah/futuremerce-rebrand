@@ -7,7 +7,7 @@
     &_title {
         font-size: 14px;
         letter-spacing: 3px;
-        color: #6b6977;
+        color: #9491a3;
         text-transform: uppercase;
         text-align: center;
         position: relative;
@@ -18,7 +18,7 @@
             content: "";
             width: 220px;
             height: 1px;
-            background: rgba(107, 105, 119, 0.35);
+            background: rgba(107, 105, 119, 0.55);
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
@@ -28,7 +28,7 @@
             }
 
             @media screen and (max-width: 600px) {
-                width: 40px;
+                width: 60px;
             }
         }
 
@@ -50,11 +50,12 @@
     }
 
     &_grid {
-        margin-top: 19px;
+        margin-top: 24px;
         display: flex;
         align-items: center;
         justify-content: center;
         gap: 30px;
+        filter: brightness(1.2);
 
         @media screen and (max-width: 600px) {
             transform: scale(0.8);
