@@ -21,6 +21,7 @@ import process2 from "../../icons/process/step2.svg";
 import process3 from "../../icons/process/step1.svg";
 import imageGroup1 from "../../images/quick-fix-1.png";
 import imageGroup2 from "../../images/quick-fix-2.png";
+import imageGroup3 from "../../images/performance-optimisation-1.png";
 import AboutIcon from "../../icons/about-homepage.svg";
 
 // Meta Info
@@ -59,7 +60,7 @@ const howItWorks: Box[] = [
 ];
 
 const faqs = await getCollection("faqs", ({ data }) => {
-    return data.type === "development";
+    return data.type === "Quick Fixes";
 });
 
 // Breadcrumbs
@@ -105,7 +106,12 @@ const links = [
         image={imageGroup1}
     />
     <TextImageGroup
-        title="Get a Free Quote"
+        title="Say goodbye to those nagging bugs"
+        text="With our quick fix service, you can resolve annoying bugs hurting your store and your conversion, and get back up running smoothly in as little as 1 business day."
+        image={imageGroup3}
+    />
+    <TextImageGroup
+        title="Here's what you get with a Shopify Quick Fix:"
         list={[
             "4 hours of dedicated developer time to diagnose and resolve your issue.",
             "Peace of mind, knowing your store is in expert hands and the issue will be resolved swiftly",

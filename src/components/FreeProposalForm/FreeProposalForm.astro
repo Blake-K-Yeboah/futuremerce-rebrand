@@ -1,8 +1,17 @@
 ---
+import { getCollection } from "astro:content";
 import Button from "../Button/Button.astro";
+
+let services = await getCollection("services");
+services = services.sort().reverse();
 ---
 
-<form class="contact-form" method="POST" id="free-proposal-form" name="free-proposal-form">
+<form
+    class="contact-form"
+    method="POST"
+    id="free-proposal-form"
+    name="free-proposal-form"
+>
     <div class="contact-form_group grid">
         <div>
             <label for="name">Name*</label>
@@ -47,6 +56,32 @@ import Button from "../Button/Button.astro";
             class="contact-form_input"
             required
         />
+    </div>
+    <div class="contact-form_group">
+        <label for="service">Service you're interested in*</label>
+        <select class="contact-form_input" name="service" id="service" required>
+            <option value="" disabled>Please select</option>
+            {
+                services.map((service) => (
+                    <option value={service.data.title}>
+                        {service.data.title}
+                    </option>
+                ))
+            }
+        </select>
+        <svg
+            id="select-svg"
+            width="13"
+            height="12"
+            viewBox="0 0 13 12"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <path
+                d="M6.78418 8.25L3.03418 4.5L3.55918 3.975L6.78418 7.2L10.0092 3.975L10.5342 4.5L6.78418 8.25Z"
+                fill="white"
+                fill-opacity="0.5"></path>
+        </svg>
     </div>
     <div class="contact-form_group">
         <label for="details">Details*</label>
@@ -103,7 +138,7 @@ import Button from "../Button/Button.astro";
 
         // Tracking
         window.dataLayer.push({
-            event: 'get_started_form_submission'
+            event: "get_started_form_submission",
         });
 
         // Submit form with Ajax
