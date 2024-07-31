@@ -1,0 +1,19 @@
+---
+import type { MetaInfo } from "../types";
+
+// Components
+import Layout from "../layouts/Layout.astro";
+
+// Meta Info
+const metaInfo: MetaInfo = {
+    description: "",
+    keywords: "",
+    shouldIndex: false,
+};
+---
+
+<Layout title="Futuremerce - Audits" metaInfo={metaInfo}>
+    <script>
+        window.location.pathname = "/";
+    </script>
+</Layout>

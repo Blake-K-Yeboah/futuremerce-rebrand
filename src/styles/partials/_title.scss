@@ -12,7 +12,7 @@
     }
 
     &_title {
-        text-align: left;
+        text-align: left !important;
         @include title();
     }
 

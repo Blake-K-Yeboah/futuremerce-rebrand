@@ -27,11 +27,11 @@ import fixedPrice from "../../icons/fixed-price.svg";
 import budgetFriendly from "../../icons/budget-friendly.svg";
 import AboutIcon from "../../icons/about-homepage.svg";
 import PricingIcon from "../../icons/homepage-pricing.svg";
+import WhiteLabelIcon from "../../icons/white-label.svg";
 
 // Meta Info
 const metaInfo: MetaInfo = {
-    description:
-        "Replace unreliable freelancers and expensive agencies with a simple, subscription service for your Shopify development needs.",
+    description: `A reliable development partner that delivers solutions to your business challenges and stays by your side in the long term. We are here to take care of your Shopify projects while making it possible for you to focus on growing your own business.`,
     keywords: "shopify, development, agency",
     shouldIndex: true,
     schemaMetaInfo: `
@@ -72,6 +72,12 @@ const benefits: Box[] = [
         description:
             "Say goodbye to project cost overruns and hello to a fixed monthly rate with no hidden fees that fits your budget.",
         image: budgetFriendly,
+    },
+    {
+        title: "100% White Label",
+        description:
+            "We offer a 100% white label service – our work is your work. Your clients will never know we exist (unless you want them to) ",
+        image: WhiteLabelIcon,
     },
 ];
 
@@ -119,8 +125,10 @@ const links = [
         <span>Unlimited</span> Shopify Development, One Flat Monthly Rate
     </h1>
     <p class="page-text">
-        Replace unreliable freelancers and expensive agencies with a simple,
-        subscription service for your Shopify development needs.
+        A reliable development partner that delivers solutions to your business
+        challenges and stays by your side in the long term. We are here to take
+        care of your Shopify projects while making it possible for you to focus
+        on growing your own business.
     </p>
     <Button link="#discover-more" type="primary">Discover More</Button>
     <TrustedBy />
@@ -142,10 +150,10 @@ const links = [
     <Title title="Choose Your Plan" subtitle="PRICING" icon={PricingIcon} />
     <PricingTable />
 
-    <FAQs faqs={faqs} />
-
     <Title title="We’re Futuremerce" subtitle="about" icon={AboutIcon} />
     <HomepageAbout />
+
+    <FAQs faqs={faqs} />
 </Layout>
 
 <style is:inline>
@@ -154,7 +162,7 @@ const links = [
     }
 
     .page-text {
-        width: 547px;
+        width: 657px;
     }
 
     body > .button {
