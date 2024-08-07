@@ -33,4 +33,31 @@
         font-size: 14px;
         color: #727070;
     }
+
+    &_back {
+        display: none;
+    }
+
+    @media screen and (max-width: 767px) {
+        &_link,
+        > svg,
+        &_current {
+            display: none;
+        }
+
+        &_back {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            text-transform: uppercase;
+            font-weight: 300;
+            font-size: 14px;
+            color: #999;
+            cursor: pointer;
+
+            svg {
+                opacity: 0.65;
+            }
+        }
+    }
 }
