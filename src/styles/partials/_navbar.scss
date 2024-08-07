@@ -7,7 +7,9 @@
     top: 0;
     left: 0;
     background: transparent;
-    transition: background 0.25s ease-in-out, height 0.25s ease-in-out;
+    transition:
+        background 0.25s ease-in-out,
+        height 0.25s ease-in-out;
     border-bottom: 1px solid #1b1b1b;
 
     @media screen and (max-width: 1023px) {
@@ -316,6 +318,11 @@
                 }
             }
         }
+    }
+
+    &_spacer {
+        color: transparent;
+        height: 100px;
     }
 }
 
