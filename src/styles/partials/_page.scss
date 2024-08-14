@@ -38,6 +38,39 @@
         }
     }
 
+    &-subtitle {
+        background: linear-gradient(90deg,
+                #ffffff 0%,
+                rgba(255, 255, 255, 0.81) 100%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        font-size: 32px;
+        line-height: 40px;
+        margin: 40px 0 16px;
+
+        @media screen and (max-width: 500px) {
+            font-size: 24px;
+            line-height: 28px;
+            opacity: .8;
+        }
+    }
+
+    &-link {
+        display: block;
+        width: fit-content;
+        color: #979797;
+        font-size: 20px;
+        line-height: 26px;
+        margin: 8px 0;
+        text-decoration: none;
+
+        @media screen and (max-width: 500px) {
+            font-size: 14px;
+            line-height: 18px;
+        }
+    }
+
     &-text {
         margin: 33px auto 0;
         color: #979797;
