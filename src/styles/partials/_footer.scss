@@ -234,10 +234,11 @@
                 }
             }
 
-            &:last-of-type svg {
+            &:nth-child(3) svg {
                 width: 16px;
                 height: 16px;
                 margin-left: 2px;
+                margin-right: 2px;
             }
 
             &:hover svg path {
