@@ -1,0 +1,70 @@
+---
+import type { MetaInfo } from "../types";
+import { getCollection } from "astro:content";
+
+// Components
+import Layout from "../layouts/Layout.astro";
+import Breadcrumbs from "../components/Breadcrumbs/Breadcrumbs.astro";
+import Container from "../components/Container/Container.astro";
+
+// Meta Info
+const metaInfo: MetaInfo = {
+    description: "Sitemap",
+    keywords: "shopify, development, agency",
+    shouldIndex: true,
+};
+
+// Breadcrumbs
+const links = [
+    {
+        label: "Sitemap",
+        href: "",
+    },
+];
+
+const services = await getCollection("services");
+const posts = await getCollection("blog");
+---
+
+<Layout title="Futuremerce - Sitemap" metaInfo={metaInfo}>
+    <Breadcrumbs links={links} />
+
+    <h1 class="page-title">Sitemap</h1>
+
+    <Container>
+        <div class="page-body">
+            <h2 class="page-subtitle">Posts</h2>
+            {
+                posts.map((post) => (
+                    <a href={`/posts/${post.slug}`} class="page-link">
+                        {post.data.title}
+                    </a>
+                ))
+            }
+
+            <h2 class="page-subtitle">Services</h2>
+            {
+                services.map((service) => (
+                    <a href={`/services/${service.id}`} class="page-link">
+                        {service.data.title}
+                    </a>
+                ))
+            }
+
+            <h2 class="page-subtitle">Pages</h2>
+            <a class="page-link" href="">About Us</a>
+            <a class="page-link" href="">FAQs</a>
+            <a class="page-link" href="">Contact</a>
+            <a class="page-link" href="">Pricing</a>
+            <a class="page-link" href="">Blog</a>
+            <a class="page-link" href="">Free Proposal</a>
+        </div>
+    </Container>
+</Layout>
+
+<style is:inline>
+    .page-body {
+        max-width: 768px;
+        margin: 60px auto 120px;
+    }
+</style>
