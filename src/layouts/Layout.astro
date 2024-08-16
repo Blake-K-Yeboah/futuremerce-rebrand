@@ -19,6 +19,25 @@ if (metaInfo && metaInfo.itemType) itemType = metaInfo.itemType;
         <SEO title={title} metaInfo={metaInfo} />
     </head>
     <body itemscope itemtype={itemType}>
+        <!-- Schema  -->
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                "name": "Futuremerce",
+                "alternateName": "Futuremerce",
+                "url": "https://www.futuremerce.com",
+                "logo": "https://futuremerce.s3.ap-southeast-2.amazonaws.com/futuremerce-logo.jpg",
+                "sameAs": [
+                    "https://www.facebook.com/profile.php?id=61556779035438",
+                    "https://x.com/futuremerce",
+                    "https://instagram.com/futuremerce",
+                    "https://www.youtube.com/@Futuremerce",
+                    "https://www.linkedin.com/company/futuremerce/"
+                ]
+            }
+        </script>
+
         <!-- Google Tag Manager (noscript) -->
         <noscript
             ><iframe
