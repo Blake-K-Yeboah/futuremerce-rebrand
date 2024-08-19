@@ -1,0 +1,181 @@
+.marketing-guide {
+    &_popup {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1001;
+        background: #100f17;
+        border-radius: 12px;
+        width: 95vw;
+        max-width: 841px;
+        height: 487px;
+        display: none;
+        align-items: center;
+
+        &-close {
+            position: absolute;
+            right: 0;
+            top: -48px;
+            cursor: pointer;
+            transition: 0.25s ease;
+
+            &:hover {
+                opacity: 0.5;
+            }
+        }
+
+        .mobile {
+            display: none;
+        }
+
+        .desktop {
+            border-radius: 0 12px 12px 0;
+        }
+
+        &-content {
+            padding: 44px;
+            width: fit-content;
+            position: relative;
+
+            &:after {
+                content: "";
+                width: 260px;
+                height: 388px;
+                position: absolute;
+                right: -180px;
+                top: 50%;
+                transform: translateY(-50%);
+                background: var(--primary);
+                opacity: 0.27;
+                filter: blur(100px);
+                border-radius: 50%;
+                z-index: -1;
+            }
+        }
+
+        &-text {
+            background: linear-gradient(
+                90deg,
+                #ffffff 0%,
+                rgba(255, 255, 255, 0.81) 100%
+            );
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            font-weight: 700;
+            font-size: 31px;
+            line-height: 42px;
+
+            > span {
+                background: linear-gradient(90deg, #bcb7ff 0%, #703ab4 100%);
+                background-clip: text;
+                -webkit-background-clip: text;
+                color: transparent;
+            }
+        }
+
+        &-form {
+            margin-top: 33px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+
+            input {
+                width: 100%;
+                height: 48px;
+                padding: 0 16px;
+                font-size: 14px;
+                line-height: 100%;
+                font-weight: 400;
+                background: #000000;
+                border: 1px solid #828282;
+                border-radius: 8px;
+                appearance: none;
+                color: #fff;
+                transition: 0.25s ease-in-out;
+
+                &::placeholder {
+                    color: rgba(255, 255, 255, 0.4);
+                    font-family: "Lato", sans-serif;
+                }
+
+                &:hover {
+                    background: #121212;
+                }
+
+                &:focus {
+                    color: var(--primary);
+                    border-color: var(--primary);
+                    outline: none !important;
+                    background: #121212;
+                }
+            }
+
+            a {
+                margin-top: 16px;
+            }
+        }
+
+        @media screen and (max-width: 900px) {
+            flex-direction: column;
+            max-width: 375px;
+            top: calc(50% - 48px);
+
+            .desktop {
+                display: none;
+            }
+
+            .mobile {
+                display: block;
+                width: 100%;
+                height: fit-content;
+                border-radius: 0 0 12px 12px;
+            }
+
+            &-text {
+                font-size: 22px;
+                line-height: 33px;
+                text-align: center;
+                font-weight: 700;
+            }
+
+            &-content {
+                padding: 28px 32px;
+
+                &:after {
+                    right: 50%;
+                    bottom: -150px;
+                    transform: translateX(50%) scale(0.75);
+                }
+            }
+        }
+
+        @media screen and (max-width: 362px) {
+            &-text {
+                max-width: 230px;
+                margin: 0 auto;
+
+                span {
+                    display: block;
+                }
+            }
+        }
+    }
+
+    &_backdrop {
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        background: rgba(0, 0, 0, 0.37);
+        backdrop-filter: blur(7px);
+        display: none;
+    }
+
+    &.active > * {
+        display: flex;
+    }
+}
