@@ -69,6 +69,20 @@ const processBoxes: Box[] = [
     <MarketingGuideForm />
 </Layout>
 
+<script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.button').forEach(buttonEl => {
+            if (buttonEl.textContent.includes('Get')) {
+                buttonEl.addEventListener('click', (e) => {
+                    document.querySelector('.marketing-guide-form').scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            }
+        })
+    })
+</script>
+
 <style lang="scss" is:inline>
     body > div:nth-child(3) {
         padding-top: 100px;
@@ -78,13 +92,13 @@ const processBoxes: Box[] = [
         margin-top: 130px;
     }
 
-    .container {
+    body > .container {
         margin: 60px auto;
     }
 
     @media screen and (max-width: 1023px) {
         body > .title-group:first-of-type {
-            margin-top: 0;
+            margin-top: 60px;
         }
     }
 </style>

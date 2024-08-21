@@ -13,25 +13,28 @@ import mobileImage from "../../images/marketing-guide-popup-mobile.png";
         <div class="marketing-guide_popup-content">
             <h4 class="marketing-guide_popup-text">Boost your marketing with our free <span>Shopify Marketing</span> <span>Automation Guide</span></h4>
             <form class="marketing-guide_popup-form">
-                <input name="name" id="name" placeholder="Your name" />
-                <input name="email" id="email" placeholder="Your email address" type="email" />
-                <Button type="primary">Send me the free eBook</Button>
+                <input name="name" id="marketing-guide-popup-name" placeholder="Your name" />
+                <input name="email" id="marketing-guide-popup-email" placeholder="Your email address" type="email" />
+                <Button type="primary" link="form-submit">Send me the free eBook</Button>
             </form>
         </div>
         <Image src={desktopImage} alt="Shopify Marketing Automation Guide" class="desktop" loading="lazy" />
         <Image src={mobileImage} alt="Shopify Marketing Automation Guide" class="mobile" loading="lazy" />
     </aside>
     <div class="marketing-guide_backdrop"></div>
+    <div id="marketing-guide-form">
+        <div class="sender-form-field" data-sender-form-id="m03nj4nobwkmgb5ygu6"></div>
+    </div>
 </div>
 
-<script>
+<script is:inline>
     document.addEventListener('DOMContentLoaded', () => {
-        if (!location.pathname.includes('shopify-marketing-automation-guide') && sessionStorage.getItem('marketing-guide-shown') != 'true') {
+        // if (!location.pathname.includes('shopify-marketing-automation-guide') && sessionStorage.getItem('marketing-guide-shown') != 'true') {
             setTimeout(() => {
                 sessionStorage.setItem('marketing-guide-shown', 'true')
                 document.querySelector('.marketing-guide')?.classList.add('active');
             }, 5000);
-        }
+        // }
 
         const closePopup = () => {
             document.querySelector('.marketing-guide')?.classList.remove('active');
@@ -39,5 +42,45 @@ import mobileImage from "../../images/marketing-guide-popup-mobile.png";
 
         document.querySelector('.marketing-guide_popup-close')?.addEventListener('click', closePopup);
         document.querySelector('.marketing-guide_backdrop')?.addEventListener('click', closePopup);
+
+        
+        document.querySelector('.marketing-guide_popup-form')?.addEventListener('submit', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+
+            const nameVal = document.querySelector("#marketing-guide-popup-name")?.value;
+            const emailVal = document.querySelector("#marketing-guide-popup-email")?.value;
+
+            if (!nameVal) {
+                alert("Please enter your name");
+                return;
+            }
+
+            if (
+                !emailVal ||
+                !emailVal.match(
+                    /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                )
+            ) {
+                alert("Please enter a valid email");
+                return;
+            }
+
+            const iframe = document.querySelector('#marketing-guide-form iframe');
+            const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+
+            iframeDocument.querySelectorAll("input")[0].value = emailVal;
+            iframeDocument.querySelectorAll("input")[1].value = nameVal;
+
+            iframeDocument.querySelector(".sender-form-button").click();
+
+            const success = document.createElement("div");
+            success.classList.add("marketing-guide_popup-form_success");
+            success.innerHTML = `Success! <br><br> Your guide is on the way to your email.`;
+
+            document.querySelector(".marketing-guide_popup-form").replaceWith(success);
+            document.querySelector('.marketing-guide_popup-text').remove();
+
+        });
     });
 </script>

@@ -86,7 +86,6 @@ body:after {
     position: absolute;
     top: 50vh;
     left: -263px;
-    animation: leftCicleAnimation 10s linear infinite;
 
     @media screen and (max-width: 1023px) {
         transform: translateX(-100px);
@@ -99,11 +98,18 @@ body:after {
     width: 540px;
     height: 588px;
     top: -200px;
-    animation: rightCicleAnimation 10s linear infinite;
 
     @media screen and (max-width: 1023px) {
         transform: translateX(100px);
     }
+}
+
+body.animation-ready:after {
+    animation: rightCicleAnimation 10s linear infinite;
+}
+
+body.animation-ready:before {
+    animation: leftCicleAnimation 10s linear infinite;
 }
 
 .container {
@@ -178,6 +184,7 @@ body:after {
 // Pricing Components
 @import "partials/pricing-table";
 
-// Marketing GUide
+// Marketing Guide
 @import "partials/marketing-guide";
 @import "partials/marketing-guide-hero";
+@import "partials/marketing-guide-form";

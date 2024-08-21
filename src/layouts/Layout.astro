@@ -69,6 +69,13 @@ if (metaInfo && metaInfo.itemType) itemType = metaInfo.itemType;
                         document.title = pageTitle;
                     }
                 });
+
+                 document.addEventListener("mousemove", function () {
+                    document.body.classList.add('animation-ready');
+                 });
+                 document.addEventListener("touchmove", function () {
+                    document.body.classList.add('animation-ready');
+                 });
             };
         </script>
 
