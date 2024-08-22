@@ -29,12 +29,12 @@ import mobileImage from "../../images/marketing-guide-popup-mobile.png";
 
 <script is:inline>
     document.addEventListener('DOMContentLoaded', () => {
-        // if (!location.pathname.includes('shopify-marketing-automation-guide') && sessionStorage.getItem('marketing-guide-shown') != 'true') {
+        if (!location.pathname.includes('shopify-marketing-automation-guide') && sessionStorage.getItem('marketing-guide-shown') != 'true') {
             setTimeout(() => {
                 sessionStorage.setItem('marketing-guide-shown', 'true')
                 document.querySelector('.marketing-guide')?.classList.add('active');
             }, 5000);
-        // }
+        }
 
         const closePopup = () => {
             document.querySelector('.marketing-guide')?.classList.remove('active');
