@@ -1,0 +1,19 @@
+---
+import { Image } from "astro:assets";
+
+import Button from "../Button/Button.astro";
+import Container from "../Container/Container.astro";
+
+import heroImage from "../../images/marketing-guide.png";
+---
+
+<section class="marketing-guide-hero">
+    <Container>
+        <div class="marketing-guide-hero_content">
+            <h1 class="marketing-guide-hero_title"><span>Shopify</span> Marketing Automation Guide</h1>
+            <p class="marketing-guide-hero_text">Our FREE definitive guide to automating your marketing so you can save time and focus on the work that counts.</p>
+            <Button type="primary">Get the free guide now</Button>
+        </div>
+        <Image src={heroImage} alt="Shopify marketing automation guide" class="marketing-guide-hero_image" />
+    </Container>
+</section>

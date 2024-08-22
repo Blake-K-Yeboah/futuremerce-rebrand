@@ -1,0 +1,104 @@
+---
+import type { Box, MetaInfo } from "../types";
+
+// Components
+import Layout from "../layouts/Layout.astro";
+import Title from "../components/Title/Title.astro";
+import Button from "../components/Button/Button.astro";
+import BoxGrid from "../components/BoxGrid/BoxGrid.astro";
+import MarketingGuideHero from "../components/MarketingGuideHero/MarketingGuideHero.astro";
+import MarketingGuideForm from "../components/MarketingGuideForm/MarketingGuideForm.astro";
+import Container from "../components/Container/Container.astro";
+
+// Images
+import process1 from "../icons/process/step3.svg";
+import process2 from "../icons/process/step2.svg";
+import process3 from "../icons/process/step1.svg";
+import HowWeWorkIcon from "../icons/howwework.svg";
+
+// Meta Info
+const metaInfo: MetaInfo = {
+    description:
+        "Our FREE definitive guide to automating your marketing on Shopify so you can save time and focus on the work that counts.",
+    keywords: "shopify, development, agency",
+    shouldIndex: true,
+    schemaMetaInfo: `
+<meta itemprop="name" content="Futuremerce - Shopify Marketing Automation Guide">
+<meta itemprop="description" content="Our FREE definitive guide to automating your marketing on Shopify so you can save time and focus on the work that counts.">
+<meta itemprop="image" content="/overview.png">
+`,
+};
+
+// Content
+const processBoxes: Box[] = [
+    {
+        image: process1,
+        title: "Built-in Automations",
+        description:
+            "Detailed run-through of the built-in automations available on Shopify stores including abandoned cart recovery, welcome emails and more.",
+    },
+    {
+        image: process2,
+        title: "Third-party Integrations",
+        description:
+            "We’ll cover third-party tools you can integrate with your store to create more powerful, personalized automations tailored to your business. ",
+    },
+    {
+        image: process3,
+        title: "Custom Automations",
+        description:
+            "Lastly, we’ll cover creating your own custom automations through Shopify flow. You’ll gain the knowledge to create useful, time-saving automations specifically for your store.  ",
+    },
+];
+
+---
+
+<Layout title="Futuremerce - Shopify Marketing Automation Guide" metaInfo={metaInfo}>
+    <MarketingGuideHero />
+
+    <Title
+        title="Our FREE guide includes"
+        subtitle="WHAT'S INCLUDED"
+        icon={HowWeWorkIcon}
+    />
+    <BoxGrid items={processBoxes} />
+    <Container>
+     <Button type="primary">Get the free guide now</Button>
+    </Container>
+
+    <MarketingGuideForm />
+</Layout>
+
+<script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.button').forEach(buttonEl => {
+            if (buttonEl.textContent.includes('Get')) {
+                buttonEl.addEventListener('click', (e) => {
+                    document.querySelector('.marketing-guide-form').scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            }
+        })
+    })
+</script>
+
+<style lang="scss" is:inline>
+    body > div:nth-child(3) {
+        padding-top: 100px;
+    }
+
+    body > .title-group {
+        margin-top: 130px;
+    }
+
+    body > .container {
+        margin: 60px auto;
+    }
+
+    @media screen and (max-width: 1023px) {
+        body > .title-group:first-of-type {
+            margin-top: 60px;
+        }
+    }
+</style>
