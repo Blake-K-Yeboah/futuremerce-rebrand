@@ -8,7 +8,7 @@ category: CRO
 
 ## Understanding Customer Retention
 
-Before diving into the creative ways to use Shopify subscriptions, let's start with understanding what customer retention is. Customer retention refers to the ability of a company to retain its customers over a specified period. High customer retention means customers of the product or service tend to return to, continue to buy or in some way not defect to another product or service, or to non-use entirely.
+Before diving into the creative ways to use Shopify subscriptions, let's start with understanding what customer retention is. Customer retention refers to the ability of a company to retain its customers over a specified period. High customer retention means customers of the product or service tend to return to, and continue to buy or in some way not defect to another product or service, or to non-use entirely.
 
 ## The Importance of Customer Retention
 
