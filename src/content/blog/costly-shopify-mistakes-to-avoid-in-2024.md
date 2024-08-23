@@ -6,7 +6,7 @@ date: "2024-01-29"
 category: Development
 ---
 
-Starting and running a Shopify store can fun, but also very challenging.
+Starting and running a Shopify store can be fun, but also very challenging.
 
 Having the ideal setup for your store, can set your eCommerce business up for success from the get go.
 
@@ -27,25 +27,25 @@ There’s a couple of key factors to keep in mind while deciding on a theme to u
 -   Speed optimization
 -   App support
 
-A theme with a modern design is much more likely to appeal users and help convert them into paying customers.
+A theme with a modern design is much more likely to appeal to users and help convert them into paying customers.
 
-Not only should the theme look good, but its also important it matches your brand and looks good on mobile as well.
+Not only should the theme look good, but it's also important that it matches your brand and looks good on mobile as well.
 
 Speed is another crucial aspect of the theme we choose.
 
 In fact, a survey conducted by Google, found that 53% of mobile users leave a site that takes longer than 3 seconds to load.
 
-Choosing a theme with good speed out the gate is a good step, however there are plenty of actions you can take to boost your store speed and get better results.
+Choosing a theme with good speed out the gate is a good step; however, there are plenty of actions you can take to boost your store speed and get better results.
 
-We have a whole article dedicated to this topic with actionable steps you can take for your store - [check it our here](/posts/improve-your-shopify-store-speed).
+We have a whole article dedicated to this topic with actionable steps you can take for your store - [check it out here](/posts/improve-your-shopify-store-speed).
 
 ### 2. Not being mobile-friendly
 
 Most themes are mobile responsive out of the box.
 
-This means they resize to the user’s devices size to show content in a neat an organized way.
+This means they resize to the user’s device size to show content in a neat and organized way.
 
-Given the amount of traffic your store likely receives from mobile devices, its crucial to make your store works well on mobile devices and has a great user experience (UX).
+Given the amount of traffic your store likely receives from mobile devices, it's crucial to make sure your store works well on mobile devices and has a great user experience (UX).
 
 ### 3. Low quality images
 
@@ -53,13 +53,13 @@ Low quality images can be significantly hurting your conversion rate.
 
 Not only do high quality images boost your brand’s credibility, they also make your products look superior and help convert users.
 
-While optimizing your images, its important to ensure they maintain their quality on a range of device sizes like larger desktop screens and small mobile devices.
+While optimizing your images, it's important to ensure they maintain their quality on a range of device sizes, like larger desktop screens and small mobile devices.
 
 ### 4. Poor navigation
 
-Poor navigation is another mistake that some stores owners make.
+Poor navigation is another mistake that some store owners make.
 
-For the best UX, its important to have a clear, easy-to-use navigation on your shopify store.
+For the best UX, it's important to have clear, easy-to-use navigation on your Shopify store.
 
 This makes it easy for users to find what they are looking for without visiting a bunch of different pages.
 
@@ -69,9 +69,9 @@ For advice on how to structure your navigation, we’d recommend looking at comp
 
 In today’s world, there are plenty of different ways users like to pay online, from buy now pay later to Apple Pay.
 
-To avoid any potential pitfalls in your checkout, its important to include a range of payment options.
+To avoid any potential pitfalls in your checkout, it's important to include a range of payment options.
 
-Missing your user’s desired payment option can cause them get frustrated and potentially not checkout at all.
+Missing your user’s desired payment option can cause them to get frustrated and potentially not checkout at all.
 
 The checkout experience has to be smooth and simple for the best results, and this is one step in the right direction.
 
@@ -81,7 +81,7 @@ Learn more about [optimizing your checkout](/posts/best-practices-for-your-ecomm
 
 Social proof is an easy way to build trust with your end users and put your products in the best light.
 
-Despite this, some stores still lack including social proof like testimonials or reviews which makes it harder for users to make a purchase.
+Despite this, some stores still lack social proof like testimonials or reviews, which makes it harder for users to make a purchase.
 
 There are plenty of apps on the Shopify store that make it easy to retrieve reviews from your customers as well as place them in key areas like on product detail pages.
 
@@ -89,17 +89,17 @@ There are plenty of apps on the Shopify store that make it easy to retrieve revi
 
 Analytics are crucial to setup for your store.
 
-Shopify has its own analytics which is useful for reviewing how many orders you receive and your conversion rate, etc.
+Shopify has its own analytics, which is useful for reviewing how many orders you receive and your conversion rate, etc.
 
 However, taking analytics a step further with a tool like Google Analytics, can give you a much deeper understanding of your store and exactly how users are interacting.
 
-With a platform like Google Analytics, you can setup custom events which run when users take certain actions on your site.
+With a platform like Google Analytics, you can setup custom events that run when users take certain actions on your site.
 
 This means you are able to view exactly what your users are doing on your store, and which elements are useful or should be adjusted.
 
 ## Conclusions
 
-We’ve covered 7 common mistakes that shopify store owners make.
+We’ve covered 7 common mistakes that Shopify store owners make.
 
 By avoiding these mistakes, you’ll be helping your conversion rate as well as setting your store up for success.
 

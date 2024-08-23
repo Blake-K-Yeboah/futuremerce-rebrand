@@ -8,17 +8,17 @@ category: Development
 
 Connecting your store’s code to GitHub can have many benefits.
 
-For one, your store will have version control meaning it very easy to keep track of changing and revert back to old versions in case anything goes wrong.
+For one, your store will have version control, meaning it's very easy to keep track of changes and revert back to old versions in case anything goes wrong.
 
-Additionally, it can make setting up staging environments easier especially when you want to publish changes live.
+Additionally, it can make setting up staging environments easier, especially when you want to publish changes live.
 
-It also improved your developer experience significantly, by improving collaboration and making it easier to track who’s working on what.
+It also improves your developer experience significantly, by improving collaboration and making it easier to track who’s working on what.
 
-With these benefits in mind, let take a look at how easy it is to setup.
+With these benefits in mind, let's take a look at how easy it is to setup.
 
 ### Setup GitHub account and repository
 
-If you don’t already have a GitHub account, you’re going to need to create one.
+If you don’t already have a GitHub account, you’ll need to create one.
 
 Once you’ve setup your account, create a repository dedicated to your store. This is where your code will go.
 
@@ -36,7 +36,7 @@ After following the prompts, you should be able to link the new theme to your Gi
 
 You’ve now connected your theme to GitHub 🙂
 
-You’ll want to do a quick test through the preview mode to ensure the theme displays correctly and then you’re ready to set it live.
+You’ll want to do a quick test through the preview mode to ensure the theme displays correctly, and then you’re ready to set it live.
 
 ### Branch Structure
 
@@ -46,9 +46,9 @@ We’d recommend three branches:
 
 -   **Master** - This is your live production branch
 -   **Staging** - This is your staging branch, use it to test new features prior to going live.
--   **Feature branches** - This is optional, however it can helpful to use a seperate branch for building out each feature (especially, if you’ve got multiple developers working at the same time)
+-   **Feature branches** - This is optional, however, it can be helpful to use a separate branch for building out each feature (especially if you’ve got multiple developers working at the same time).
 
-Thanks to version control, its a very simple process to merge branches, and they will automatically update in your shopify themes.
+Thanks to version control, its a very simple process to merge branches, and they will automatically update in your Shopify themes.
 
 ### Conclusion
 
@@ -56,7 +56,7 @@ Thanks for reading this article.
 
 We hope you’ve found this development tip helpful.
 
-This is one the many things, our experienced team of engineers could setup for your store.
+This is one of the many things, our experienced team of engineers could setup for your store.
 
 If you’re interested, feel free to [get in touch](/contact) with us, we’d love to help out.
 
