@@ -8,6 +8,7 @@
     padding-top: 110px;
     position: relative;
     max-height: 1000px;
+    min-height: 860px;
 
     @media screen and (max-width: 1023px) {
         padding-top: 50px;
@@ -17,6 +18,7 @@
     @media screen and (max-width: 767px) {
         padding-top: 0;
         height: fit-content;
+        min-height: unset;
         margin: 120px 0;
     }
 
