@@ -94,72 +94,92 @@ if (metaInfo && metaInfo.itemType) itemType = metaInfo.itemType;
             requestAnimationFrame(raf);
         </script>
 
-        <script type="text/javascript" is:inline>
-            // Cal.com
-            (function (C, A, L) {
-                let p = function (a, ar) {
-                    a.q.push(ar);
-                };
-                let d = C.document;
-                C.Cal =
-                    C.Cal ||
-                    function () {
-                        let cal = C.Cal;
-                        let ar = arguments;
-                        if (!cal.loaded) {
-                            cal.ns = {};
-                            cal.q = cal.q || [];
-                            d.head.appendChild(d.createElement("script")).src =
-                                A;
-                            cal.loaded = true;
-                        }
-                        if (ar[0] === L) {
-                            const api = function () {
-                                p(api, arguments);
+        <script>
+            // @ts-nocheck
+            // Append third-party Scripts
+            window.appendedScripts = false;
+
+            const appendScripts = () => {
+                if (!window.appendedScripts) {
+                    window.appendedScripts = true;
+
+                    const newScript = document.createElement('script');
+                    newScript.innerHTML = `
+                        // Cal.com
+                        (function (C, A, L) {
+                            let p = function (a, ar) {
+                                a.q.push(ar);
                             };
-                            const namespace = ar[1];
-                            api.q = api.q || [];
-                            if (typeof namespace === "string") {
-                                cal.ns[namespace] = cal.ns[namespace] || api;
-                                p(cal.ns[namespace], ar);
-                                p(cal, ["initNamespace", namespace]);
-                            } else p(cal, ar);
-                            return;
-                        }
-                        p(cal, ar);
-                    };
-            })(window, "https://app.cal.com/embed/embed.js", "init");
-            Cal("init", { origin: "https://cal.com" });
+                            let d = C.document;
+                            C.Cal =
+                                C.Cal ||
+                                function () {
+                                    let cal = C.Cal;
+                                    let ar = arguments;
+                                    if (!cal.loaded) {
+                                        cal.ns = {};
+                                        cal.q = cal.q || [];
+                                        d.head.appendChild(d.createElement("script")).src =
+                                            A;
+                                        cal.loaded = true;
+                                    }
+                                    if (ar[0] === L) {
+                                        const api = function () {
+                                            p(api, arguments);
+                                        };
+                                        const namespace = ar[1];
+                                        api.q = api.q || [];
+                                        if (typeof namespace === "string") {
+                                            cal.ns[namespace] = cal.ns[namespace] || api;
+                                            p(cal.ns[namespace], ar);
+                                            p(cal, ["initNamespace", namespace]);
+                                        } else p(cal, ar);
+                                        return;
+                                    }
+                                    p(cal, ar);
+                                };
+                        })(window, "https://app.cal.com/embed/embed.js", "init");
+                        Cal("init", { origin: "https://cal.com" });
 
-            Cal("ui", {
-                styles: { branding: { brandColor: "#8b81ff" } },
-                hideEventTypeDetails: false,
-                layout: "month_view",
+                        Cal("ui", {
+                            styles: { branding: { brandColor: "#8b81ff" } },
+                            hideEventTypeDetails: false,
+                            layout: "month_view",
+                        });
+
+                        // Sender.net
+                        (function (s, e, n, d, er) {
+                            s["Sender"] = er;
+                            (s[er] =
+                                s[er] ||
+                                function () {
+                                    (s[er].q = s[er].q || []).push(arguments);
+                                }),
+                                (s[er].l = 1 * new Date());
+                            var a = e.createElement(n),
+                                m = e.getElementsByTagName(n)[0];
+                            a.async = 1;
+                            a.src = d;
+                            m.parentNode.insertBefore(a, m);
+                        })(
+                            window,
+                            document,
+                            "script",
+                            "https://cdn.sender.net/accounts_resources/universal.js",
+                            "sender",
+                        );
+                        sender("1e3cc308095550");
+                    `;
+
+                    document.body.append(newScript);
+                }
+            }
+
+            document.addEventListener('DOMContentLoaded', () => {
+                document.addEventListener('mousemove', appendScripts);
+                document.addEventListener('touchmove', appendScripts);
+                document.addEventListener('scroll', appendScripts);
             });
-        </script>
-
-        <script is:inline>
-            (function (s, e, n, d, er) {
-                s["Sender"] = er;
-                (s[er] =
-                    s[er] ||
-                    function () {
-                        (s[er].q = s[er].q || []).push(arguments);
-                    }),
-                    (s[er].l = 1 * new Date());
-                var a = e.createElement(n),
-                    m = e.getElementsByTagName(n)[0];
-                a.async = 1;
-                a.src = d;
-                m.parentNode.insertBefore(a, m);
-            })(
-                window,
-                document,
-                "script",
-                "https://cdn.sender.net/accounts_resources/universal.js",
-                "sender",
-            );
-            sender("1e3cc308095550");
         </script>
     </body>
 </html>

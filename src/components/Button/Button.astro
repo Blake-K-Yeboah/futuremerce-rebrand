@@ -106,6 +106,7 @@ if (href) {
 }
 
 <script>
+    // @ts-nocheck
     document.querySelectorAll(".button").forEach((buttonEl) => {
         const dataLink: any = buttonEl.getAttribute("data-link");
 
@@ -115,6 +116,12 @@ if (href) {
             buttonEl.setAttribute("data-cal-config", `{"layout":"month_view"}`);
         } else if (dataLink != "") {
             buttonEl.setAttribute("href", dataLink);
+        } else {
+            const newButton = document.createElement('button');
+            newButton.setAttribute('class', buttonEl.getAttribute('class'));
+            newButton.innerHTML = buttonEl.innerHTML;
+
+            buttonEl.replaceWith(newButton);
         }
     });
 </script>

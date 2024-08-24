@@ -16,7 +16,7 @@ let data = "data" in box ? box.data : box;
 
 if ("collection" in box && box.collection == "services") {
     data.cta = {
-        label: "Learn more",
+        label: "Explore " + data.title,
         link: `/services/${box.id}`,
         is_button: false,
     };

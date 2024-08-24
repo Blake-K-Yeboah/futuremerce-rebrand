@@ -44,7 +44,8 @@ const benefits: string[] = [
     </Container>
 </section>
 
-<script is:inline>
+<script>
+    // @ts-nocheck
     document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('.marketing-guide-form_form')?.addEventListener('submit', (e) => {
             e.preventDefault();

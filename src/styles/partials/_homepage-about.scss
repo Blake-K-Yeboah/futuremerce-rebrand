@@ -50,7 +50,10 @@
             font-size: 22px;
             font-weight: 400;
             line-height: 28px;
-            margin-bottom: 24px;
+
+            &:first-of-type {
+                margin-bottom: 24px;
+            }
 
             @media screen and (max-width: 1024px) {
                 font-size: 18px;
@@ -65,17 +68,20 @@
             &.white {
                 color: #fff;
             }
-        }
-
-        @media screen and (max-width: 1024px) {
             > .button {
-                margin: 40px auto 0;
+                margin: 24px 0 0;
             }
-        }
 
-        @media screen and (max-width: 767px) {
-            > .button {
-                width: 100%;
+            @media screen and (max-width: 1024px) {
+                > .button {
+                    margin: 40px auto 0;
+                }
+            }
+
+            @media screen and (max-width: 767px) {
+                > .button {
+                    width: 100%;
+                }
             }
         }
     }

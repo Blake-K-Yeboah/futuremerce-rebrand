@@ -27,60 +27,73 @@ import mobileImage from "../../images/marketing-guide-popup-mobile.png";
     </div>
 </div>
 
-<script is:inline>
+<script>
+    // @ts-nocheck
+    window.popupInitialized = false;
+
+    const initializePopup = () => {
+        if (!window.popupInitialized) {
+            window.popupInitialized = true;
+            
+            if (!location.pathname.includes('shopify-marketing-automation-guide') && sessionStorage.getItem('marketing-guide-shown') != 'true') {
+                setTimeout(() => {
+                    sessionStorage.setItem('marketing-guide-shown', 'true')
+                    document.querySelector('.marketing-guide')?.classList.add('active');
+                }, 5000);
+            }
+
+            const closePopup = () => {
+                document.querySelector('.marketing-guide')?.classList.remove('active');
+            }
+
+            document.querySelector('.marketing-guide_popup-close')?.addEventListener('click', closePopup);
+            document.querySelector('.marketing-guide_backdrop')?.addEventListener('click', closePopup);
+
+            
+            document.querySelector('.marketing-guide_popup-form')?.addEventListener('submit', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+
+                const nameVal = document.querySelector("#marketing-guide-popup-name")?.value;
+                const emailVal = document.querySelector("#marketing-guide-popup-email")?.value;
+
+                if (!nameVal) {
+                    alert("Please enter your name");
+                    return;
+                }
+
+                if (
+                    !emailVal ||
+                    !emailVal.match(
+                        /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                    )
+                ) {
+                    alert("Please enter a valid email");
+                    return;
+                }
+
+                const iframe = document.querySelector('#marketing-guide-form iframe');
+                const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+
+                iframeDocument.querySelectorAll("input")[0].value = emailVal;
+                iframeDocument.querySelectorAll("input")[1].value = nameVal;
+
+                iframeDocument.querySelector(".sender-form-button").click();
+
+                const success = document.createElement("div");
+                success.classList.add("marketing-guide_popup-form_success");
+                success.innerHTML = `Success! <br><br> Your guide is on the way to your email. <br><br> Please check your spam folder just in case.`;
+
+                document.querySelector(".marketing-guide_popup-form").replaceWith(success);
+                document.querySelector('.marketing-guide_popup-text').remove();
+
+            });
+        }
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
-        if (!location.pathname.includes('shopify-marketing-automation-guide') && sessionStorage.getItem('marketing-guide-shown') != 'true') {
-            setTimeout(() => {
-                sessionStorage.setItem('marketing-guide-shown', 'true')
-                document.querySelector('.marketing-guide')?.classList.add('active');
-            }, 5000);
-        }
-
-        const closePopup = () => {
-            document.querySelector('.marketing-guide')?.classList.remove('active');
-        }
-
-        document.querySelector('.marketing-guide_popup-close')?.addEventListener('click', closePopup);
-        document.querySelector('.marketing-guide_backdrop')?.addEventListener('click', closePopup);
-
-        
-        document.querySelector('.marketing-guide_popup-form')?.addEventListener('submit', (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-
-            const nameVal = document.querySelector("#marketing-guide-popup-name")?.value;
-            const emailVal = document.querySelector("#marketing-guide-popup-email")?.value;
-
-            if (!nameVal) {
-                alert("Please enter your name");
-                return;
-            }
-
-            if (
-                !emailVal ||
-                !emailVal.match(
-                    /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                )
-            ) {
-                alert("Please enter a valid email");
-                return;
-            }
-
-            const iframe = document.querySelector('#marketing-guide-form iframe');
-            const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
-
-            iframeDocument.querySelectorAll("input")[0].value = emailVal;
-            iframeDocument.querySelectorAll("input")[1].value = nameVal;
-
-            iframeDocument.querySelector(".sender-form-button").click();
-
-            const success = document.createElement("div");
-            success.classList.add("marketing-guide_popup-form_success");
-            success.innerHTML = `Success! <br><br> Your guide is on the way to your email. <br><br> Please check your spam folder just in case.`;
-
-            document.querySelector(".marketing-guide_popup-form").replaceWith(success);
-            document.querySelector('.marketing-guide_popup-text').remove();
-
-        });
+        document.addEventListener('mousemove', initializePopup);
+        document.addEventListener('touchmove', initializePopup);
+        document.addEventListener('scroll', initializePopup);
     });
 </script>

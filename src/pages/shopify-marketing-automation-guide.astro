@@ -69,7 +69,8 @@ const processBoxes: Box[] = [
     <MarketingGuideForm />
 </Layout>
 
-<script is:inline>
+<script>
+    // @ts-nocheck
     document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.button').forEach(buttonEl => {
             if (buttonEl.textContent.includes('Get')) {
