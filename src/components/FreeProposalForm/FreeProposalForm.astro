@@ -152,11 +152,7 @@ services = services.sort().reverse();
         })
             .then((response) => {
                 if (response.ok) {
-                    document.querySelector(".contact-form").innerHTML +=
-                        `<div class="contact-form_success">Thanks for reaching out! We'll be in touch as soon as possible.</div>`;
-                    document
-                        .querySelector(".contact-form")
-                        ?.classList.add("success");
+                    window.location.pathname = '/form-thank-you';
                 }
             })
             .catch(() => {

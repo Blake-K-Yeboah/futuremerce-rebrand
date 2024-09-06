@@ -1,0 +1,54 @@
+---
+import type { MetaInfo } from "../types";
+
+// Components
+import Layout from "../layouts/Layout.astro";
+import Breadcrumbs from "../components/Breadcrumbs/Breadcrumbs.astro";
+import Button from "../components/Button/Button.astro";
+
+// Meta Info
+const metaInfo: MetaInfo = {
+    description: "Thank you for booking a call",
+    keywords: "shopify, development, agency",
+    shouldIndex: false,
+};
+
+// Breadcrumbs
+const links = [
+    {
+        label: "Thank you",
+        href: "",
+    },
+];
+---
+
+<Layout title="Futuremerce - Thank you" metaInfo={metaInfo}>
+    <Breadcrumbs links={links} />
+
+    <h1 class="page-title">
+        <span>Thank you</span> for <br> reaching out
+    </h1>
+    <p class="page-text">
+        We'll get back to you as soon as possible. <br><br> While you're here, feel free to browse some our articles on our blog.
+    </p>
+    <Button link="/blog" type="primary">Visit our Blog</Button>
+</Layout>
+
+<style lang="scss" is:inline>
+    body > .button {
+        margin: 40px auto 80px;
+    }
+
+     .footer_wrapper:after {
+        height: 600px;
+        top: 100px;
+    }
+
+    .footer {
+        overflow: hidden;
+    }
+    .footer_get-started {
+        display: none;
+    }
+
+</style>

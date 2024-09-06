@@ -112,6 +112,34 @@ body.animation-ready:before {
     animation: leftCicleAnimation 10s linear infinite;
 }
 
+@keyframes wiggle {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    33% {
+        transform: translate(10px, 20px);
+    }
+
+    66% {
+        transform: translate(20px, 10px);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+body.animation-ready .homepage-hero {
+    &_icon {
+        animation: wiggle 5s linear infinite;
+
+        &:last-of-type {
+            animation-direction: reverse;
+        }
+    }
+}
+
 .container {
     width: 100%;
     max-width: 1260px;

@@ -38,6 +38,10 @@
             @media screen and (max-width: 600px) {
                 right: calc(100% + 16px);
             }
+
+            @media screen and (max-width: 370px) {
+                width: 35px;
+            }
         }
 
         &:after {
@@ -45,6 +49,10 @@
 
             @media screen and (max-width: 600px) {
                 left: calc(100% + 16px);
+            }
+
+            @media screen and (max-width: 370px) {
+                width: 35px;
             }
         }
     }
