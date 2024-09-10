@@ -85,6 +85,7 @@ const benefits: string[] = [
             document.querySelector(".marketing-guide-form_form > div:last-of-type").remove();
             document.querySelector(".marketing-guide-form_form .button").replaceWith(success);
 
+            fbq('track', 'Lead');
         });
     });
 </script>

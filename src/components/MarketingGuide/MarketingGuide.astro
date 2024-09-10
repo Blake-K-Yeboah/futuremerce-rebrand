@@ -87,6 +87,7 @@ import mobileImage from "../../images/marketing-guide-popup-mobile.png";
                 document.querySelector(".marketing-guide_popup-form").replaceWith(success);
                 document.querySelector('.marketing-guide_popup-text').remove();
 
+                fbq('track', 'Lead');
             });
         }
     }
