@@ -38,7 +38,7 @@ const links = [
             <div class="page-grid_content">
                 <h1 class="page-grid_title">Get a free quote</h1>
                 <p class="page-grid_text">
-                    Get a free, no obligation proposal in 1 business day or less
+                    Get a free, no obligation quote in 1 business day or less
                     by filling out the form.
                 </p>
                 <div class="page-guarantees">
@@ -59,6 +59,13 @@ const links = [
             </div>
             <div class="page-grid_form">
                 <FreeProposalForm />
+            </div>
+            <div class="page-grid_content mobile-only">
+                <h4 class="page-grid_subtitle">Not a fan of forms?</h4>
+                <br />
+                <Button type="primary" link="#book-a-call"
+                    >Book a call instead</Button
+                >
             </div>
         </div>
     </Container>
@@ -84,6 +91,15 @@ const links = [
     .page-guarantee {
         font-size: 16px;
         gap: 8px;
+        
+            @media screen and (max-width: 1023px) {
+                justify-content: center;
+                width: 100%;
+
+                &:last-of-type {
+                    padding-right: 9px;
+                }
+            }
 
         > svg {
             transform: scale(1);
