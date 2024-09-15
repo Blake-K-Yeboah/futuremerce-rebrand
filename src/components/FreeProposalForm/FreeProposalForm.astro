@@ -3,7 +3,7 @@ import { getCollection } from "astro:content";
 import Button from "../Button/Button.astro";
 
 let services = await getCollection("services");
-services = services.sort().reverse();
+services = services.sort((a,b) => a.data.title.includes('Shopify') ? 1 : -1).reverse();
 ---
 
 <form

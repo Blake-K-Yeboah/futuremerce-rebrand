@@ -118,11 +118,11 @@ body.animation-ready:before {
     }
 
     33% {
-        transform: translate(10px, 20px);
+        transform: translate(10px, 5px);
     }
 
     66% {
-        transform: translate(20px, 10px);
+        transform: translate(5px, 10px);
     }
 
     100% {
@@ -132,7 +132,7 @@ body.animation-ready:before {
 
 body.animation-ready .homepage-hero {
     &_icon {
-        animation: wiggle 5s linear infinite;
+        animation: wiggle 3s linear infinite;
 
         &:last-of-type {
             animation-direction: reverse;
