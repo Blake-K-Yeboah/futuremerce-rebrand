@@ -16,6 +16,7 @@
         img {
             width: 100px;
             height: 100px;
+            margin-left: 20px;
         }
     }
 
@@ -42,7 +43,7 @@
             padding: 0 20px 0;
         }
 
-        >svg {
+        > svg {
             position: absolute;
             left: 0;
             top: 0;
@@ -51,7 +52,7 @@
 
             @media screen and (max-width: 767px) {
                 transform: scale(1.5) translateY(-50px);
-                opacity: .5;
+                opacity: 0.5;
             }
         }
     }

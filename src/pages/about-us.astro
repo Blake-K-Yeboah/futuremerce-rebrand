@@ -10,9 +10,11 @@ import BoxGrid from "../components/BoxGrid/BoxGrid.astro";
 import Button from "../components/Button/Button.astro";
 import Container from "../components/Container/Container.astro";
 import AboutCEO from "../components/AboutCEO/AboutCEO.astro";
+import ComparisonTable from "../components/ComparisonTable/ComparisonTable.astro";
 
 // Images
 import HowWeWorkIcon from "../icons/howwework.svg";
+import ComparisonIcon from "../icons/crown.svg";
 import MeetTheCeoIcon from "../icons/meet-the-ceo.svg";
 import process1 from "../icons/process/step3.svg";
 import process2 from "../icons/process/step2.svg";
@@ -69,6 +71,15 @@ const links = [
     <AboutGrid />
 
     <Title
+        title="Futuremerce vs other agencies vs in-house team"
+        subtitle="WHAT MAKES US DIFFERENT"
+        icon={ComparisonIcon}
+    />
+    <Container>
+    <ComparisonTable />
+    </Container>
+
+    <Title
         title="Our Simple, Effective Process"
         subtitle="HOW WE WORK"
         icon={HowWeWorkIcon}
@@ -89,6 +100,10 @@ const links = [
 </Layout>
 
 <style lang="scss" is:inline>
+    body > div:nth-child(8) .title-group_title {
+        text-transform: initial;
+    }
+
     .box-grid + .container {
         margin: 77px auto 176px;
     }

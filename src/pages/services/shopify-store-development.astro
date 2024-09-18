@@ -12,6 +12,8 @@ import FAQs from "../../components/FAQs/FAQs.astro";
 import TrustedBy from "../../components/TrustedBy/TrustedBy.astro";
 import TextImageGroup from "../../components/TextImageGroup/TextImageGroup.astro";
 import HomepageAbout from "../../components/HomepageAbout/HomepageAbout.astro";
+import ComparisonTable from "../../components/ComparisonTable/ComparisonTable.astro";
+import Container from "../../components/Container/Container.astro";
 
 // Images
 import ServicesHomepageIcon from "../../icons/services-homepage.svg";
@@ -29,6 +31,7 @@ import pricingBox1 from "../../icons/fixed-price.svg";
 import pricingBox2 from "../../icons/subscription-pricing.svg";
 import pricingBox3 from "../../icons/packages.svg";
 import AboutIcon from "../../icons/about-homepage.svg";
+import ComparisonIcon from "../../icons/crown.svg";
 
 // Meta Info
 const metaInfo: MetaInfo = {
@@ -177,6 +180,17 @@ const links = [
     <Title title="We’re Futuremerce" subtitle="about" icon={AboutIcon} />
     <HomepageAbout />
 
+
+    <Title
+        title="Futuremerce vs other agencies vs in-house team"
+        subtitle="WHAT MAKES US DIFFERENT"
+        icon={ComparisonIcon}
+    />
+    <Container>
+     <ComparisonTable />
+     <Button type="primary" link="/get-started">Get a free quote</Button>
+    </Container>
+
     <Title title="Let’s Talk Numbers" subtitle="PRICING" icon={pricing} />
     <BoxGrid items={pricingBoxes} />
 
@@ -186,6 +200,19 @@ const links = [
 <style is:inline>
     body > .button {
         margin: 40px auto;
+    }
+
+    .comparison-table + .button {
+        margin: -70px 0 120px;
+        display: none !important;
+    }
+
+    @media screen and (max-width: 767px) {
+        .comparison-table + .button {
+            display: flex !important;
+            width: 100%;
+            justify-content: center;
+        }
     }
 
     .title-group {
@@ -200,6 +227,11 @@ const links = [
     @media screen and (max-width: 767px) {
         .title-group {
             margin-top: 80px;
+        }
+
+        .breadcrumbs_back {
+            display: none;
+            margin-bottom: 20px;
         }
     }
 

@@ -1,0 +1,45 @@
+---
+const rows = ['Pricing and Cost', 'Project Management', 'Customer Support and Maintenance'];
+
+const options = [
+    {
+        name: "Futuremerce",
+        content: [
+            "We offer flexible pricing options to suit your budget, including fixed-price projects and ongoing subscriptions. Our transparent pricing ensures no hidden fees or surprises.",
+            "We employ a simple, effective project management approach to ensure efficient project execution, clear communication, and timely delivery.",
+            "We provide comprehensive post-launch support, including ongoing maintenance, bug fixes, & optimization. Our dedicated team is always available to assist you."
+        ]
+    },
+    {
+        name: "Other Agencies",
+        content: [
+            "May have complex pricing structures or hidden fees that can significantly increase the overall cost of the project. Often have retainers for ongoing work, where you are locked in for several months and can’t back out.",
+            "Most agencies have more complicated, outdated project management methods leading to delays in delivery, miscommunications and unexpected increased costs.",
+            "Most agencies have slow responsive times and offer limited support once your store is built, impacting the overall user experience and project success."
+        ]
+    },
+    {
+        name: "In-house team",
+        content: [
+            "While there may be lower upfront costs, in-house development can incur significant overhead expenses, such as salaries, benefits, equipment and ongoing training so they can remain upskilled.",
+            "Internal project management may be resource-intensive and may not follow industry best practices.",
+            "Internal resources can provide support, however can often be busy with other internal projects leading to delayed changes or delaying other projects as a result."
+        ]
+    },
+]
+---
+
+<div class="comparison-table">
+    <div></div>
+    {options.map((option, i) => <div class={`comparison-table_head ${i == 0 ? 'primary' : i == 2 ? 'last' : ''}`}>{option.name}</div>)}
+    {rows.map((row, i) => {
+        return (
+            <>
+                <div class="comparison-table_row-name">
+                    {row}
+                </div>
+                {options.map((option, x) => <div class={`comparison-table_row-content ${x == 0 ? 'primary' : ''}`}>{option.content[i]}</div>)}
+            </>
+        )
+    })}
+</div>
