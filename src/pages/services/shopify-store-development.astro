@@ -7,13 +7,11 @@ import Layout from "../../layouts/Layout.astro";
 import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs.astro";
 import BoxGrid from "../../components/BoxGrid/BoxGrid.astro";
 import Title from "../../components/Title/Title.astro";
-import Button from "../../components/Button/Button.astro";
 import FAQs from "../../components/FAQs/FAQs.astro";
-import TrustedBy from "../../components/TrustedBy/TrustedBy.astro";
 import TextImageGroup from "../../components/TextImageGroup/TextImageGroup.astro";
 import HomepageAbout from "../../components/HomepageAbout/HomepageAbout.astro";
-import ComparisonTable from "../../components/ComparisonTable/ComparisonTable.astro";
-import Container from "../../components/Container/Container.astro";
+import FreeProposalForm from "../../components/FreeProposalForm/FreeProposalForm.astro";
+import Button from "../../components/Button/Button.astro";
 
 // Images
 import ServicesHomepageIcon from "../../icons/services-homepage.svg";
@@ -31,7 +29,6 @@ import pricingBox1 from "../../icons/fixed-price.svg";
 import pricingBox2 from "../../icons/subscription-pricing.svg";
 import pricingBox3 from "../../icons/packages.svg";
 import AboutIcon from "../../icons/about-homepage.svg";
-import ComparisonIcon from "../../icons/crown.svg";
 
 // Meta Info
 const metaInfo: MetaInfo = {
@@ -49,21 +46,21 @@ const metaInfo: MetaInfo = {
 // Content
 const benefits: Box[] = [
     {
-        title: "Store Setup & Configuration",
+        title: "Store Store Development",
         description:
-            "We'll create a beautiful and branded store that stands out from the crowd through Shopify’s powerful, customizable platform.",
+            "We are experts in making Shopify eCommerce websites. We can set up your online store and get it ready for selling fast and easy.",
         image: shopify,
     },
     {
         title: "Functionality development",
         description:
-            "Add the features you need to streamline your operations and enhance the customer experience.",
+            "Maximize your online store's potential with custom features designed to meet your specific business requirements.",
         image: functionality,
     },
     {
         title: "App integrations",
         description:
-            "Our team can help install and configure apps to boost your marketing, sales, fulfillment, and more.",
+            "Our team can help install and configure apps to boost your marketing, sales, fulfillment, and more depending on your needs.",
         image: settings,
     },
     {
@@ -73,7 +70,7 @@ const benefits: Box[] = [
         image: mobileOptimization,
     },
     {
-        title: "Migration to Shopify",
+        title: "Shopify Store Migration",
         description:
             "Looking to switch to Shopify? We ensure a smooth transition with minimal downtime so your customers are not affected.",
         image: migration,
@@ -93,9 +90,9 @@ const faqs = await getCollection("faqs", ({ data }) => {
 const pricingBoxes: Box[] = [
     {
         image: pricingBox1,
-        title: "Fixed Price Projects",
+        title: "Project Based Pricing",
         description:
-            "Get a fixed-price quote, taking into account  your specific circumstances. Perfect for clients who want a clear understanding of the cost before getting started.",
+            "Get a fixed-price quote, taking into account your specific circumstances. Perfect for clients who want a clear understanding of the cost before getting started.",
         cta: {
             label: "Get a free quote",
             link: "/get-started",
@@ -105,7 +102,7 @@ const pricingBoxes: Box[] = [
         image: pricingBox2,
         title: "Subscription Pricing",
         description:
-            "Have all of your development needs taken care of with a Futuremerce development subscription. Perfect for agencies and clients with ongoing development needs.",
+            "Have all of your development needs taken care of with a Futuremerce development subscription. Perfect for people with ongoing development needs.",
         cta: {
             label: "See development plans",
             link: "/services/development-subscriptions",
@@ -115,7 +112,7 @@ const pricingBoxes: Box[] = [
         image: pricingBox3,
         title: "Other Packages",
         description:
-            "We also have other packages including ongoing maintenance, performance optimisation, and bug fixes to help streamline your needs.",
+            "We also have other packages including ongoing maintenance, performance optimisation, and quick bug fixes to help streamline your needs.",
         cta: {
             label: "Browse other packages",
             link: "/pricing",
@@ -134,30 +131,43 @@ const links = [
 
 <Layout title="Futuremerce - Shopify Store Development" metaInfo={metaInfo}>
     <Breadcrumbs links={links} />
-
-    <h1 class="page-title long"><span>Result-driven</span> Shopify Store Development</h1>
-    <p class="page-text">
-        Investing in a well-designed Shopify store is an investment in your business growth. Our Shopify development services can help you gain a competitive edge and start selling more online.
-    </p>
-    <Button href="/get-started" type="primary">Get a free quote</Button>
-    <div class="page-guarantees">
-        <p class="page-guarantee">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.5 16.0605L6.75 12.3098L7.80975 11.25L10.5 13.9395L16.1887 8.25L17.25 9.31125L10.5 16.0605Z" fill="url(#paint0_linear_310_11)"/><path d="M12 1.5C9.9233 1.5 7.89323 2.11581 6.16652 3.26957C4.4398 4.42332 3.09399 6.0632 2.29927 7.98182C1.50455 9.90045 1.29661 12.0116 1.70176 14.0484C2.1069 16.0852 3.10693 17.9562 4.57538 19.4246C6.04383 20.8931 7.91476 21.8931 9.95156 22.2982C11.9884 22.7034 14.0996 22.4955 16.0182 21.7007C17.9368 20.906 19.5767 19.5602 20.7304 17.8335C21.8842 16.1068 22.5 14.0767 22.5 12C22.5 9.21523 21.3938 6.54451 19.4246 4.57538C17.4555 2.60625 14.7848 1.5 12 1.5ZM12 21C10.22 21 8.47992 20.4722 6.99987 19.4832C5.51983 18.4943 4.36628 17.0887 3.68509 15.4442C3.0039 13.7996 2.82567 11.99 3.17294 10.2442C3.5202 8.49836 4.37737 6.89471 5.63604 5.63604C6.89472 4.37737 8.49836 3.5202 10.2442 3.17293C11.99 2.82567 13.7996 3.0039 15.4442 3.68508C17.0887 4.36627 18.4943 5.51983 19.4832 6.99987C20.4722 8.47991 21 10.22 21 12C21 14.3869 20.0518 16.6761 18.364 18.364C16.6761 20.0518 14.387 21 12 21Z" fill="url(#paint1_linear_310_11)"/><defs><linearGradient id="paint0_linear_310_11" x1="12" y1="8.25" x2="12" y2="16.0605" gradientUnits="userSpaceOnUse"><stop stop-color="#BCB7FF"/><stop offset="1" stop-color="#703AB4"/></linearGradient><linearGradient id="paint1_linear_310_11" x1="12" y1="1.5" x2="12" y2="22.5" gradientUnits="userSpaceOnUse"><stop stop-color="#BCB7FF"/><stop offset="1" stop-color="#703AB4"/></linearGradient></defs></svg>
-            100% Satisfaction Guarantee
-        </p>    
-        <p class="page-guarantee">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.5 16.0605L6.75 12.3098L7.80975 11.25L10.5 13.9395L16.1887 8.25L17.25 9.31125L10.5 16.0605Z" fill="url(#paint0_linear_310_11)"/><path d="M12 1.5C9.9233 1.5 7.89323 2.11581 6.16652 3.26957C4.4398 4.42332 3.09399 6.0632 2.29927 7.98182C1.50455 9.90045 1.29661 12.0116 1.70176 14.0484C2.1069 16.0852 3.10693 17.9562 4.57538 19.4246C6.04383 20.8931 7.91476 21.8931 9.95156 22.2982C11.9884 22.7034 14.0996 22.4955 16.0182 21.7007C17.9368 20.906 19.5767 19.5602 20.7304 17.8335C21.8842 16.1068 22.5 14.0767 22.5 12C22.5 9.21523 21.3938 6.54451 19.4246 4.57538C17.4555 2.60625 14.7848 1.5 12 1.5ZM12 21C10.22 21 8.47992 20.4722 6.99987 19.4832C5.51983 18.4943 4.36628 17.0887 3.68509 15.4442C3.0039 13.7996 2.82567 11.99 3.17294 10.2442C3.5202 8.49836 4.37737 6.89471 5.63604 5.63604C6.89472 4.37737 8.49836 3.5202 10.2442 3.17293C11.99 2.82567 13.7996 3.0039 15.4442 3.68508C17.0887 4.36627 18.4943 5.51983 19.4832 6.99987C20.4722 8.47991 21 10.22 21 12C21 14.3869 20.0518 16.6761 18.364 18.364C16.6761 20.0518 14.387 21 12 21Z" fill="url(#paint1_linear_310_11)"/><defs><linearGradient id="paint0_linear_310_11" x1="12" y1="8.25" x2="12" y2="16.0605" gradientUnits="userSpaceOnUse"><stop stop-color="#BCB7FF"/><stop offset="1" stop-color="#703AB4"/></linearGradient><linearGradient id="paint1_linear_310_11" x1="12" y1="1.5" x2="12" y2="22.5" gradientUnits="userSpaceOnUse"><stop stop-color="#BCB7FF"/><stop offset="1" stop-color="#703AB4"/></linearGradient></defs></svg>
-            Risk-free, no-obligation quote
-        </p>
+    <div class="page-hero-grid">
+        <div>
+            <h1 class="page-title long"><span>Result-driven</span> Shopify Store Development</h1>
+            <p class="page-text">
+                Investing in a well-designed Shopify store is an investment in your business growth. Our Shopify development services can help you gain a competitive edge and start selling more online.
+            </p>
+            <div class="page-guarantees">
+                <p class="page-guarantee">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.5 16.0605L6.75 12.3098L7.80975 11.25L10.5 13.9395L16.1887 8.25L17.25 9.31125L10.5 16.0605Z" fill="url(#paint0_linear_310_11)"/><path d="M12 1.5C9.9233 1.5 7.89323 2.11581 6.16652 3.26957C4.4398 4.42332 3.09399 6.0632 2.29927 7.98182C1.50455 9.90045 1.29661 12.0116 1.70176 14.0484C2.1069 16.0852 3.10693 17.9562 4.57538 19.4246C6.04383 20.8931 7.91476 21.8931 9.95156 22.2982C11.9884 22.7034 14.0996 22.4955 16.0182 21.7007C17.9368 20.906 19.5767 19.5602 20.7304 17.8335C21.8842 16.1068 22.5 14.0767 22.5 12C22.5 9.21523 21.3938 6.54451 19.4246 4.57538C17.4555 2.60625 14.7848 1.5 12 1.5ZM12 21C10.22 21 8.47992 20.4722 6.99987 19.4832C5.51983 18.4943 4.36628 17.0887 3.68509 15.4442C3.0039 13.7996 2.82567 11.99 3.17294 10.2442C3.5202 8.49836 4.37737 6.89471 5.63604 5.63604C6.89472 4.37737 8.49836 3.5202 10.2442 3.17293C11.99 2.82567 13.7996 3.0039 15.4442 3.68508C17.0887 4.36627 18.4943 5.51983 19.4832 6.99987C20.4722 8.47991 21 10.22 21 12C21 14.3869 20.0518 16.6761 18.364 18.364C16.6761 20.0518 14.387 21 12 21Z" fill="url(#paint1_linear_310_11)"/><defs><linearGradient id="paint0_linear_310_11" x1="12" y1="8.25" x2="12" y2="16.0605" gradientUnits="userSpaceOnUse"><stop stop-color="#BCB7FF"/><stop offset="1" stop-color="#703AB4"/></linearGradient><linearGradient id="paint1_linear_310_11" x1="12" y1="1.5" x2="12" y2="22.5" gradientUnits="userSpaceOnUse"><stop stop-color="#BCB7FF"/><stop offset="1" stop-color="#703AB4"/></linearGradient></defs></svg>
+                    100% Satisfaction Guarantee
+                </p>
+                <p class="page-guarantee">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.5 16.0605L6.75 12.3098L7.80975 11.25L10.5 13.9395L16.1887 8.25L17.25 9.31125L10.5 16.0605Z" fill="url(#paint0_linear_310_11)"/><path d="M12 1.5C9.9233 1.5 7.89323 2.11581 6.16652 3.26957C4.4398 4.42332 3.09399 6.0632 2.29927 7.98182C1.50455 9.90045 1.29661 12.0116 1.70176 14.0484C2.1069 16.0852 3.10693 17.9562 4.57538 19.4246C6.04383 20.8931 7.91476 21.8931 9.95156 22.2982C11.9884 22.7034 14.0996 22.4955 16.0182 21.7007C17.9368 20.906 19.5767 19.5602 20.7304 17.8335C21.8842 16.1068 22.5 14.0767 22.5 12C22.5 9.21523 21.3938 6.54451 19.4246 4.57538C17.4555 2.60625 14.7848 1.5 12 1.5ZM12 21C10.22 21 8.47992 20.4722 6.99987 19.4832C5.51983 18.4943 4.36628 17.0887 3.68509 15.4442C3.0039 13.7996 2.82567 11.99 3.17294 10.2442C3.5202 8.49836 4.37737 6.89471 5.63604 5.63604C6.89472 4.37737 8.49836 3.5202 10.2442 3.17293C11.99 2.82567 13.7996 3.0039 15.4442 3.68508C17.0887 4.36627 18.4943 5.51983 19.4832 6.99987C20.4722 8.47991 21 10.22 21 12C21 14.3869 20.0518 16.6761 18.364 18.364C16.6761 20.0518 14.387 21 12 21Z" fill="url(#paint1_linear_310_11)"/><defs><linearGradient id="paint0_linear_310_11" x1="12" y1="8.25" x2="12" y2="16.0605" gradientUnits="userSpaceOnUse"><stop stop-color="#BCB7FF"/><stop offset="1" stop-color="#703AB4"/></linearGradient><linearGradient id="paint1_linear_310_11" x1="12" y1="1.5" x2="12" y2="22.5" gradientUnits="userSpaceOnUse"><stop stop-color="#BCB7FF"/><stop offset="1" stop-color="#703AB4"/></linearGradient></defs></svg>
+                    Risk-free, no-obligation quote
+                </p>
+                <p class="page-guarantee">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.5 16.0605L6.75 12.3098L7.80975 11.25L10.5 13.9395L16.1887 8.25L17.25 9.31125L10.5 16.0605Z" fill="url(#paint0_linear_310_11)"/><path d="M12 1.5C9.9233 1.5 7.89323 2.11581 6.16652 3.26957C4.4398 4.42332 3.09399 6.0632 2.29927 7.98182C1.50455 9.90045 1.29661 12.0116 1.70176 14.0484C2.1069 16.0852 3.10693 17.9562 4.57538 19.4246C6.04383 20.8931 7.91476 21.8931 9.95156 22.2982C11.9884 22.7034 14.0996 22.4955 16.0182 21.7007C17.9368 20.906 19.5767 19.5602 20.7304 17.8335C21.8842 16.1068 22.5 14.0767 22.5 12C22.5 9.21523 21.3938 6.54451 19.4246 4.57538C17.4555 2.60625 14.7848 1.5 12 1.5ZM12 21C10.22 21 8.47992 20.4722 6.99987 19.4832C5.51983 18.4943 4.36628 17.0887 3.68509 15.4442C3.0039 13.7996 2.82567 11.99 3.17294 10.2442C3.5202 8.49836 4.37737 6.89471 5.63604 5.63604C6.89472 4.37737 8.49836 3.5202 10.2442 3.17293C11.99 2.82567 13.7996 3.0039 15.4442 3.68508C17.0887 4.36627 18.4943 5.51983 19.4832 6.99987C20.4722 8.47991 21 10.22 21 12C21 14.3869 20.0518 16.6761 18.364 18.364C16.6761 20.0518 14.387 21 12 21Z" fill="url(#paint1_linear_310_11)"/><defs><linearGradient id="paint0_linear_310_11" x1="12" y1="8.25" x2="12" y2="16.0605" gradientUnits="userSpaceOnUse"><stop stop-color="#BCB7FF"/><stop offset="1" stop-color="#703AB4"/></linearGradient><linearGradient id="paint1_linear_310_11" x1="12" y1="1.5" x2="12" y2="22.5" gradientUnits="userSpaceOnUse"><stop stop-color="#BCB7FF"/><stop offset="1" stop-color="#703AB4"/></linearGradient></defs></svg>
+                    Flexible pricing for any business size
+                </p>
+            </div>
+        </div>
+        <div class="page-hero-form">
+            <h2 class="page-hero-form_title">Get a free quote</h2>
+            <FreeProposalForm />
+        </div>
     </div>
-    <TrustedBy />
 
     <Title
-        title="What We Offer"
-        subtitle="WHAT'S INCLUDED"
+        title="What We Can Do"
+        subtitle="OUR SERVICES"
         icon={ServicesHomepageIcon}
     />
     <BoxGrid items={benefits} />
+    <div class="page-cta">
+        <p class="page-cta_text">Interested in our <span>Shopify services?</span></p>
+        <Button type="primary" link="/get-started">Get a free quote</Button>
+    </div>
 
     <TextImageGroup
         title="Set yourself up for success"
@@ -177,17 +187,6 @@ const links = [
 
     <Title title="We’re Futuremerce" subtitle="about" icon={AboutIcon} />
     <HomepageAbout />
-
-
-    <Title
-        title="Futuremerce vs other agencies vs in-house team"
-        subtitle="WHAT MAKES US DIFFERENT"
-        icon={ComparisonIcon}
-    />
-    <Container>
-     <ComparisonTable />
-     <Button type="primary" link="/get-started">Get a free quote</Button>
-    </Container>
 
     <Title title="Let’s Talk Numbers" subtitle="PRICING" icon={pricing} />
     <BoxGrid items={pricingBoxes} />
@@ -243,12 +242,16 @@ const links = [
 
     @media screen and (max-width: 767px) {
         .title-group {
-            margin-top: 80px;
+            margin-top: 40px;
         }
 
         .breadcrumbs_back {
             display: none;
             margin-bottom: 20px;
+        }
+
+        .about {
+            margin-bottom: 60px;
         }
     }
 
