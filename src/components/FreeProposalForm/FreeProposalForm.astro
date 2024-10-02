@@ -25,7 +25,7 @@ services = services.sort((a,b) => a.data.title.includes('Shopify') ? 1 : -1).rev
             />
         </div>
         <div>
-            <label for="phone">Phone <span>(optional)</span></label>
+            <label for="phone">Phone*</label>
             <input
                 type="text"
                 placeholder="Your phone number"
@@ -46,7 +46,7 @@ services = services.sort((a,b) => a.data.title.includes('Shopify') ? 1 : -1).rev
             required
         />
     </div>
-    <div class="contact-form_group">
+    <!-- <div class="contact-form_group">
         <label for="company">Company*</label>
         <input
             type="text"
@@ -56,8 +56,8 @@ services = services.sort((a,b) => a.data.title.includes('Shopify') ? 1 : -1).rev
             class="contact-form_input"
             required
         />
-    </div>
-    <div class="contact-form_group">
+    </div> -->
+    <!-- <div class="contact-form_group">
         <label for="service">Service you're interested in*</label>
         <select class="contact-form_input" name="service" id="service" required>
             <option value="" disabled>Please select</option>
@@ -82,7 +82,7 @@ services = services.sort((a,b) => a.data.title.includes('Shopify') ? 1 : -1).rev
                 fill="white"
                 fill-opacity="0.5"></path>
         </svg>
-    </div>
+    </div> -->
     <div class="contact-form_group">
         <label for="details">How can we help?*</label>
         <textarea
@@ -102,14 +102,18 @@ services = services.sort((a,b) => a.data.title.includes('Shopify') ? 1 : -1).rev
     const handleFormSubmit = () => {
         const name = document.querySelector("#name").value;
         const email = document.querySelector("#email").value;
-        const company = document.querySelector("#company").value;
         const details = document.querySelector("#details").value;
+        const phone = document.querySelector("#phone").value;
 
         let errors = [];
 
         // Validate FOrm
         if (name == "") {
             errors.push("Please enter your name");
+        }
+
+        if (phone == "" || phone.length < 10) {
+            errors.push("Please enter a valid phone number");
         }
 
         if (
@@ -121,10 +125,6 @@ services = services.sort((a,b) => a.data.title.includes('Shopify') ? 1 : -1).rev
                 )
         ) {
             errors.push("Please enter a valid email");
-        }
-
-        if (company == "") {
-            errors.push("Please enter your company name");
         }
 
         if (details == "") {

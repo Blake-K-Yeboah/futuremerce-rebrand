@@ -259,4 +259,182 @@
             gap: 16px;
         }
     }
+
+    &-hero-grid {
+        display: grid;
+        grid-template-columns: 5fr 4fr;
+        width: 100%;
+        max-width: 1060px;
+        padding: 0 20px;
+        margin: 0 auto;
+        gap: 16px;
+
+        @media screen and (max-width: 900px) {
+            grid-template-columns: 1fr;
+        }
+
+        .page-title {
+            text-align: left;
+            font-size: 50px;
+            max-width: 550px;
+            margin-left: 0;
+            margin-right: 0;
+
+            > span {
+                display: inline;
+            }
+
+            @media screen and (max-width: 1023px) {
+                font-size: 44px;
+                line-height: 50px;
+                margin-top: 100px;
+                padding: 0;
+            }
+
+            @media screen and (max-width: 900px) {
+                text-align: center;
+                margin: 50px auto 0;
+            }
+
+            @media screen and (max-width: 500px) {
+                font-size: 36px;
+                line-height: 42px;
+                margin-top: 0;
+            }
+        }
+
+        .page-text {
+            text-align: left;
+            max-width: 500px;
+            margin: 33px 0;
+
+            @media screen and (max-width: 1023px) {
+                padding: 0;
+            }
+
+            @media screen and (max-width: 900px) {
+                text-align: center;
+                margin: 33px auto;
+            }
+        }
+
+        .page-guarantees {
+            flex-direction: column;
+            gap: 20px;
+
+            @media screen and (max-width: 900px) {
+                margin: 0 auto;
+                max-width: 300px;
+                align-items: flex-start;
+            }
+        }
+
+        @media screen and (max-width: 900px) {
+            .page-guarantee {
+                font-size: 16px;
+            }
+        }
+
+        .contact-form_group button {
+            width: 100%;
+            justify-content: center;
+        }
+    }
+
+    &-hero-form {
+        width: 100%;
+        max-width: 767px;
+        margin: 50px auto 0;
+        border-radius: 18px;
+        background: #13131e;
+        padding: 24px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+
+        @media screen and (max-width: 900px) {
+            max-width: 500px;
+            margin-top: 24px;
+        }
+
+        &_title {
+            color: #fff;
+            font-size: 28px;
+            text-align: center;
+            margin: 16px 0 28px;
+            font-weight: 500;
+            text-transform: capitalize;
+
+            @media screen and (max-width: 900px) {
+                margin-top: 0;
+                font-size: 20px;
+            }
+        }
+
+        .contact-form_input:is(textarea) {
+            height: 120px;
+        }
+    }
+
+    &-cta {
+        width: calc(100% - 42px);
+        max-width: 1226px;
+        margin: 40px auto;
+        border-radius: 18px;
+        padding: 40px 32px;
+        background: #13131e;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        @media screen and (max-width: 767px) {
+            flex-direction: column;
+            padding: 24px;
+
+            .button {
+                margin: 16px 0 0;
+            }
+        }
+
+        &:before {
+            content: "";
+            width: calc(100% + 2px);
+            height: calc(100% + 2px);
+            background: linear-gradient(90deg, #bcb7ff 0%, #703ab4 100%);
+            position: absolute;
+            top: -1px;
+            left: -1px;
+            border-radius: 18px;
+            z-index: -1;
+        }
+
+        &_text {
+            text-align: left;
+            font-weight: 500;
+            font-size: 32px;
+            color: #fff;
+
+            > span {
+                background: linear-gradient(90deg, #bcb7ff 0%, #703ab4 100%);
+                background-clip: text;
+                -webkit-background-clip: text;
+                color: transparent;
+                font-weight: 700;
+            }
+
+            @media screen and (max-width: 767px) {
+                font-size: 28px;
+                text-align: center;
+            }
+
+            @media screen and (max-width: 500px) {
+                > span {
+                    display: block;
+                }
+            }
+        }
+
+        .button {
+            min-width: 200px;
+        }
+    }
 }
