@@ -4,6 +4,12 @@ import Button from "../Button/Button.astro";
 
 let services = await getCollection("services");
 services = services.sort((a,b) => a.data.title.includes('Shopify') ? 1 : -1).reverse();
+
+interface Props {
+    onServicePage?: boolean;
+}
+
+const { onServicePage } = Astro.props as Props;
 ---
 
 <form
@@ -86,14 +92,42 @@ services = services.sort((a,b) => a.data.title.includes('Shopify') ? 1 : -1).rev
     <div class="contact-form_group">
         <label for="details">How can we help?*</label>
         <textarea
-            placeholder="Please include as much information as possible about what you’re looking for, so we know how best we can help you"
+            placeholder="Let us know what you're looking for so we know how best to help you"
             id="details"
             name="details"
             class="contact-form_input"
             required></textarea>
     </div>
     <div class="contact-form_group">
-        <Button type="primary">Get a free quote</Button>
+        <label for="service">What's your budget?*</label>
+        <select class="contact-form_input" name="budget" id="budget" required>
+            <option value="" disabled>Please select</option>
+            <option value="Less than $1,000">
+                Less than $1,000
+            </option>
+            <option value="$1,000 - $5,000">
+                $1,000 - $5,000
+            </option>
+            <option value="">
+                More than $5,000
+            </option>
+        </select>
+        <svg
+            id="select-svg"
+            width="13"
+            height="12"
+            viewBox="0 0 13 12"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <path
+                d="M6.78418 8.25L3.03418 4.5L3.55918 3.975L6.78418 7.2L10.0092 3.975L10.5342 4.5L6.78418 8.25Z"
+                fill="white"
+                fill-opacity="0.5"></path>
+        </svg>
+    </div>
+    <div class="contact-form_group">
+        <Button type="primary">{onServicePage ? 'Book a free consultation' : 'Get a free quote' }</Button>
     </div>
 </form>
 
@@ -104,6 +138,7 @@ services = services.sort((a,b) => a.data.title.includes('Shopify') ? 1 : -1).rev
         const email = document.querySelector("#email").value;
         const details = document.querySelector("#details").value;
         const phone = document.querySelector("#phone").value;
+        const budget = document.querySelector('#budget').value;
 
         let errors = [];
 
@@ -131,7 +166,13 @@ services = services.sort((a,b) => a.data.title.includes('Shopify') ? 1 : -1).rev
             errors.push("Please fill in your project details");
         }
 
+        if (budget == "") {
+            errors.push("Please enter your budget.")
+        }
+
         if (errors.length > 0) {
+            console.log("Form Submission Error");
+            console.log(errors);
             alert(errors[0]);
             return;
         }

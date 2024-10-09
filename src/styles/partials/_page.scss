@@ -264,13 +264,17 @@
         display: grid;
         grid-template-columns: 5fr 4fr;
         width: 100%;
-        max-width: 1060px;
+        max-width: 1220px;
         padding: 0 20px;
         margin: 0 auto;
         gap: 16px;
 
         @media screen and (max-width: 900px) {
             grid-template-columns: 1fr;
+        }
+
+        .contact-form_group:nth-child(n + 2) {
+            margin-top: 24px;
         }
 
         .page-title {

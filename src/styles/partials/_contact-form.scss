@@ -67,7 +67,7 @@
         font-weight: 400;
         margin-top: 14px;
 
-        >span {
+        > span {
             color: #727272;
         }
     }
@@ -87,9 +87,9 @@
         color: #fff;
 
         &:is(textarea) {
-            height: 170px;
+            height: 140px;
             padding-top: 16px;
-            border-radius: 24px;
+            border-radius: 7px;
             line-height: 20px;
         }
 
@@ -100,7 +100,7 @@
         }
 
         &:is(select) option {
-            color: rgba(255, 255, 255, .6);
+            color: rgba(255, 255, 255, 0.6);
         }
     }
 }
