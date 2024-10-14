@@ -147,7 +147,7 @@ const links = [
     />
     <BoxGrid items={benefits} />
 
-    <Title title="Choose Your Plan" subtitle="PRICING" icon={PricingIcon} />
+    <Title title="Our Membership" subtitle="PRICING" icon={PricingIcon} />
     <PricingTable />
 
     <Title title="We’re Futuremerce" subtitle="about" icon={AboutIcon} />
@@ -181,6 +181,11 @@ const links = [
         .title-group {
             margin-top: 80px;
         }
+        
+        .breadcrumbs_back {
+            display: none;
+            margin-bottom: 20px;
+        }
 
         .faqs {
             padding-top: 0 !important;
@@ -207,4 +212,8 @@ const links = [
                 behavior: "smooth",
             });
         });
+
+    const title: Element = document.querySelectorAll('.title-group_title')[1];
+
+    title.innerHTML = `All the Perks,<br>None of the Hassle`;
 </script>
