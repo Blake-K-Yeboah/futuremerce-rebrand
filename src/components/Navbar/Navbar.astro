@@ -10,6 +10,8 @@ import { getCollection } from "astro:content";
 import aboutUsIcon from "../../icons/about-us-icon.svg";
 import faqsIcon from "../../icons/faqs-icon.svg";
 import contactIcon from "../../icons/contact-icon.svg";
+import blogIcon from "../../icons/blog-icon.svg";
+import marketingIcon from "../../icons/marketing-icon.svg";
 
 const allServices = await getCollection("services");
 allServices.sort((a, b) => (a.data.order > b.data.order ? 1 : -1));
@@ -54,8 +56,28 @@ const links: NavbarLink[] = [
         href: "/pricing",
     },
     {
-        label: "Blog",
-        href: "/blog",
+        label: "Resources",
+        href: "#resources-dropdown",
+        sublinks: [
+            {
+                label: "Blog",
+                text: "Shopify tips & strategies",
+                icon: blogIcon,
+                href: "/blog",
+            },
+            {
+                label: "FAQs",
+                text: "Answers to your questions",
+                icon: faqsIcon,
+                href: "/faq",
+            },
+            {
+                label: "Free Marketing Guide",
+                text: "Free guide for your store",
+                icon: marketingIcon,
+                href: "/shopify-marketing-automation-guide",
+            },
+        ]
     },
 ];
 ---

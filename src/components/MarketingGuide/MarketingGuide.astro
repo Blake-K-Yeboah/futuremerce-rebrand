@@ -35,7 +35,7 @@ import mobileImage from "../../images/marketing-guide-popup-mobile.png";
         if (!window.popupInitialized) {
             window.popupInitialized = true;
             
-            if (!location.pathname.includes('shopify-marketing-automation-guide') && sessionStorage.getItem('marketing-guide-shown') != 'true') {
+            if (!location.pathname.includes('shopify-marketing-automation-guide') && !location.pathname.includes('development-subscriptions') && sessionStorage.getItem('marketing-guide-shown') != 'true') {
                 setTimeout(() => {
                     sessionStorage.setItem('marketing-guide-shown', 'true')
                     document.querySelector('.marketing-guide')?.classList.add('active');
